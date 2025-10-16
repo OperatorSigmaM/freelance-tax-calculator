@@ -3,10 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelance Tax Calculator</title>
+    <title>Freelance Tax Calculator - USA 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .result-row:last-child {
+            border-bottom: none;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 2px solid #667eea;
+        }
+        
+        .result-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .result-row:last-child .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
 </head>
 <body>
-    <h1>Freelance Tax Calculator - Coming Soon</h1>
-    <p>This is a test page. The calculator is under development.</p>
+    <div class="container">
+        <h1>🇺🇸 Freelance Tax Calculator</h1>
+        <p class="subtitle">Calculate your estimated federal taxes for 2024 (Single filer)</p>
+        
+        <div class="input-group">
+            <label for="income">Gross Income (Annual)</label>
+            <input type="number" id="income" placeholder="e.g., 75000" min="0" step="1000">
+        </div>
+        
+        <div class="input-group">
+            <label for="expenses">Business Expenses (Annual)</label>
+            <input type="number" id="expenses" placeholder="e.g., 15000" min="0" step="1000">
+        </div>
+        
+        <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+        
+        <div class="results" id="results">
+            <div class="result-row">
+                <span class="result-label">Net Income</span>
+                <span class="result-value" id="netIncome">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Taxable Income (after standard deduction)</span>
+                <span class="result-value" id="taxableIncome">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Federal Income Tax</span>
+                <span class="result-value" id="federalTax">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Self-Employment Tax (Social Security + Medicare)</span>
+                <span class="result-value" id="seTax">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Total Tax Owed</span>
+                <span class="result-value" id="totalTax">$0</span>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>Note:</strong> This is an estimate based on 2024 tax rates for single filers. Actual taxes may vary based on deductions, credits, and state taxes. Consult a tax professional for accurate calculations.
+        </div>
+    </div>
+
+    <script>
+        function calculateTax() {
+            const income = parseFloat(document.getElementById('income').value) || 0;
+            const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+            
+            if (income <= 0) {
+                alert('Please enter your gross income');
+                return;
+            }
+            
+            const netIncome = income - expenses;
+            
+            const standardDeduction = 14600;
+            
+            const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+            
+            const taxableIncome = Math.max(0, netIncome - standardDeduction - seDeduction);
+            
+            let federalTax = 0;
+            const brackets = [
+                { limit: 11600, rate: 0.10 },
+                { limit: 47150, rate: 0.12 },
+                { limit: 100525, rate: 0.22 },
+                { limit: 191950, rate: 0.24 },
+                { limit: 243725, rate: 0.32 },
+                { limit: 609350, rate: 0.35 },
+                { limit: Infinity, rate: 0.37 }
+            ];
+            
+            let remaining = taxableIncome;
+            let previousLimit = 0;
+            
+            for (let bracket of brackets) {
+                if (remaining <= 0) break;
+                
+                const taxableInBracket = Math.min(remaining, bracket.limit - previousLimit);
+                federalTax += taxableInBracket * bracket.rate;
+                remaining -= taxableInBracket;
+                previousLimit = bracket.limit;
+            }
+            
+            const seTax = netIncome * 0.9235 * 0.153;
+            
+            const totalTax = federalTax + seTax;
+            
+            document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('taxableIncome').textContent = '$' + taxableIncome.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('federalTax').textContent = '$' + federalTax.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('seTax').textContent = '$' + seTax.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('totalTax').textContent = '$' + totalTax.toLocaleString('en-US', {maximumFractionDigits: 0});
+            
+            document.getElementById('results').classList.add('show');
+        }
+        
+        document.getElementById('income').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateTax();
+        });
+        
+        document.getElementById('expenses').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateTax();
+        });
+    </script>
 </body>
 </html>
