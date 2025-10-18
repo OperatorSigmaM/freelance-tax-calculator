@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Free Loan Calculator 2024 | Calculate Monthly Payments & Interest</title>
+    <meta name="title" content="Free Loan Calculator 2024 | Calculate Monthly Payments & Interest">
+    <meta name="description" content="Calculate your loan payments instantly. Free loan calculator for personal loans, auto loans, mortgages. See monthly payment, total interest, and payment schedule.">
+    <meta name="keywords" content="loan calculator, monthly payment calculator, interest calculator, mortgage calculator, auto loan calculator, personal loan calculator">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .result-row:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Loan Calculator</h1>
+        <p class="subtitle">Calculate your monthly payments and total interest</p>
+        
+        <div class="input-group">
+            <label for="amount">Loan Amount ($)</label>
+            <input type="number" id="amount" placeholder="e.g., 20000" min="100" step="100">
+        </div>
+        
+        <div class="input-group">
+            <label for="rate">Interest Rate (% per year)</label>
+            <input type="number" id="rate" placeholder="e.g., 5.5" min="0" step="0.1">
+        </div>
+        
+        <div class="input-group">
+            <label for="term">Loan Term (years)</label>
+            <input type="number" id="term" placeholder="e.g., 5" min="1" max="30" step="1">
+        </div>
+        
+        <button class="btn" onclick="calculateLoan()">Calculate Payment</button>
+        
+        <div class="results" id="results">
+            <div class="result-row">
+                <span class="result-label">Monthly Payment</span>
+                <span class="result-value highlight" id="monthlyPayment">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Total Amount Paid</span>
+                <span class="result-value" id="totalPaid">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Total Interest</span>
+                <span class="result-value" id="totalInterest">$0</span>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>Note:</strong> This calculator provides estimates based on standard amortization. Actual payments may vary based on lender terms, fees, and other factors.
+        </div>
+        
+        <footer>
+            <p>&copy; 2024 Loan Calculator | <a href="/">More Calculators</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function calculateLoan() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const rate = parseFloat(document.getElementById('rate').value) || 0;
+            const term = parseFloat(document.getElementById('term').value) || 0;
+            
+            if (amount <= 0 || rate < 0 || term <= 0) {
+                alert('Please enter valid loan details');
+                return;
+            }
+            
+            const monthlyRate = rate / 100 / 12;
+            const numPayments = term * 12;
+            
+            let monthlyPayment;
+            if (rate === 0) {
+                monthlyPayment = amount / numPayments;
+            } else {
+                monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                                 (Math.pow(1 + monthlyRate, numPayments) - 1);
+            }
+            
+            const totalPaid = monthlyPayment * numPayments;
+            const totalInterest = totalPaid - amount;
+            
+            document.getElementById('monthlyPayment').textContent = '$' + monthlyPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('totalPaid').textContent = '$' + totalPaid.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('totalInterest').textContent = '$' + totalInterest.toLocaleString('en-US', {maximumFractionDigits: 0});
+            
+            document.getElementById('results').classList.add('show');
+        }
+        
+        document.getElementById('amount').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateLoan();
+        });
+        
+        document.getElementById('rate').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateLoan();
+        });
+        
+        document.getElementById('term').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateLoan();
+        });
+    </script>
+</body>
+</html>
