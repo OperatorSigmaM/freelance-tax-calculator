@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,7 +13,7 @@
   gtag('config', 'G-KZMTMFZT66');
 </script>
     
-    <title>Free Retirement Calculator 2024 | Plan Your Retirement Savings</title>
+    <title>Free Retirement Calculator 2025 | Plan Your Retirement Savings</title>
     <meta name="description" content="Calculate how much you need to save for retirement. Free retirement planning calculator with compound interest and inflation adjustments.">
     <meta name="keywords" content="retirement calculator, retirement planning, 401k calculator, savings calculator, retirement savings">
     <meta name="robots" content="index, follow">
@@ -25,39 +24,15 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Mega Menu Styles - УДАЛЕНЫ */
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding-top: 80px;
+            padding-top: 110px;
             padding-bottom: 40px;
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-        
-        nav a:hover {
-            opacity: 0.7;
         }
         
         .container {
@@ -171,19 +146,17 @@
             font-size: 14px;
             color: #0d47a1;
         }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <nav>
-    <a href="home.html">🏠 Home</a>
-    <a href="index.html">🇺🇸 Tax Calculator</a>
-    <a href="loan-calculator.html">💰 Loan Calculator</a>
-    <a href="tip-calculator.html">🍽️ Tip Calculator</a>
-    <a href="salary-hourly.html">💵 Salary ↔ Hourly</a>
-    <a href="retirement.html">🏖️ Retirement</a>
-    <a href="bmi.html">💪 BMI</a>
-</nav>
-
     <div class="container">
         <h1>🏖️ Retirement Calculator</h1>
         <p class="subtitle">Plan your retirement savings and see how much you'll have</p>
@@ -289,11 +262,11 @@
             <h3 style="color: #333; margin-top: 25px; margin-bottom: 15px; font-size: 20px;">Retirement Account Options</h3>
             
             <p style="margin-bottom: 15px;">
-                <strong>401(k):</strong> Employer-sponsored plan with potential matching contributions. Contribution limit: $23,000 in 2024.
+                <strong>401(k):</strong> Employer-sponsored plan with potential matching contributions. Contribution limit: $23,500 in 2025.
             </p>
             
             <p style="margin-bottom: 15px;">
-                <strong>IRA (Traditional or Roth):</strong> Individual retirement account with tax advantages. Contribution limit: $7,000 in 2024.
+                <strong>IRA (Traditional or Roth):</strong> Individual retirement account with tax advantages. Contribution limit: $7,000 in 2025.
             </p>
             
             <p style="margin-bottom: 15px;">
@@ -305,6 +278,10 @@
             </p>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+    </footer>
 
     <script>
         function calculateRetirement() {
@@ -329,8 +306,7 @@
             // Future value of monthly contributions (annuity)
             let futureValueContributions = 0;
             if (monthlyRate > 0) {
-                futureValueContributions = monthlyContribution * 
-                    ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+                futureValueContributions = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
             } else {
                 futureValueContributions = monthlyContribution * months;
             }
@@ -355,5 +331,6 @@
             if (e.key === 'Enter') calculateRetirement();
         });
     </script>
+    <script src="./MegaNav.js"></script>
 </body>
 </html>

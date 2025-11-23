@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KZMTMFZT66');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KZMTMFZT66');
+    </script>
     
     <title>Free Financial Calculators 2025 | Tax, Loan, Salary Tools</title>
     <meta name="description" content="Free financial calculators for freelancers and individuals. Calculate taxes, loan payments, and more. No registration required.">
     <meta name="keywords" content="financial calculators, tax calculator, loan calculator, free tools">
     <meta name="robots" content="index, follow">
+    
+    <script src="MegaNav.js"></script>
     
     <style>
         * {
@@ -26,132 +27,390 @@
             box-sizing: border-box;
         }
         
+        /* Page Styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding-top: 70px;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        header {
+        /* Hero Section */
+        .hero {
             text-align: center;
             color: white;
-            margin-bottom: 50px;
+            padding: 80px 20px 60px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        
-        h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
         }
-        
-        .tagline {
-            font-size: 18px;
-            opacity: 0.9;
+
+        .hero-subtitle {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
-        
-        .calculators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .calc-card {
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
             background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Popular Calculators */
+        .section {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .popular-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .popular-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .popular-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .popular-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .popular-desc {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
         }
         
-        .calc-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        @media (max-width: 1040px) {
+            .roadmap {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+
+        .roadmap-title {
+            color: white;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .roadmap-subtitle {
+            color: white;
+            opacity: 0.9;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .roadmap-item h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .roadmap-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
         }
         
-        .calc-icon {
+        @media (max-width: 1040px) {
+            .features {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            color: white;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
             font-size: 48px;
             margin-bottom: 15px;
         }
-        
-        .calc-title {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
+
+        .feature-title {
+            font-size: 18px;
             font-weight: 600;
+            margin-bottom: 8px;
         }
-        
-        .calc-description {
-            color: #666;
+
+        .feature-desc {
+            opacity: 0.9;
             font-size: 14px;
-            line-height: 1.6;
         }
-        
+
         footer {
             text-align: center;
-            margin-top: 60px;
+            padding: 40px 20px;
             color: white;
             opacity: 0.8;
             font-size: 14px;
         }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .section-title, .roadmap-title {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>💼 Financial Tools</h1>
-            <p class="tagline">Free calculators for freelancers, entrepreneurs, and individuals</p>
-        </header>
-        
-        <div class="calculators-grid">
-            <a href="index.html" class="calc-card">
-                <div class="calc-icon">🇺🇸</div>
-                <h2 class="calc-title">Freelance Tax Calculator</h2>
-                <p class="calc-description">Calculate your federal income tax and self-employment tax for 2025. Perfect for freelancers and contractors.</p>
+    <!-- Navigation will be injected by MegaNav.js -->
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>💼 Free Financial Calculators</h1>
+        <p class="hero-subtitle">
+            Professional tax, loan, and financial tools for freelancers, entrepreneurs, and individuals. 
+            No registration required. Just accurate calculations.
+        </p>
+        <a href="tax-calculators.html" class="cta-button">Calculate Your Taxes →</a>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Calculators Coming</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Countries Supported</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2025</div>
+            <div class="stat-label">Latest Tax Rates</div>
+        </div>
+    </div>
+
+    <!-- Popular Calculators -->
+    <div class="section">
+        <h2 class="section-title">🔥 Most Popular Tools</h2>
+        <div class="popular-grid">
+            <a href="index.html" class="popular-card">
+                <div class="popular-icon">🇺🇸</div>
+                <h3 class="popular-title">Federal Tax Calculator</h3>
+                <p class="popular-desc">Calculate federal income tax and self-employment tax for 2025. Updated with latest rates.</p>
             </a>
             
-            <a href="loan-calculator.html" class="calc-card">
-                <div class="calc-icon">💰</div>
-                <h2 class="calc-title">Loan Calculator</h2>
-                <p class="calc-description">Calculate monthly payments, total interest, and payment schedules for any loan.</p>
+            <a href="loan-calculator.html" class="popular-card">
+                <div class="popular-icon">💰</div>
+                <h3 class="popular-title">Loan Calculator</h3>
+                <p class="popular-desc">Calculate monthly payments, interest, and total cost for any loan type.</p>
             </a>
             
-            <a href="tip-calculator.html" class="calc-card">
-                <div class="calc-icon">🍽️</div>
-                <h2 class="calc-title">Tip Calculator</h2>
-                <p class="calc-description">Quickly calculate tips and split bills among friends.</p>
-            </a>
-            
-            <a href="salary-hourly.html" class="calc-card">
-                <div class="calc-icon">💵</div>
-                <h2 class="calc-title">Salary to Hourly</h2>
-                <p class="calc-description">Convert annual salary to hourly rate and vice versa.</p>
-            </a>
-            
-            <a href="retirement.html" class="calc-card">
-                <div class="calc-icon">🏖️</div>
-                <h2 class="calc-title">Retirement Calculator</h2>
-                <p class="calc-description">Plan your retirement and see how much you need to save.</p>
-            </a>
-            
-            <a href="bmi.html" class="calc-card">
-                <div class="calc-icon">💪</div>
-                <h2 class="calc-title">BMI Calculator</h2>
-                <p class="calc-description">Calculate your Body Mass Index and check your health status.</p>
+            <a href="salary-hourly.html" class="popular-card">
+                <div class="popular-icon">💵</div>
+                <h3 class="popular-title">Salary Converter</h3>
+                <p class="popular-desc">Convert between annual salary and hourly rate instantly.</p>
             </a>
         </div>
-        
-        <footer>
-            <p>&copy; 2025 Financial Tools | Free calculators for everyone</p>
-            <p>No registration required. No ads. Just tools that work.</p>
-        </footer>
     </div>
+
+    <!-- Features -->
+    <div class="features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Lightning Fast</div>
+                <div class="feature-desc">Instant calculations, no waiting</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">100% Private</div>
+                <div class="feature-desc">No data tracking or storage</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Mobile Ready</div>
+                <div class="feature-desc">Works on any device</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <div class="feature-title">Always Updated</div>
+                <div class="feature-desc">Latest tax rates & formulas</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="roadmap">
+        <h2 class="roadmap-title">🚀 What's Coming Next</h2>
+        <p class="roadmap-subtitle">We're constantly expanding our calculator library</p>
+        <div class="roadmap-grid">
+            <div class="roadmap-item">
+                <h3>🇺🇸 US State Taxes</h3>
+                <p>Tax calculators for all 50 US states starting with California, New York, Texas, and Florida</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>🇪🇺 European Countries</h3>
+                <p>Tax calculators for UK, Germany, France, Netherlands, Spain, and Italy</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>🌍 Global Expansion</h3>
+                <p>Canada, Australia, Japan, Singapore and more countries coming soon</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>🎯 More Tools</h3>
+                <p>Investment calculators, budget planners, and business finance tools</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+        <p>No registration required. Just tools that work.</p>
+    </footer>
 </body>
 </html>

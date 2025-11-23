@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas State Tax Calculator 2025 | TX Income Tax Calculator</title>
+    <meta name="description" content="Free Texas tax calculator for 2025. Texas has NO state income tax! Calculate your federal taxes only. Updated for 2025 with all filing statuses.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+/* СТИЛИ НАВИГАЦИИ УДАЛЕНЫ */
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 110px 20px 40px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: #BF0A30;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .no-tax-banner {
+            background: linear-gradient(135deg, #00C851 0%, #007E33 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .no-tax-banner h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .no-tax-banner p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .zero-tax {
+            color: #00C851 !important;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            border-left: 4px solid #00C851;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #155724;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="state-badge">🤠 TEXAS</div>
+    <h1>Texas Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate your federal taxes - Texas has NO state income tax! 🎉</p>
+    
+    <div class="no-tax-banner">
+        <h2>✨ NO STATE INCOME TAX ✨</h2>
+        <p>Texas is one of 9 states with zero state income tax. You only pay federal taxes!</p>
+    </div>
+    
+    <div class="input-group">
+        <label>Filing Status</label>
+        <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="head">Head of Household</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Gross Income (Annual)</label>
+        <input type="number" id="income" placeholder="e.g., 75000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual)</label>
+        <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Number of Dependents</label>
+        <input type="number" id="dependents" placeholder="0" min="0" value="0">
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">📊 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇺🇸 Federal Taxes</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax</span>
+                <span class="result-value" id="federalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Self-Employment Tax</span>
+                <span class="result-value" id="seTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🤠 Texas State</div>
+            <div class="result-row">
+                <span class="result-label">State Income Tax</span>
+                <span class="result-value zero-tax">$0 (No Tax!)</span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax Owed</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Good News!</strong> Texas does not have a state income tax. You only pay federal income tax and self-employment tax. This calculator shows federal taxes only.
+    </div>
+    
+    <div class="content-section">
+        <h2>Texas Tax Guide 2025</h2>
+        
+        <p>
+            <strong>Texas is one of only 9 states in the United States with NO state income tax.</strong> This means residents and businesses save significantly on taxes compared to high-tax states like California and New York.
+        </p>
+
+        <div class="highlight-box">
+            <strong>🎉 States with No Income Tax (2025):</strong>
+            <ul style="margin-top: 10px;">
+                <li>Alaska</li>
+                <li>Florida</li>
+                <li>Nevada</li>
+                <li>New Hampshire (wages only)</li>
+                <li>South Dakota</li>
+                <li>Tennessee</li>
+                <li><strong>Texas</strong></li>
+                <li>Washington</li>
+                <li>Wyoming</li>
+            </ul>
+        </div>
+        
+        <h3>What Taxes DO You Pay in Texas?</h3>
+        
+        <p>While Texas has no state income tax, residents still pay:</p>
+        
+        <ul>
+            <li><strong>Federal Income Tax:</strong> Standard federal rates apply (10% - 37%)</li>
+            <li><strong>Federal Self-Employment Tax:</strong> 15.3% on net self-employment income</li>
+            <li><strong>Property Tax:</strong> Texas has one of the highest property tax rates in the US (~1.47% average)</li>
+            <li><strong>Sales Tax:</strong> 6.25% state sales tax + up to 2% local (total up to 8.25%)</li>
+        </ul>
+
+        <h3>How Texas Funds Government Without Income Tax</h3>
+
+        <p>Texas compensates for the lack of income tax through:</p>
+
+        <ul>
+            <li><strong>High Property Taxes:</strong> Among the highest in the nation</li>
+            <li><strong>Sales Tax Revenue:</strong> Significant consumer spending taxes</li>
+            <li><strong>Franchise Tax:</strong> Business tax (not applicable to individuals)</li>
+            <li><strong>Oil and Gas Revenue:</strong> Significant natural resource taxes</li>
+        </ul>
+        
+        <h3>2025 Federal Tax Brackets (Applies to TX Residents)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>10%</td><td>$0 - $11,925</td><td>$0 - $23,850</td></tr>
+                <tr><td>12%</td><td>$11,926 - $48,475</td><td>$23,851 - $96,950</td></tr>
+                <tr><td>22%</td><td>$48,476 - $103,350</td><td>$96,951 - $206,700</td></tr>
+                <tr><td>24%</td><td>$103,351 - $197,300</td><td>$206,701 - $394,600</td></tr>
+                <tr><td>32%</td><td>$197,301 - $250,525</td><td>$394,601 - $501,050</td></tr>
+                <tr><td>35%</td><td>$250,526 - $626,350</td><td>$501,051 - $751,600</td></tr>
+                <tr><td>37%</td><td>$626,351+</td><td>$751,601+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Federal Standard Deduction 2025</h3>
+        
+        <ul>
+            <li><strong>Single:</strong> $15,750</li>
+            <li><strong>Married Filing Jointly:</strong> $31,500</li>
+            <li><strong>Head of Household:</strong> $23,700</li>
+        </ul>
+        
+        <h3>Pros and Cons of Living in Texas</h3>
+        
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>No state income tax means more take-home pay</li>
+            <li>Business-friendly environment</li>
+            <li>Lower cost of living than coastal states</li>
+            <li>No state estate or inheritance tax</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Higher property taxes to compensate</li>
+            <li>Sales tax on most purchases</li>
+            <li>Less state funding for public services</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> This calculator provides estimates for federal taxes only, as Texas has no state income tax. For complete tax planning, consult with a Texas CPA or tax professional familiar with property and sales tax implications.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Texas Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year - Texas has NO state income tax! 🤠</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+
+<script>
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const dependents = parseInt(document.getElementById('dependents').value) || 0;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // Federal tax calculation
+    let federalStandardDeduction = 15750;
+    if (status === 'married') federalStandardDeduction = 31500;
+    if (status === 'head') federalStandardDeduction = 23700;
+    
+    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+    const federalTaxableIncome = Math.max(0, netIncome - federalStandardDeduction - seDeduction);
+    
+    let federalBrackets = [];
+    if (status === 'single') {
+        federalBrackets = [
+            [11925, 0.1],
+            [48475, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250525, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    } else if (status === 'married') {
+        federalBrackets = [
+            [23850, 0.1],
+            [96950, 0.12],
+            [206700, 0.22],
+            [394600, 0.24],
+            [501050, 0.32],
+            [751600, 0.35],
+            [99999999, 0.37]
+        ];
+    } else {
+        federalBrackets = [
+            [17000, 0.1],
+            [64850, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250500, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    }
+    
+    let federalTax = 0;
+    let remaining = federalTaxableIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < federalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = federalBrackets[i][0];
+        const bracketRate = federalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        federalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
+    
+    // Texas has NO state income tax!
+    const texasStateTax = 0;
+    
+    const totalTax = federalTax + selfEmploymentTax + texasStateTax;
+    // ФИКС: effectiveRate считается от Gross Income (income)
+    const effectiveRate = (totalTax / income * 100).toFixed(1); 
+    
+    // Display results
+    document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
+    document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString();
+    document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
+    document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
+    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+// УДАЛЕНЫ ФУНКЦИИ toggleMobileMenu и прочая хуйня, которая теперь в MegaNav.js
+</script>
+</body>
+</html>

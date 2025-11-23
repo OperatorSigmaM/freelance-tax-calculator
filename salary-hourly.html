@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,7 +13,7 @@
   gtag('config', 'G-KZMTMFZT66');
 </script>
     
-    <title>Salary to Hourly Calculator 2024 | Convert Annual Salary to Hourly Rate</title>
+    <title>Salary to Hourly Calculator 2025 | Convert Annual Salary to Hourly Rate</title>
     <meta name="description" content="Convert annual salary to hourly rate and vice versa. Free salary calculator with weekly, monthly, and yearly breakdowns.">
     <meta name="keywords" content="salary to hourly, hourly to salary, salary calculator, hourly rate calculator, annual salary converter">
     <meta name="robots" content="index, follow">
@@ -25,39 +24,15 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Весь CSS-код навигации (Mega Menu Styles, .mega-nav, .nav-container, .nav-logo, .nav-menu и media-запросы для мобильного меню) был здесь и УДАЛЕН. */
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding-top: 80px;
+            padding-top: 110px;
             padding-bottom: 40px;
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-        
-        nav a:hover {
-            opacity: 0.7;
         }
         
         .container {
@@ -201,19 +176,17 @@
             font-size: 14px;
             color: #0d47a1;
         }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <nav>
-    <a href="home.html">🏠 Home</a>
-    <a href="index.html">🇺🇸 Tax Calculator</a>
-    <a href="loan-calculator.html">💰 Loan Calculator</a>
-    <a href="tip-calculator.html">🍽️ Tip Calculator</a>
-    <a href="salary-hourly.html">💵 Salary ↔ Hourly</a>
-    <a href="retirement.html">🏖️ Retirement</a>
-    <a href="bmi.html">💪 BMI</a>
-</nav>
-
     <div class="container">
         <h1>💵 Salary ↔ Hourly Calculator</h1>
         <p class="subtitle">Convert between annual salary and hourly rate</p>
@@ -223,7 +196,6 @@
             <button class="tab" onclick="switchTab('hourly')">Hourly → Salary</button>
         </div>
         
-        <!-- Salary to Hourly -->
         <div id="salary-content" class="tab-content active">
             <div class="input-group">
                 <label for="annualSalary">Annual Salary ($)</label>
@@ -243,7 +215,6 @@
             <button class="btn" onclick="calculateFromSalary()">Calculate Hourly Rate</button>
         </div>
         
-        <!-- Hourly to Salary -->
         <div id="hourly-content" class="tab-content">
             <div class="input-group">
                 <label for="hourlyRate">Hourly Rate ($)</label>
@@ -352,7 +323,13 @@
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+    </footer>
+
     <script>
+        // Код JS для навигации был здесь и УДАЛЕН.
+        
         function switchTab(tab) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -412,5 +389,6 @@
             document.getElementById('results').classList.add('show');
         }
     </script>
+    <script src="./MegaNav.js"></script>
 </body>
 </html>
