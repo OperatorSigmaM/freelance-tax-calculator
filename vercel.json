@@ -122,5 +122,9 @@
       "destination": "/other/singapore/",
       "permanent": true
     }
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site"
+}
   ]
 }
