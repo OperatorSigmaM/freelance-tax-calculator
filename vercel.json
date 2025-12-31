@@ -4,12 +4,12 @@
   "redirects": [
     {
       "source": "/home.html",
-      "destination": "/home/",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/index.html",
-      "destination": "/",
+      "destination": "/federal-tax/",
       "permanent": true
     },
     {
