@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KZMTMFZT66');
+    </script>
+    
+    <title>Washington State Tax Calculator 2025 | WA Income Tax Calculator | FinTools</title>
+    <meta name="description" content="Free Washington state tax calculator for 2025. WA has NO income tax but has capital gains tax. Calculate your federal + capital gains taxes with updated rates.">
+    <meta name="keywords" content="calculator, tax calculator, bmi calculator">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="mega-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">💼 FinTools</a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">🏠 Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/tax-calculators/" class="nav-link">
+                        📊 Tax Calculators
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="mega-dropdown">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <div class="mega-section-title">🇺🇸 United States</div>
+                                <div class="mega-links">
+                                    <a href="/" class="mega-link">
+                                        <span>🇺🇸</span>Federal Tax
+                                    </a>
+                                    <a href="/us-states/california/" class="mega-link">
+                                        <span>🌴</span>California
+                                    </a>
+                                    <a href="/us-states/new-york/" class="mega-link">
+                                        <span>🗽</span>New York
+                                    </a>
+                                    <a href="/us-states/texas/" class="mega-link">
+                                        <span>🤠</span>Texas
+                                    </a>
+                                    <a href="/us-states/florida/" class="mega-link">
+                                        <span>🏖️</span>Florida
+                                    </a>
+                                    <a href="/us-states/washington/" class="mega-link">
+                                        <span>🌲</span>Washington
+                                    </a>
+                                    <a href="/us-states/arizona/" class="mega-link">
+                                        <span>🌵</span>Arizona
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🇪🇺 Europe</div>
+                                <div class="mega-links">
+                                    <a href="/europe/uk/" class="mega-link">
+                                        <span>🇬🇧</span>United Kingdom
+                                    </a>
+                                    <a href="/europe/germany/" class="mega-link">
+                                        <span>🇩🇪</span>Germany
+                                    </a>
+                                    <a href="/europe/france/" class="mega-link">
+                                        <span>🇫🇷</span>France
+                                    </a>
+                                    <a href="/europe/netherlands/" class="mega-link">
+                                        <span>🇳🇱</span>Netherlands
+                                    </a>
+                                    <a href="/europe/spain/" class="mega-link">
+                                        <span>🇪🇸</span>Spain
+                                    </a>
+                                    <a href="/europe/italy/" class="mega-link">
+                                        <span>🇮🇹</span>Italy
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🌍 Other Countries</div>
+                                <div class="mega-links">
+                                    <a href="/other/canada/" class="mega-link">
+                                        <span>🇨🇦</span>Canada
+                                    </a>
+                                    <a href="/other/australia/" class="mega-link">
+                                        <span>🇦🇺</span>Australia
+                                    </a>
+                                    <a href="/other/japan/" class="mega-link">
+                                        <span>🇯🇵</span>Japan
+                                    </a>
+                                    <a href="/other/singapore/" class="mega-link">
+                                        <span>🇸🇬</span>Singapore
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        🔧 Other Tools
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="mega-dropdown">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <div class="mega-section-title">💰 Financial Tools</div>
+                                <div class="mega-links">
+                                    <a href="/loan-calculator/" class="mega-link">
+                                        <span>💰</span>Loan Calculator
+                                    </a>
+                                    <a href="/retirement/" class="mega-link">
+                                        <span>🏖️</span>Retirement
+                                    </a>
+                                    <a href="/salary-hourly/" class="mega-link">
+                                        <span>💵</span>Salary ↔ Hourly
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🎯 Lifestyle Tools</div>
+                                <div class="mega-links">
+                                    <a href="/tip-calculator/" class="mega-link">
+                                        <span>🍽️</span>Tip Calculator
+                                    </a>
+                                    <a href="/bmi/" class="mega-link">
+                                        <span>💪</span>BMI Calculator
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+/* СТИЛИ НАВИГАЦИИ УДАЛЕНЫ (mega-nav, nav-container, nav-menu и т.д.) */
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 110px 20px 40px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .no-tax-banner {
+            background: linear-gradient(135deg, #00C851 0%, #007E33 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .no-tax-banner h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .no-tax-banner p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .zero-tax {
+            color: #00C851 !important;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            border-left: 4px solid #00C851;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #155724;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #ffe6e6;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🌲 WASHINGTON</div>
+    <h1>Washington State Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate your federal taxes - WA has NO income tax (but has capital gains tax)</p>
+    
+    <div class="no-tax-banner">
+        <h2>🌲 NO STATE INCOME TAX 🌲</h2>
+        <p>Washington has no income tax on wages, but charges 7-9.9% on capital gains over $270k</p>
+    </div>
+    
+    <div class="input-group">
+        <label>Filing Status</label>
+        <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="head">Head of Household</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Gross Income (Annual)</label>
+        <input type="number" id="income" placeholder="e.g., 75000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual)</label>
+        <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
+    </div>
+
+    <div class="input-group">
+        <label>Capital Gains (Annual) <span class="label-hint">- from stocks, crypto, real estate</span></label>
+        <input type="number" id="capitalGains" placeholder="e.g., 50000" min="0" value="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Number of Dependents</label>
+        <input type="number" id="dependents" placeholder="0" min="0" value="0">
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">📊 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row" id="capitalGainsRow" style="display: none;">
+                <span class="result-label">Capital Gains</span>
+                <span class="result-value" id="capitalGainsDisplay"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇺🇸 Federal Taxes</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax</span>
+                <span class="result-value" id="federalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Self-Employment Tax</span>
+                <span class="result-value" id="seTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🌲 Washington State</div>
+            <div class="result-row">
+                <span class="result-label">State Income Tax</span>
+                <span class="result-value zero-tax">$0 (No Tax!)</span>
+            </div>
+            <div class="result-row" id="cgTaxRow" style="display: none;">
+                <span class="result-label">Capital Gains Tax</span>
+                <span class="result-value" id="cgTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax Owed</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Good News!</strong> Washington does not have a state income tax on wages. However, capital gains over $270,000 are taxed at 7% (or 9.9% for gains over $1 million starting 2025).
+    </div>
+    
+    <div class="content-section">
+        <h2>Washington State Tax Guide 2025</h2>
+        
+        <p>
+            <strong>Washington is one of only 9 states in the United States with NO state income tax on wages.</strong> However, in 2022, Washington introduced a capital gains tax on high earners.
+        </p>
+
+        <div class="warning-box">
+            <strong>⚠️ Washington Capital Gains Tax (NEW 2022):</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>7% tax</strong> on capital gains over $270,000 (2025 threshold)</li>
+                <li><strong>9.9% tax</strong> on capital gains over $1 million (new for 2025)</li>
+                <li>Applies to: stocks, bonds, business interests, tangible assets</li>
+                <li>Exemptions: real estate, retirement accounts (401k, IRA), certain small business sales</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <strong>🎯 9 States with No Income Tax (2025):</strong>
+            <ul style="margin-top: 10px;">
+                <li>Alaska</li>
+                <li>Florida</li>
+                <li>Nevada</li>
+                <li>New Hampshire</li>
+                <li>South Dakota</li>
+                <li>Tennessee</li>
+                <li>Texas</li>
+                <li><strong>Washington</strong></li>
+                <li>Wyoming</li>
+            </ul>
+        </div>
+        
+        <h3>What Taxes DO You Pay in Washington?</h3>
+        
+        <p>While Washington has no state income tax on wages, residents still pay:</p>
+        
+        <ul>
+            <li><strong>Federal Income Tax:</strong> Standard federal rates apply (10% - 37%)</li>
+            <li><strong>Federal Self-Employment Tax:</strong> 15.3% on net self-employment income</li>
+            <li><strong>Capital Gains Tax (WA):</strong> 7% on gains over $270k, 9.9% over $1M</li>
+            <li><strong>Property Tax:</strong> ~0.84% average, capped at 1% annual increase</li>
+            <li><strong>Sales Tax:</strong> 6.5% state + up to 4.1% local = <strong>9.43% average (4th highest in US!)</strong></li>
+        </ul>
+
+        <h3>Washington Capital Gains Tax Details</h3>
+
+        <p><strong>What's Taxed:</strong></p>
+        <ul>
+            <li>Stocks and bonds</li>
+            <li>Business interests</li>
+            <li>Tangible personal property</li>
+            <li>Cryptocurrency (likely, consult tax professional)</li>
+        </ul>
+
+        <p><strong>What's Exempt:</strong></p>
+        <ul>
+            <li>Real estate (including vacation homes)</li>
+            <li>Retirement accounts (401k, IRA, Roth IRA)</li>
+            <li>Assets held in qualified retirement plans</li>
+            <li>Certain small business sales (with conditions)</li>
+            <li>Livestock and agricultural property</li>
+        </ul>
+
+        <h3>How Washington Funds Government Without Income Tax</h3>
+
+        <ul>
+            <li><strong>High Sales Tax:</strong> 6.5% state + local (9.43% average - 4th highest in US)</li>
+            <li><strong>Property Taxes:</strong> Average 0.84% of home value</li>
+            <li><strong>Business & Occupation Tax:</strong> Tax on gross receipts for businesses</li>
+            <li><strong>Capital Gains Tax:</strong> New revenue source (started 2022)</li>
+        </ul>
+        
+        <h3>2025 Federal Tax Brackets (Applies to WA Residents)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>10%</td><td>$0 - $11,925</td><td>$0 - $23,850</td></tr>
+                <tr><td>12%</td><td>$11,926 - $48,475</td><td>$23,851 - $96,950</td></tr>
+                <tr><td>22%</td><td>$48,476 - $103,350</td><td>$96,951 - $206,700</td></tr>
+                <tr><td>24%</td><td>$103,351 - $197,300</td><td>$206,701 - $394,600</td></tr>
+                <tr><td>32%</td><td>$197,301 - $250,525</td><td>$394,601 - $501,050</td></tr>
+                <tr><td>35%</td><td>$250,526 - $626,350</td><td>$501,051 - $751,600</td></tr>
+                <tr><td>37%</td><td>$626,351+</td><td>$751,601+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Federal Standard Deduction 2025</h3>
+        
+        <ul>
+            <li><strong>Single:</strong> $15,750</li>
+            <li><strong>Married Filing Jointly:</strong> $31,500</li>
+            <li><strong>Head of Household:</strong> $23,700</li>
+        </ul>
+        
+        <h3>Pros and Cons of Living in Washington</h3>
+        
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>No state income tax on wages and salaries</li>
+            <li>No estate or inheritance tax (federal exemption applies)</li>
+            <li>Tech hub (Microsoft, Amazon, Boeing)</li>
+            <li>Beautiful natural scenery</li>
+            <li>No capital gains tax if under $270k/year</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Very high sales tax (9.43% average)</li>
+            <li>Capital gains tax for high earners (7-9.9%)</li>
+            <li>Property taxes fund local services</li>
+            <li>High cost of living in Seattle area</li>
+            <li>Rainy weather</li>
+        </ul>
+
+        <h3>Is Washington Good for Investors?</h3>
+
+        <p>
+            Washington is still attractive for investors, but less so after the 2022 capital gains tax. Key considerations:
+        </p>
+
+        <ul>
+            <li>No tax on first $270k of capital gains annually</li>
+            <li>Real estate gains still exempt</li>
+            <li>Retirement account gains exempt</li>
+            <li>7% state tax + ~20-24% federal = 27-31% total on large gains</li>
+            <li>California still higher overall (13.3% state income tax)</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> This calculator provides estimates for federal taxes and Washington capital gains tax. For investment planning and capital gains strategies, consult with a Washington CPA or tax professional.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Washington Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year with new capital gains rates 🌲</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+
+<script>
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const capitalGains = parseFloat(document.getElementById('capitalGains').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const dependents = parseInt(document.getElementById('dependents').value) || 0;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // Federal tax calculation
+    let federalStandardDeduction = 15750;
+    if (status === 'married') federalStandardDeduction = 31500;
+    if (status === 'head') federalStandardDeduction = 23700;
+    
+    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+    const federalTaxableIncome = Math.max(0, netIncome - federalStandardDeduction - seDeduction);
+    
+    let federalBrackets = [];
+    if (status === 'single') {
+        federalBrackets = [
+            [11925, 0.1],
+            [48475, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250525, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    } else if (status === 'married') {
+        federalBrackets = [
+            [23850, 0.1],
+            [96950, 0.12],
+            [206700, 0.22],
+            [394600, 0.24],
+            [501050, 0.32],
+            [751600, 0.35],
+            [99999999, 0.37]
+        ];
+    } else {
+        federalBrackets = [
+            [17000, 0.1],
+            [64850, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250500, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    }
+    
+    let federalTax = 0;
+    let remaining = federalTaxableIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < federalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = federalBrackets[i][0];
+        const bracketRate = federalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        federalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
+    
+    // Washington Capital Gains Tax
+    let waCapitalGainsTax = 0;
+    const cgThreshold = 270000;
+    const cgThresholdHigh = 1000000;
+    
+    if (capitalGains > cgThreshold) {
+        const taxableGains = capitalGains - cgThreshold;
+        
+        if (capitalGains > cgThresholdHigh) {
+            // Split into two brackets
+            const gainsIn7Bracket = cgThresholdHigh - cgThreshold;
+            const gainsIn9_9Bracket = capitalGains - cgThresholdHigh;
+            waCapitalGainsTax = (gainsIn7Bracket * 0.07) + (gainsIn9_9Bracket * 0.099);
+        } else {
+            // All in 7% bracket
+            waCapitalGainsTax = taxableGains * 0.07;
+        }
+    }
+    
+    const totalTax = federalTax + selfEmploymentTax + waCapitalGainsTax;
+    const effectiveRate = (totalTax / (netIncome + capitalGains) * 100).toFixed(1);
+    
+    // Display results
+    document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
+    document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString();
+    
+    if (capitalGains > 0) {
+        document.getElementById('capitalGainsRow').style.display = 'flex';
+        document.getElementById('capitalGainsDisplay').textContent = '$' + capitalGains.toLocaleString();
+    } else {
+        document.getElementById('capitalGainsRow').style.display = 'none';
+    }
+    
+    document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
+    document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
+    
+    if (waCapitalGainsTax > 0) {
+        document.getElementById('cgTaxRow').style.display = 'flex';
+        document.getElementById('cgTax').textContent = '$' + Math.round(waCapitalGainsTax).toLocaleString();
+    } else {
+        document.getElementById('cgTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('capitalGains').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+</script>
+
+<script>
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const capitalGains = parseFloat(document.getElementById('capitalGains').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const dependents = parseInt(document.getElementById('dependents').value) || 0;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // Federal tax calculation
+    let federalStandardDeduction = 15750;
+    if (status === 'married') federalStandardDeduction = 31500;
+    if (status === 'head') federalStandardDeduction = 23700;
+    
+    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+    const federalTaxableIncome = Math.max(0, netIncome - federalStandardDeduction - seDeduction);
+    
+    let federalBrackets = [];
+    if (status === 'single') {
+        federalBrackets = [
+            [11925, 0.1],
+            [48475, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250525, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    } else if (status === 'married') {
+        federalBrackets = [
+            [23850, 0.1],
+            [96950, 0.12],
+            [206700, 0.22],
+            [394600, 0.24],
+            [501050, 0.32],
+            [751600, 0.35],
+            [99999999, 0.37]
+        ];
+    } else {
+        federalBrackets = [
+            [17000, 0.1],
+            [64850, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250500, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    }
+    
+    let federalTax = 0;
+    let remaining = federalTaxableIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < federalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = federalBrackets[i][0];
+        const bracketRate = federalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        federalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
+    
+    // Washington Capital Gains Tax
+    let waCapitalGainsTax = 0;
+    const cgThreshold = 270000;
+    const cgThresholdHigh = 1000000;
+    
+    if (capitalGains > cgThreshold) {
+        const taxableGains = capitalGains - cgThreshold;
+        
+        if (capitalGains > cgThresholdHigh) {
+            // Split into two brackets
+            const gainsIn7Bracket = cgThresholdHigh - cgThreshold;
+            const gainsIn9_9Bracket = capitalGains - cgThresholdHigh;
+            waCapitalGainsTax = (gainsIn7Bracket * 0.07) + (gainsIn9_9Bracket * 0.099);
+        } else {
+            // All in 7% bracket
+            waCapitalGainsTax = taxableGains * 0.07;
+        }
+    }
+    
+    const totalTax = federalTax + selfEmploymentTax + waCapitalGainsTax;
+    const effectiveRate = (totalTax / (netIncome + capitalGains) * 100).toFixed(1);
+    
+    // Display results
+    document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
+    document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString();
+    
+    if (capitalGains > 0) {
+        document.getElementById('capitalGainsRow').style.display = 'flex';
+        document.getElementById('capitalGainsDisplay').textContent = '$' + capitalGains.toLocaleString();
+    } else {
+        document.getElementById('capitalGainsRow').style.display = 'none';
+    }
+    
+    document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
+    document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
+    
+    if (waCapitalGainsTax > 0) {
+        document.getElementById('cgTaxRow').style.display = 'flex';
+        document.getElementById('cgTax').textContent = '$' + Math.round(waCapitalGainsTax).toLocaleString();
+    } else {
+        document.getElementById('cgTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('capitalGains').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+</script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+    </footer>
+
+    <!-- Navigation Logic -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('mobile-active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.mega-nav');
+            const menu = document.getElementById('navMenu');
+            if (nav && menu && !nav.contains(event.target)) {
+                menu.classList.remove('mobile-active');
+            }
+        });
+
+        // Mobile dropdown toggles
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    const link = this.querySelector('.nav-link');
+                    if (link && link.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        this.classList.toggle('mobile-open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+---
+layout: base.njk
+title: California State Tax Calculator 2025 | CA Income Tax Calculator
+description: Free California state income tax calculator for 2025. Calculate your CA state taxes with updated brackets and rates. Includes federal + state tax estimates for all filing statuses.
+keywords: california tax calculator, ca state tax, california income tax, ca tax rates 2025, california state taxes, ftb calculator, california tax brackets
+permalink: /us-states/california/
+---
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+/* СТИЛИ НАВИГАЦИИ УДАЛЕНЫ (Mega Menu, nav-container, nav-menu и т.д.) */
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 110px 20px 40px; /* Сохраняем отступ для фиксированного меню */
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: #FDB813;
+            color: #003B5C;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🌴 CALIFORNIA</div>
+    <h1>California State Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate CA state + federal taxes for 2025</p>
+    
+    <div class="input-group">
+        <label>Filing Status</label>
+        <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="head">Head of Household</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Gross Income (Annual)</label>
+        <input type="number" id="income" placeholder="e.g., 75000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual)</label>
+        <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Number of Dependents</label>
+        <input type="number" id="dependents" placeholder="0" min="0" value="0">
+    </div>
+    
+    <button class="btn" onclick="calc()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">📊 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="r1"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income</span>
+                <span class="result-value" id="r2"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇺🇸 Federal Taxes</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax</span>
+                <span class="result-value" id="r3"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Self-Employment Tax</span>
+                <span class="result-value" id="r4"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🌴 California State</div>
+            <div class="result-row">
+                <span class="result-label">State Income Tax</span>
+                <span class="result-value" id="r5"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Mental Health Tax</span>
+                <span class="result-value" id="r6"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax Owed</strong></span>
+                <span class="result-value" id="r7"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="r8"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Note:</strong> This calculator estimates California state tax combined with federal taxes for 2025. Consult a tax professional for accurate calculations.
+    </div>
+    
+    <div class="content-section">
+        <h2>California State Income Tax Guide 2025</h2>
+        
+        <p>
+            California has one of the highest state income tax rates in the United States, with a progressive tax system featuring 9 tax brackets ranging from 1% to 12.3%, plus an additional 1% Mental Health Services Tax on income over $1 million.
+        </p>
+        
+        <h3>2025 California Tax Brackets (Single Filers)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Income Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1%</td><td>$0 - $10,412</td></tr>
+                <tr><td>2%</td><td>$10,413 - $24,684</td></tr>
+                <tr><td>4%</td><td>$24,685 - $38,959</td></tr>
+                <tr><td>6%</td><td>$38,960 - $54,081</td></tr>
+                <tr><td>8%</td><td>$54,082 - $68,350</td></tr>
+                <tr><td>9.3%</td><td>$68,351 - $349,137</td></tr>
+                <tr><td>10.3%</td><td>$349,138 - $418,961</td></tr>
+                <tr><td>11.3%</td><td>$418,962 - $698,271</td></tr>
+                <tr><td>12.3%</td><td>$698,272+</td></tr>
+                <tr><td>+1%</td><td>$1,000,000+ (Mental Health)</td></tr>
+            </tbody>
+        </table>
+        
+        <h3>California Standard Deduction 2025</h3>
+        
+        <ul>
+            <li><strong>Single:</strong> $5,540</li>
+            <li><strong>Married Filing Jointly:</strong> $11,080</li>
+            <li><strong>Head of Household:</strong> $11,080</li>
+            <li><strong>Dependent Exemption:</strong> $446 per dependent</li>
+        </ul>
+        
+        <h3>Key Features of California Taxes</h3>
+        
+        <p>
+            <strong>Progressive Tax System:</strong> California uses a graduated tax system where higher income is taxed at higher rates.
+        </p>
+        
+        <p>
+            <strong>Mental Health Services Tax:</strong> Income over $1 million is subject to an additional 1% tax, bringing the maximum marginal rate to 13.3% for very high earners.
+        </p>
+        
+        <p>
+            <strong>No Local Income Tax:</strong> California does not allow cities or counties to impose additional local income taxes.
+        </p>
+        
+        <h3>Common California Tax Deductions</h3>
+        
+        <ul>
+            <li>Standard Deduction: $5,540 for single filers</li>
+            <li>Dependent Exemption: $446 per dependent</li>
+            <li>Business Expenses: Same as federal</li>
+            <li>Retirement Contributions: 401(k), IRA</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> This calculator provides estimates for California state income tax combined with federal taxes. For complete tax planning, consult with a California-licensed CPA or tax professional.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 California Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year with latest CA state tax brackets</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+
+<script>
+    function calc() {
+        const inc = parseFloat(document.getElementById('income').value) || 0;
+        const exp = parseFloat(document.getElementById('expenses').value) || 0;
+        const stat = document.getElementById('filingStatus').value;
+        const deps = parseInt(document.getElementById('dependents').value) || 0;
+        
+        if (inc <= 0) {
+            alert('Please enter income');
+            return;
+        }
+        
+        const net = inc - exp;
+        
+        // Federal
+        let fedStd = stat === 'single' ? 15750 : (stat === 'married' ? 31500 : 23700);
+        const seDed = net * 0.9235 * 0.153 * 0.5;
+        const fedTax = net - fedStd - seDed;
+        
+        let fedBr = [];
+        if (stat === 'single') {
+            fedBr = [[11925,0.1],[48475,0.12],[103350,0.22],[197300,0.24],[250525,0.32],[626350,0.35],[9999999,0.37]];
+        } else if (stat === 'married') {
+            fedBr = [[23850,0.1],[96950,0.12],[206700,0.22],[394600,0.24],[501050,0.32],[751600,0.35],[9999999,0.37]];
+        } else {
+            fedBr = [[17000,0.1],[64850,0.12],[103350,0.22],[197300,0.24],[250500,0.32],[626350,0.35],[9999999,0.37]];
+        }
+        
+        let fedT = 0;
+        let rem = Math.max(0, fedTax);
+        let prev = 0;
+        for (let [lim, rate] of fedBr) {
+            if (rem <= 0) break;
+            const tax = Math.min(rem, lim - prev) * rate;
+            fedT += tax;
+            rem -= (lim - prev);
+            prev = lim;
+        }
+        
+        const seT = net * 0.9235 * 0.153;
+        
+        // CA
+        let caStd = stat === 'single' ? 5540 : 11080;
+        // ФИКС: В режиме Head of Household стандартный вычет CA также $11,080. 
+        if (stat === 'head') caStd = 11080; 
+
+        const caTax = Math.max(0, net - caStd);
+        
+        let caBr = [];
+        if (stat === 'married' || stat === 'head') { // Используем скобки MFJ/HOH
+            caBr = [[20824,0.01],[49368,0.02],[77918,0.04],[108162,0.06],[136700,0.08],[698274,0.093],[837922,0.103],[1396542,0.113],[9999999,0.123]];
+        } else { // Single
+            caBr = [[10412,0.01],[24684,0.02],[38959,0.04],[54081,0.06],[68350,0.08],[349137,0.093],[418961,0.103],[698271,0.113],[9999999,0.123]];
+        }
+        
+        let caT = 0;
+        rem = caTax;
+        prev = 0;
+        for (let [lim, rate] of caBr) {
+            if (rem <= 0) break;
+            const tax = Math.min(rem, lim - prev) * rate;
+            caT += tax;
+            rem -= (lim - prev);
+            prev = lim;
+        }
+        
+        caT = Math.max(0, caT - (deps * 446));
+        
+        const mhT = caTax > 1000000 ? (caTax - 1000000) * 0.01 : 0;
+        
+        const tot = fedT + seT + caT + mhT;
+        const eff = (tot / inc * 100).toFixed(1); // Делим на Gross Income, а не Net! (Net - это для расчета Self-Employment Tax)
+        
+        document.getElementById('r1').textContent = '$' + inc.toLocaleString();
+        document.getElementById('r2').textContent = '$' + net.toLocaleString();
+        document.getElementById('r3').textContent = '$' + Math.round(fedT).toLocaleString();
+        document.getElementById('r4').textContent = '$' + Math.round(seT).toLocaleString();
+        document.getElementById('r5').textContent = '$' + Math.round(caT).toLocaleString();
+        document.getElementById('r6').textContent = '$' + Math.round(mhT).toLocaleString();
+        document.getElementById('r7').textContent = '$' + Math.round(tot).toLocaleString();
+        document.getElementById('r8').textContent = eff + '%';
+        
+        document.getElementById('results').classList.add('show');
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    document.getElementById('income').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') calc();
+    });
+    
+    document.getElementById('expenses').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') calc();
+    });
+    
+    // УДАЛЕНЫ ФУНКЦИИ toggleMobileMenu и прочая хуйня, которая теперь в MegaNav.js
+</script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KZMTMFZT66');
+
+
+
+    function calc() {
+        const inc = parseFloat(document.getElementById('income').value) || 0;
+        const exp = parseFloat(document.getElementById('expenses').value) || 0;
+        const stat = document.getElementById('filingStatus').value;
+        const deps = parseInt(document.getElementById('dependents').value) || 0;
+        
+        if (inc <= 0) {
+            alert('Please enter income');
+            return;
+        }
+        
+        const net = inc - exp;
+        
+        // Federal
+        let fedStd = stat === 'single' ? 15750 : (stat === 'married' ? 31500 : 23700);
+        const seDed = net * 0.9235 * 0.153 * 0.5;
+        const fedTax = net - fedStd - seDed;
+        
+        let fedBr = [];
+        if (stat === 'single') {
+            fedBr = [[11925,0.1],[48475,0.12],[103350,0.22],[197300,0.24],[250525,0.32],[626350,0.35],[9999999,0.37]];
+        } else if (stat === 'married') {
+            fedBr = [[23850,0.1],[96950,0.12],[206700,0.22],[394600,0.24],[501050,0.32],[751600,0.35],[9999999,0.37]];
+        } else {
+            fedBr = [[17000,0.1],[64850,0.12],[103350,0.22],[197300,0.24],[250500,0.32],[626350,0.35],[9999999,0.37]];
+        }
+        
+        let fedT = 0;
+        let rem = Math.max(0, fedTax);
+        let prev = 0;
+        for (let [lim, rate] of fedBr) {
+            if (rem <= 0) break;
+            const tax = Math.min(rem, lim - prev) * rate;
+            fedT += tax;
+            rem -= (lim - prev);
+            prev = lim;
+        }
+        
+        const seT = net * 0.9235 * 0.153;
+        
+        // CA
+        let caStd = stat === 'single' ? 5540 : 11080;
+        // ФИКС: В режиме Head of Household стандартный вычет CA также $11,080. 
+        if (stat === 'head') caStd = 11080; 
+
+        const caTax = Math.max(0, net - caStd);
+        
+        let caBr = [];
+        if (stat === 'married' || stat === 'head') { // Используем скобки MFJ/HOH
+            caBr = [[20824,0.01],[49368,0.02],[77918,0.04],[108162,0.06],[136700,0.08],[698274,0.093],[837922,0.103],[1396542,0.113],[9999999,0.123]];
+        } else { // Single
+            caBr = [[10412,0.01],[24684,0.02],[38959,0.04],[54081,0.06],[68350,0.08],[349137,0.093],[418961,0.103],[698271,0.113],[9999999,0.123]];
+        }
+        
+        let caT = 0;
+        rem = caTax;
+        prev = 0;
+        for (let [lim, rate] of caBr) {
+            if (rem <= 0) break;
+            const tax = Math.min(rem, lim - prev) * rate;
+            caT += tax;
+            rem -= (lim - prev);
+            prev = lim;
+        }
+        
+        caT = Math.max(0, caT - (deps * 446));
+        
+        const mhT = caTax > 1000000 ? (caTax - 1000000) * 0.01 : 0;
+        
+        const tot = fedT + seT + caT + mhT;
+        const eff = (tot / inc * 100).toFixed(1); // Делим на Gross Income, а не Net! (Net - это для расчета Self-Employment Tax)
+        
+        document.getElementById('r1').textContent = '$' + inc.toLocaleString();
+        document.getElementById('r2').textContent = '$' + net.toLocaleString();
+        document.getElementById('r3').textContent = '$' + Math.round(fedT).toLocaleString();
+        document.getElementById('r4').textContent = '$' + Math.round(seT).toLocaleString();
+        document.getElementById('r5').textContent = '$' + Math.round(caT).toLocaleString();
+        document.getElementById('r6').textContent = '$' + Math.round(mhT).toLocaleString();
+        document.getElementById('r7').textContent = '$' + Math.round(tot).toLocaleString();
+        document.getElementById('r8').textContent = eff + '%';
+        
+        document.getElementById('results').classList.add('show');
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    document.getElementById('income').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') calc();
+    });
+    
+    document.getElementById('expenses').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') calc();
+    });
+    
+    // УДАЛЕНЫ ФУНКЦИИ toggleMobileMenu и прочая хуйня, которая теперь в MegaNav.js
+
+</script>

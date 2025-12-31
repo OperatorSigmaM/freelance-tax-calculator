@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZMTMFZT66"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KZMTMFZT66');
+    </script>
+    
+    <title>Singapore Tax Calculator 2025 | YA 2025 Income Tax Calculator | FinTools</title>
+    <meta name="description" content="Free Singapore tax calculator for YA 2025. Calculate income tax with progressive rates 0-24%, CPF contributions, personal reliefs. Updated IRAS rates.">
+    <meta name="keywords" content="calculator, tax calculator, bmi calculator">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="mega-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">💼 FinTools</a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">🏠 Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/tax-calculators/" class="nav-link">
+                        📊 Tax Calculators
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="mega-dropdown">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <div class="mega-section-title">🇺🇸 United States</div>
+                                <div class="mega-links">
+                                    <a href="/" class="mega-link">
+                                        <span>🇺🇸</span>Federal Tax
+                                    </a>
+                                    <a href="/us-states/california/" class="mega-link">
+                                        <span>🌴</span>California
+                                    </a>
+                                    <a href="/us-states/new-york/" class="mega-link">
+                                        <span>🗽</span>New York
+                                    </a>
+                                    <a href="/us-states/texas/" class="mega-link">
+                                        <span>🤠</span>Texas
+                                    </a>
+                                    <a href="/us-states/florida/" class="mega-link">
+                                        <span>🏖️</span>Florida
+                                    </a>
+                                    <a href="/us-states/washington/" class="mega-link">
+                                        <span>🌲</span>Washington
+                                    </a>
+                                    <a href="/us-states/arizona/" class="mega-link">
+                                        <span>🌵</span>Arizona
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🇪🇺 Europe</div>
+                                <div class="mega-links">
+                                    <a href="/europe/uk/" class="mega-link">
+                                        <span>🇬🇧</span>United Kingdom
+                                    </a>
+                                    <a href="/europe/germany/" class="mega-link">
+                                        <span>🇩🇪</span>Germany
+                                    </a>
+                                    <a href="/europe/france/" class="mega-link">
+                                        <span>🇫🇷</span>France
+                                    </a>
+                                    <a href="/europe/netherlands/" class="mega-link">
+                                        <span>🇳🇱</span>Netherlands
+                                    </a>
+                                    <a href="/europe/spain/" class="mega-link">
+                                        <span>🇪🇸</span>Spain
+                                    </a>
+                                    <a href="/europe/italy/" class="mega-link">
+                                        <span>🇮🇹</span>Italy
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🌍 Other Countries</div>
+                                <div class="mega-links">
+                                    <a href="/other/canada/" class="mega-link">
+                                        <span>🇨🇦</span>Canada
+                                    </a>
+                                    <a href="/other/australia/" class="mega-link">
+                                        <span>🇦🇺</span>Australia
+                                    </a>
+                                    <a href="/other/japan/" class="mega-link">
+                                        <span>🇯🇵</span>Japan
+                                    </a>
+                                    <a href="/other/singapore/" class="mega-link">
+                                        <span>🇸🇬</span>Singapore
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        🔧 Other Tools
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="mega-dropdown">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <div class="mega-section-title">💰 Financial Tools</div>
+                                <div class="mega-links">
+                                    <a href="/loan-calculator/" class="mega-link">
+                                        <span>💰</span>Loan Calculator
+                                    </a>
+                                    <a href="/retirement/" class="mega-link">
+                                        <span>🏖️</span>Retirement
+                                    </a>
+                                    <a href="/salary-hourly/" class="mega-link">
+                                        <span>💵</span>Salary ↔ Hourly
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-section">
+                                <div class="mega-section-title">🎯 Lifestyle Tools</div>
+                                <div class="mega-links">
+                                    <a href="/tip-calculator/" class="mega-link">
+                                        <span>🍽️</span>Tip Calculator
+                                    </a>
+                                    <a href="/bmi/" class="mega-link">
+                                        <span>💪</span>BMI Calculator
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-sizing;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            /* Отступ для фиксированного меню */
+            padding: 110px 20px 40px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ED2939 0%, #FFFFFF 50%, #ED2939 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .positive-value {
+            color: #28a745 !important;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #155724;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0077BE;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🇸🇬 SINGAPORE</div>
+    <h1>Singapore Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate IRAS income tax for Year of Assessment 2025</p>
+    
+    <div class="input-group">
+        <label>Tax Residency Status</label>
+        <select id="residency">
+            <option value="resident">Tax Resident (SC/PR/183+ days)</option>
+            <option value="nonresident">Non-Resident</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Annual Income <span class="label-hint">- in SGD</span></label>
+        <input type="number" id="income" placeholder="e.g., 80000" min="0">
+    </div>
+
+    <div id="residentFields">
+        <div class="input-group">
+            <label>Personal Reliefs <span class="label-hint">- CPF, donations, courses</span></label>
+            <input type="number" id="reliefs" placeholder="e.g., 5000" min="0" value="0">
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="isCPFEmployee" checked>
+            <label for="isCPFEmployee">💼 CPF contributor (SC/PR employee)</label>
+        </div>
+    </div>
+    
+    <button class="btn" onclick="calcTax()">Calculate Tax</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">💰 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row" id="reliefsRow">
+                <span class="result-label">Personal Reliefs</span>
+                <span class="result-value" id="reliefsAmt"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Chargeable Income</span>
+                <span class="result-value" id="chargeableIncome"></span>
+            </div>
+        </div>
+        
+        <div class="result-section" id="cpfSection">
+            <div class="result-section-title">🏦 CPF Contributions</div>
+            <div class="result-row">
+                <span class="result-label">Employee CPF (20%)</span>
+                <span class="result-value" id="cpfAmount"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇸🇬 Income Tax</div>
+            <div class="result-row">
+                <span class="result-label">Tax (before rebate)</span>
+                <span class="result-value" id="taxBefore"></span>
+            </div>
+            <div class="result-row" id="rebateRow">
+                <span class="result-label">YA 2025 Rebate (60%, max $200)</span>
+                <span class="result-value positive-value" id="rebateAmt"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Tax Payable</span>
+                <span class="result-value" id="taxAfter"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Deductions</strong></span>
+                <span class="result-value" id="totalDeduct"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Take-Home</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Tax Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>✅ YA 2025:</strong> Rates 0-24%, first $20k tax-free, 60% rebate (max $200). Non-residents pay 15% flat. Consult IRAS for official calculations.
+    </div>
+    
+    <div class="content-section">
+        <h2>Singapore Tax System 2025</h2>
+        
+        <p>
+            Singapore has one of the most business-friendly and low-tax systems globally. Tax residents enjoy progressive rates from 0% to 24%, with the first $20,000 completely tax-free.
+        </p>
+
+        <h3>YA 2025 Tax Rates (Residents)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Chargeable Income</th>
+                    <th>Rate</th>
+                    <th>Tax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>First $20,000</td><td>0%</td><td>$0</td></tr>
+                <tr><td>Next $10,000</td><td>2%</td><td>$200</td></tr>
+                <tr><td>Next $10,000</td><td>3.5%</td><td>$350</td></tr>
+                <tr><td>Next $40,000</td><td>7%</td><td>$2,800</td></tr>
+                <tr><td>Next $40,000</td><td>11.5%</td><td>$4,600</td></tr>
+                <tr><td>Next $40,000</td><td>15%</td><td>$6,000</td></tr>
+                <tr><td>Above $160,000</td><td>18-24%</td><td>-</td></tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>🎉 YA 2025 Special Rebate:</strong>
+            <p style="margin-top: 10px;">All residents receive a <strong>60% rebate, capped at $200</strong>. This is Singapore's 60th independence anniversary gift!</p>
+        </div>
+
+        <h3>Tax Residency</h3>
+
+        <p>You're a <strong>tax resident</strong> if you:</p>
+        <ul>
+            <li>Are a Singapore Citizen or PR residing in Singapore</li>
+            <li>Stayed/worked in Singapore for <strong>183+ days</strong></li>
+            <li>Worked continuously for 3 consecutive years</li>
+        </ul>
+
+        <p><strong>Non-residents</strong> pay <strong>15% flat rate</strong> on employment income.</p>
+
+        <h3>CPF (Central Provident Fund)</h3>
+
+        <ul>
+            <li><strong>Employee:</strong> 20% (SC/PR only)</li>
+            <li><strong>Employer:</strong> 17% (additional)</li>
+            <li><strong>Ceiling:</strong> $7,400/month ($88,800/year)</li>
+            <li><strong>Not a tax!</strong> It's YOUR retirement savings</li>
+        </ul>
+
+        <h3>Personal Reliefs</h3>
+
+        <ul>
+            <li>Earned Income: $1,000</li>
+            <li>CPF Cash Top-Up: $7,000 (self) + $7,000 (family)</li>
+            <li>SRS Contributions: $15,300</li>
+            <li>Course Fees: $5,500</li>
+            <li>NS Relief: $3,000-$5,000</li>
+            <li>Total cap: $80,000/year</li>
+        </ul>
+
+        <h3>What's NOT Taxed</h3>
+
+        <ul>
+            <li>Capital gains (no tax!)</li>
+            <li>Inheritance (no tax!)</li>
+            <li>Most dividends</li>
+            <li>CPF withdrawals</li>
+            <li>Foreign income (generally)</li>
+        </ul>
+
+        <h3>Why Singapore is Tax-Friendly</h3>
+
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>First $20,000 tax-free</li>
+            <li>Max rate 24% (vs 45-53% in other countries)</li>
+            <li>No capital gains tax</li>
+            <li>No inheritance tax</li>
+            <li>Simple system</li>
+            <li>CPF provides guaranteed returns</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>High cost of living</li>
+            <li>CPF locked until retirement</li>
+            <li>Non-residents pay flat 15%</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> This calculator uses IRAS YA 2025 rates. Results are estimates. Consult a tax professional for accurate filing.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Singapore Tax Calculator | Part of FinTools</p>
+    <p>✅ Updated for YA 2025 with IRAS rates 🇸🇬</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+<script>
+// Вызов функции из MegaNav.js для вставки навигации.
+if (typeof injectMegaNav === 'function') {
+    injectMegaNav();
+}
+
+function calcTax() {
+    const inc = parseFloat(document.getElementById('income').value) || 0;
+    const res = document.getElementById('residency').value;
+    const rel = parseFloat(document.getElementById('reliefs').value) || 0;
+    const cpf = document.getElementById('isCPFEmployee').checked;
+    
+    if (inc <= 0) {
+        alert('Please enter income');
+        return;
+    }
+    
+    let tax = 0;
+    let chg = inc;
+    let cpfAmt = 0;
+    let reb = 0;
+    
+    if (res === 'resident') {
+        if (cpf) {
+            // CPF Employee contribution is 20%, capped at $88,800 annual
+            cpfAmt = Math.min(inc, 88800) * 0.20;
+        }
+        
+        // Chargeable Income = Gross Income - Reliefs
+        chg = Math.max(0, inc - rel);
+        
+        // Progressive Tax Rates (IRAS YA 2025)
+        if (chg <= 20000) {
+            tax = 0;
+        } else if (chg <= 30000) {
+            tax = (chg - 20000) * 0.02;
+        } else if (chg <= 40000) {
+            tax = 200 + (chg - 30000) * 0.035;
+        } else if (chg <= 80000) {
+            tax = 550 + (chg - 40000) * 0.07;
+        } else if (chg <= 120000) {
+            tax = 3350 + (chg - 80000) * 0.115;
+        } else if (chg <= 160000) {
+            tax = 7950 + (chg - 120000) * 0.15;
+        } else if (chg <= 200000) {
+            tax = 13950 + (chg - 160000) * 0.18;
+        } else if (chg <= 240000) {
+            tax = 21150 + (chg - 200000) * 0.19;
+        } else if (chg <= 280000) {
+            tax = 28750 + (chg - 240000) * 0.195;
+        } else if (chg <= 320000) {
+            tax = 36550 + (chg - 280000) * 0.20;
+        } else if (chg <= 500000) {
+            tax = 44550 + (chg - 320000) * 0.22;
+        } else if (chg <= 1000000) {
+            tax = 84150 + (chg - 500000) * 0.23;
+        } else {
+            tax = 199150 + (chg - 1000000) * 0.24;
+        }
+        
+        // YA 2025 Rebate: 60% of tax, capped at $200
+        reb = Math.min(tax * 0.60, 200);
+    } else {
+        // Non-Resident flat tax rate
+        tax = inc * 0.15;
+        chg = inc; // No reliefs for non-residents
+    }
+    
+    const taxAfter = Math.max(0, tax - reb);
+    const total = cpfAmt + taxAfter;
+    const net = inc - total;
+    const eff = (total / inc * 100).toFixed(1);
+    
+    // Helper function for formatting
+    const format = (amount) => '$' + Math.round(amount).toLocaleString();
+    
+    document.getElementById('grossIncome').textContent = format(inc);
+    
+    if (res === 'resident') {
+        document.getElementById('reliefsRow').style.display = 'flex';
+        document.getElementById('reliefsAmt').textContent = '-' + format(rel).substring(1); // Show as -$, but remove the leading $ from format()
+        document.getElementById('rebateRow').style.display = 'flex';
+        document.getElementById('rebateAmt').textContent = '-' + format(reb).substring(1);
+        document.getElementById('residentFields').style.display = 'block';
+    } else {
+        document.getElementById('reliefsRow').style.display = 'none';
+        document.getElementById('rebateRow').style.display = 'none';
+        document.getElementById('residentFields').style.display = 'none';
+    }
+    
+    document.getElementById('chargeableIncome').textContent = format(chg);
+    
+    if (cpf && res === 'resident') {
+        document.getElementById('cpfSection').style.display = 'block';
+        document.getElementById('cpfAmount').textContent = format(cpfAmt);
+    } else {
+        document.getElementById('cpfSection').style.display = 'none';
+    }
+    
+    document.getElementById('taxBefore').textContent = format(tax);
+    document.getElementById('taxAfter').textContent = format(taxAfter);
+    document.getElementById('totalDeduct').textContent = format(total);
+    document.getElementById('netIncome').textContent = format(net);
+    document.getElementById('effectiveRate').textContent = eff + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calcTax();
+});
+
+document.getElementById('residency').addEventListener('change', function() {
+    const show = this.value === 'resident';
+    document.getElementById('residentFields').style.display = show ? 'block' : 'none';
+    calcTax();
+});
+
+// Не запускаем calcTax() при загрузке, чтобы не вызывать alert.
+// Результаты будут скрыты до первого нажатия кнопки.
+</script>
+
+<script>
+
+// Вызов функции из MegaNav.js для вставки навигации.
+if (typeof injectMegaNav === 'function') {
+    injectMegaNav();
+}
+
+function calcTax() {
+    const inc = parseFloat(document.getElementById('income').value) || 0;
+    const res = document.getElementById('residency').value;
+    const rel = parseFloat(document.getElementById('reliefs').value) || 0;
+    const cpf = document.getElementById('isCPFEmployee').checked;
+    
+    if (inc <= 0) {
+        alert('Please enter income');
+        return;
+    }
+    
+    let tax = 0;
+    let chg = inc;
+    let cpfAmt = 0;
+    let reb = 0;
+    
+    if (res === 'resident') {
+        if (cpf) {
+            // CPF Employee contribution is 20%, capped at $88,800 annual
+            cpfAmt = Math.min(inc, 88800) * 0.20;
+        }
+        
+        // Chargeable Income = Gross Income - Reliefs
+        chg = Math.max(0, inc - rel);
+        
+        // Progressive Tax Rates (IRAS YA 2025)
+        if (chg <= 20000) {
+            tax = 0;
+        } else if (chg <= 30000) {
+            tax = (chg - 20000) * 0.02;
+        } else if (chg <= 40000) {
+            tax = 200 + (chg - 30000) * 0.035;
+        } else if (chg <= 80000) {
+            tax = 550 + (chg - 40000) * 0.07;
+        } else if (chg <= 120000) {
+            tax = 3350 + (chg - 80000) * 0.115;
+        } else if (chg <= 160000) {
+            tax = 7950 + (chg - 120000) * 0.15;
+        } else if (chg <= 200000) {
+            tax = 13950 + (chg - 160000) * 0.18;
+        } else if (chg <= 240000) {
+            tax = 21150 + (chg - 200000) * 0.19;
+        } else if (chg <= 280000) {
+            tax = 28750 + (chg - 240000) * 0.195;
+        } else if (chg <= 320000) {
+            tax = 36550 + (chg - 280000) * 0.20;
+        } else if (chg <= 500000) {
+            tax = 44550 + (chg - 320000) * 0.22;
+        } else if (chg <= 1000000) {
+            tax = 84150 + (chg - 500000) * 0.23;
+        } else {
+            tax = 199150 + (chg - 1000000) * 0.24;
+        }
+        
+        // YA 2025 Rebate: 60% of tax, capped at $200
+        reb = Math.min(tax * 0.60, 200);
+    } else {
+        // Non-Resident flat tax rate
+        tax = inc * 0.15;
+        chg = inc; // No reliefs for non-residents
+    }
+    
+    const taxAfter = Math.max(0, tax - reb);
+    const total = cpfAmt + taxAfter;
+    const net = inc - total;
+    const eff = (total / inc * 100).toFixed(1);
+    
+    // Helper function for formatting
+    const format = (amount) => '$' + Math.round(amount).toLocaleString();
+    
+    document.getElementById('grossIncome').textContent = format(inc);
+    
+    if (res === 'resident') {
+        document.getElementById('reliefsRow').style.display = 'flex';
+        document.getElementById('reliefsAmt').textContent = '-' + format(rel).substring(1); // Show as -$, but remove the leading $ from format()
+        document.getElementById('rebateRow').style.display = 'flex';
+        document.getElementById('rebateAmt').textContent = '-' + format(reb).substring(1);
+        document.getElementById('residentFields').style.display = 'block';
+    } else {
+        document.getElementById('reliefsRow').style.display = 'none';
+        document.getElementById('rebateRow').style.display = 'none';
+        document.getElementById('residentFields').style.display = 'none';
+    }
+    
+    document.getElementById('chargeableIncome').textContent = format(chg);
+    
+    if (cpf && res === 'resident') {
+        document.getElementById('cpfSection').style.display = 'block';
+        document.getElementById('cpfAmount').textContent = format(cpfAmt);
+    } else {
+        document.getElementById('cpfSection').style.display = 'none';
+    }
+    
+    document.getElementById('taxBefore').textContent = format(tax);
+    document.getElementById('taxAfter').textContent = format(taxAfter);
+    document.getElementById('totalDeduct').textContent = format(total);
+    document.getElementById('netIncome').textContent = format(net);
+    document.getElementById('effectiveRate').textContent = eff + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calcTax();
+});
+
+document.getElementById('residency').addEventListener('change', function() {
+    const show = this.value === 'resident';
+    document.getElementById('residentFields').style.display = show ? 'block' : 'none';
+    calcTax();
+});
+
+// Не запускаем calcTax() при загрузке, чтобы не вызывать alert.
+// Результаты будут скрыты до первого нажатия кнопки.
+
+</script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+    </footer>
+
+    <!-- Navigation Logic -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('mobile-active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.mega-nav');
+            const menu = document.getElementById('navMenu');
+            if (nav && menu && !nav.contains(event.target)) {
+                menu.classList.remove('mobile-active');
+            }
+        });
+
+        // Mobile dropdown toggles
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    const link = this.querySelector('.nav-link');
+                    if (link && link.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        this.classList.toggle('mobile-open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

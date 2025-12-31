@@ -1,0 +1,264 @@
+/* ===== HOME PAGE STYLES ===== */
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    color: white;
+    padding: 80px 20px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    opacity: 0.95;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: white;
+    color: #667eea;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Section */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Sections */
+.section {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.section-title {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Popular Calculators Grid */
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.popular-card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.popular-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.popular-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.popular-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.popular-desc {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Roadmap Section */
+.roadmap {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+@media (max-width: 1040px) {
+    .roadmap {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.roadmap-title {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.roadmap-subtitle {
+    color: white;
+    opacity: 0.9;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.roadmap-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.roadmap-item h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.roadmap-item p {
+    opacity: 0.9;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Features Section */
+.features {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+@media (max-width: 1040px) {
+    .features {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    color: white;
+}
+
+.feature-item {
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.feature-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.feature-desc {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .section-title, .roadmap-title {
+        font-size: 28px;
+    }
+    
+    .popular-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,972 @@
+---
+layout: base.njk
+title: Spain Tax Calculator 2025 | Spanish Income Tax Calculator
+description: Free Spain tax calculator for 2025. Calculate Spanish income tax by autonomous community (Madrid, Catalonia, Valencia). For autónomos and employees with social security.
+permalink: /europe/spain/
+---
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 110px 20px 40px; 
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #AA151B 0%, #F1BF00 50%, #AA151B 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .highlight-box {
+            background: #ffe6e6;
+            border-left: 4px solid #AA151B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🇪🇸 SPAIN</div>
+    <h1>Spain Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate Spanish income tax by autonomous community with social security</p>
+    
+    <div class="input-group">
+        <label>Autonomous Community (Region)</label>
+        <select id="region">
+            <option value="madrid">Madrid (lowest rates)</option>
+            <option value="catalonia">Catalonia (highest rates)</option>
+            <option value="valencia">Valencian Community</option>
+            <option value="andalusia">Andalusia</option>
+            <option value="basque">Basque Country</option>
+            <option value="canary">Canary Islands</option>
+            <option value="galicia">Galicia</option>
+            <option value="other">Other regions (average)</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Annual Income (Gross) <span class="label-hint">- in EUR</span></label>
+        <input type="number" id="income" placeholder="e.g., 40000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses <span class="label-hint">- deductible costs</span></label>
+        <input type="number" id="expenses" placeholder="e.g., 5000" min="0" value="0">
+    </div>
+
+    <div class="input-group">
+        <label>Savings Income <span class="label-hint">- dividends, capital gains, interest</span></label>
+        <input type="number" id="savingsIncome" placeholder="e.g., 10000" min="0" value="0">
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="isEmployee">
+        <label for="isEmployee">💼 I'm an employee (not autónomo)</label>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="firstYearAutonomo">
+        <label for="firstYearAutonomo">✨ First year as autónomo (€87/month tarifa plana)</label>
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">💰 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row" id="savingsRow" style="display: none;">
+                <span class="result-label">Savings Income</span>
+                <span class="result-value" id="savingsIncomeDisplay"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Taxable Income</span>
+                <span class="result-value" id="taxableIncome"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇪🇸 Income Tax (IRPF)</div>
+            <div class="result-row">
+                <span class="result-label">State Tax</span>
+                <span class="result-value" id="stateTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Regional Tax</span>
+                <span class="result-value" id="regionalTax"></span>
+            </div>
+            <div class="result-row" id="savingsTaxRow" style="display: none;">
+                <span class="result-label">Savings Income Tax</span>
+                <span class="result-value" id="savingsTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">📋 Social Security</div>
+            <div class="result-row">
+                <span class="result-label" id="socialLabel">Autónomo Social Security</span>
+                <span class="result-value" id="socialSecurity"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax + Social Security</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income (After Tax)</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Note:</strong> This calculator estimates Spanish income tax for 2025 including regional variations and social security. Autónomo calculations are simplified. Consult a Spanish asesor fiscal (tax advisor) for accurate planning.
+    </div>
+    
+    <div class="content-section">
+        <h2>Spain Tax System Guide 2025</h2>
+        
+        <p>
+            Spain has a complex tax system where income tax (IRPF) is split between state and regional (autonomous community) portions. Each of Spain's 17 regions can set different rates, creating significant tax variations across the country.
+        </p>
+
+        <h3>2025 State Income Tax Brackets</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>State Rate</th>
+                    <th>Income Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>9.5%</td><td>€0 - €12,450</td></tr>
+                <tr><td>12%</td><td>€12,451 - €20,200</td></tr>
+                <tr><td>15%</td><td>€20,201 - €35,200</td></tr>
+                <tr><td>18.5%</td><td>€35,201 - €60,000</td></tr>
+                <tr><td>22.5%</td><td>€60,001 - €300,000</td></tr>
+                <tr><td>23.5%</td><td>€300,000+</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Regional rates are added on top!</strong> Total tax = State + Regional</p>
+
+        <div class="highlight-box">
+            <strong>Regional Tax Differences (Examples):</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>Madrid:</strong> Lowest regional rates (9.5% - 22.5%) → Total max: 47%</li>
+                <li><strong>Catalonia:</strong> Highest rates (12% - 25.5%) → Total max: 49%</li>
+                <li><strong>Valencia:</strong> Progressive (12% - 25.5%) → Total max: 49%</li>
+                <li><strong>Andalusia:</strong> Similar to Catalonia → Total max: 49%</li>
+            </ul>
+        </div>
+
+        <h3>Savings Income Tax (2025)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Income Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>19%</td><td>€0 - €6,000</td></tr>
+                <tr><td>21%</td><td>€6,001 - €50,000</td></tr>
+                <tr><td>23%</td><td>€50,001 - €200,000</td></tr>
+                <tr><td>27%</td><td>€200,001 - €300,000</td></tr>
+                <tr><td>30%</td><td>€300,000+ (NEW 2025!)</td></tr>
+            </tbody>
+        </table>
+
+        <p>Applied to: dividends, interest, capital gains, investment income</p>
+
+        <h3>Autónomo (Self-Employed) Social Security 2025</h3>
+
+        <p><strong>New income-based system:</strong></p>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Annual Income</th>
+                    <th>Monthly Quota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Up to €670/month</td><td>€225</td></tr>
+                <tr><td>€670 - €900/month</td><td>€260</td></tr>
+                <tr><td>€900 - €1,125/month</td><td>€275</td></tr>
+                <tr><td>€1,125 - €1,300/month</td><td>€291</td></tr>
+                <tr><td>€1,300 - €1,500/month</td><td>€294</td></tr>
+                <tr><td>€1,500 - €1,700/month</td><td>€294</td></tr>
+                <tr><td>€1,700 - €1,850/month</td><td>€310</td></tr>
+                <tr><td>€1,850 - €2,030/month</td><td>€315</td></tr>
+                <tr><td>€2,030 - €2,330/month</td><td>€320</td></tr>
+                <tr><td>€2,330 - €2,760/month</td><td>€330</td></tr>
+                <tr><td>€2,760 - €3,190/month</td><td>€350</td></tr>
+                <tr><td>€3,190 - €3,620/month</td><td>€370</td></tr>
+                <tr><td>€3,620 - €4,050/month</td><td>€388</td></tr>
+                <tr><td>€4,050 - €6,000/month</td><td>€405</td></tr>
+                <tr><td>Over €6,000/month</td><td>€530</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Tarifa Plana (First Year):</strong> €87/month for 12 months!</p>
+        <p>Then: €220/month for months 13-18, regular rates after that</p>
+
+        <h3>Regional Tax Comparison</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Top Rate</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Madrid</td><td>47%</td><td>Lowest rates, 100% wealth tax relief</td></tr>
+                <tr><td>Catalonia</td><td>49%</td><td>Highest rates, 15 regional taxes</td></tr>
+                <tr><td>Valencia</td><td>49%</td><td>Progressive, similar to Catalonia</td></tr>
+                <tr><td>Andalusia</td><td>49%</td><td>High rates, wealth tax relief</td></tr>
+                <tr><td>Basque Country</td><td>45%</td><td>Separate tax system (foral)</td></tr>
+                <tr><td>Canary Islands</td><td>47%</td><td>Lower indirect taxes (IGIC)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Autónomo vs Employee</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Autónomo</th>
+                    <th>Employee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Income Tax (IRPF)</td>
+                    <td>Same rates</td>
+                    <td>Same rates (withheld)</td>
+                </tr>
+                <tr>
+                    <td>Social Security</td>
+                    <td>€225-€530/month (income-based)</td>
+                    <td>~6.35% of salary</td>
+                </tr>
+                <tr>
+                    <td>Tax Payments</td>
+                    <td>Quarterly (Modelo 130)</td>
+                    <td>Monthly withholding</td>
+                </tr>
+                <tr>
+                    <td>Expenses</td>
+                    <td>Fully deductible</td>
+                    <td>Limited deductions</td>
+                </tr>
+                <tr>
+                    <td>Flexibility</td>
+                    <td>High</td>
+                    <td>Employment contract</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Important Spanish Tax Deadlines</h3>
+
+        <ul>
+            <li><strong>Quarterly Tax (Modelo 130):</strong> April 20, July 20, October 20, January 30</li>
+            <li><strong>Annual Tax Return (Renta):</strong> April-June</li>
+            <li><strong>VAT (IVA):</strong> Quarterly or monthly</li>
+            <li><strong>Modelo 100:</strong> Annual income tax declaration</li>
+        </ul>
+
+        <h3>Common Spanish Tax Deductions</h3>
+
+        <ul>
+            <li><strong>Primary Residence Mortgage:</strong> Interest deductible (pre-2013 mortgages)</li>
+            <li><strong>Pension Contributions:</strong> Up to €1,500/year (general), €8,500 (over 50)</li>
+            <li><strong>Maternity/Paternity:</strong> €1,200 deduction per child under 3</li>
+            <li><strong>Disability:</strong> Various deductions for disabled taxpayers/family</li>
+            <li><strong>Charitable Donations:</strong> 80% deduction first €150, then 35-40%</li>
+        </ul>
+
+        <h3>Pros and Cons of Spanish Tax System</h3>
+
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>First year autónomo is cheap (€87/month tarifa plana)</li>
+            <li>Madrid has low rates (if you choose your region)</li>
+            <li>Separate taxation of savings income at lower rates</li>
+            <li>Good healthcare included in social security</li>
+            <li>Many regional deductions available</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Very high top rates in some regions (49%)</li>
+            <li>Complex 17-region system</li>
+            <li>Autónomo social security mandatory even with no income</li>
+            <li>Quarterly tax payments required</li>
+            <li>Wealth tax in many regions</li>
+            <li>Inheritance tax can be high (varies by region)</li>
+        </ul>
+
+        <h3>Tips for Autónomos in Spain</h3>
+
+        <ul>
+            <li>Register for Tarifa Plana immediately (€87/month first year!)</li>
+            <li>Choose your region carefully - Madrid vs Catalonia = thousands in savings</li>
+            <li>Pay quarterly taxes (Modelo 130) to avoid penalties</li>
+            <li>Track all business expenses meticulously</li>
+            <li>Consider "módulos" (simplified tax) if eligible</li>
+            <li>Join a gestoría (administrative service) - worth every euro!</li>
+            <li>Set aside 40-50% of income for taxes + social security</li>
+            <li>Max out pension contributions for tax deduction</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> Spanish tax law varies dramatically by region. This calculator provides estimates based on typical rates. Always consult with a qualified asesor fiscal or gestoría familiar with your specific autonomous community for accurate tax planning and compliance with Agencia Tributaria requirements.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Spain Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year with regional variations 🇪🇸</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+<script>
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const savingsIncome = parseFloat(document.getElementById('savingsIncome').value) || 0;
+    const region = document.getElementById('region').value;
+    const isEmployee = document.getElementById('isEmployee').checked;
+    const firstYear = document.getElementById('firstYearAutonomo').checked;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // State tax brackets (national)
+    const stateBrackets = [
+        [12450, 0.095],
+        [20200, 0.12],
+        [35200, 0.15],
+        [60000, 0.185],
+        [300000, 0.225],
+        [99999999, 0.235]
+    ];
+    
+    // Regional tax brackets (added on top)
+    let regionalBrackets = [];
+    
+    if (region === 'madrid') {
+        regionalBrackets = [
+            [12450, 0.095],
+            [20200, 0.12],
+            [35200, 0.15],
+            [60000, 0.185],
+            [300000, 0.225],
+            [99999999, 0.235]
+        ];
+    } else if (region === 'catalonia' || region === 'valencia' || region === 'andalusia') {
+        regionalBrackets = [
+            [12450, 0.12],
+            [20200, 0.14],
+            [35200, 0.185],
+            [60000, 0.214],
+            [300000, 0.255],
+            [99999999, 0.255]
+        ];
+    } else if (region === 'basque') {
+        regionalBrackets = [
+            [12450, 0.09],
+            [20200, 0.11],
+            [35200, 0.145],
+            [60000, 0.18],
+            [300000, 0.215],
+            [99999999, 0.22]
+        ];
+    } else { // other regions (average)
+        regionalBrackets = [
+            [12450, 0.10],
+            [20200, 0.125],
+            [35200, 0.16],
+            [60000, 0.195],
+            [300000, 0.235],
+            [99999999, 0.245]
+        ];
+    }
+    
+    // Calculate state tax
+    let stateTax = 0;
+    let remaining = netIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < stateBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = stateBrackets[i][0];
+        const bracketRate = stateBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        stateTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Calculate regional tax
+    let regionalTax = 0;
+    remaining = netIncome;
+    previousLimit = 0;
+    
+    for (let i = 0; i < regionalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = regionalBrackets[i][0];
+        const bracketRate = regionalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        regionalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Savings income tax (separate from work income)
+    let savingsTax = 0;
+    if (savingsIncome > 0) {
+        if (savingsIncome <= 6000) {
+            savingsTax = savingsIncome * 0.19;
+        } else if (savingsIncome <= 50000) {
+            savingsTax = (6000 * 0.19) + ((savingsIncome - 6000) * 0.21);
+        } else if (savingsIncome <= 200000) {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + ((savingsIncome - 50000) * 0.23);
+        } else if (savingsIncome <= 300000) {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + (150000 * 0.23) + ((savingsIncome - 200000) * 0.27);
+        } else {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + (150000 * 0.23) + (100000 * 0.27) + ((savingsIncome - 300000) * 0.30);
+        }
+    }
+    
+    // Social Security
+    let socialSecurity = 0;
+    
+    if (isEmployee) {
+        // Employee: ~6.35% of gross salary
+        socialSecurity = income * 0.0635;
+    } else {
+        // Autónomo
+        if (firstYear) {
+            // Tarifa plana: €87/month for first year
+            socialSecurity = 87 * 12;
+        } else {
+            // Income-based system (simplified)
+            const monthlyIncome = netIncome / 12;
+            
+            if (monthlyIncome <= 670) socialSecurity = 225 * 12;
+            else if (monthlyIncome <= 900) socialSecurity = 260 * 12;
+            else if (monthlyIncome <= 1125) socialSecurity = 275 * 12;
+            else if (monthlyIncome <= 1300) socialSecurity = 291 * 12;
+            else if (monthlyIncome <= 1500) socialSecurity = 294 * 12;
+            else if (monthlyIncome <= 1700) socialSecurity = 294 * 12;
+            else if (monthlyIncome <= 1850) socialSecurity = 310 * 12;
+            else if (monthlyIncome <= 2030) socialSecurity = 315 * 12;
+            else if (monthlyIncome <= 2330) socialSecurity = 320 * 12;
+            else if (monthlyIncome <= 2760) socialSecurity = 330 * 12;
+            else if (monthlyIncome <= 3190) socialSecurity = 350 * 12;
+            else if (monthlyIncome <= 3620) socialSecurity = 370 * 12;
+            else if (monthlyIncome <= 4050) socialSecurity = 388 * 12;
+            else if (monthlyIncome <= 6000) socialSecurity = 405 * 12;
+            else socialSecurity = 530 * 12;
+        }
+    }
+    
+    const totalTax = stateTax + regionalTax + savingsTax + socialSecurity;
+    const totalIncome = income + savingsIncome;
+    const netAfterTax = totalIncome - totalTax;
+    const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
+    
+    // Display results
+    const format = (num) => '€' + Math.round(num).toLocaleString();
+
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(netIncome);
+    
+    if (savingsIncome > 0) {
+        document.getElementById('savingsRow').style.display = 'flex';
+        document.getElementById('savingsIncomeDisplay').textContent = format(savingsIncome);
+        document.getElementById('savingsTaxRow').style.display = 'flex';
+        document.getElementById('savingsTax').textContent = format(savingsTax);
+    } else {
+        document.getElementById('savingsRow').style.display = 'none';
+        document.getElementById('savingsTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('stateTax').textContent = format(stateTax);
+    document.getElementById('regionalTax').textContent = format(regionalTax);
+    
+    document.getElementById('socialLabel').textContent = isEmployee ? 'Employee Social Security' : 'Autónomo Social Security';
+    document.getElementById('socialSecurity').textContent = format(socialSecurity) + (firstYear && !isEmployee ? ' (Tarifa Plana!)' : '');
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('savingsIncome').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+</script>
+
+<script>
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const savingsIncome = parseFloat(document.getElementById('savingsIncome').value) || 0;
+    const region = document.getElementById('region').value;
+    const isEmployee = document.getElementById('isEmployee').checked;
+    const firstYear = document.getElementById('firstYearAutonomo').checked;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // State tax brackets (national)
+    const stateBrackets = [
+        [12450, 0.095],
+        [20200, 0.12],
+        [35200, 0.15],
+        [60000, 0.185],
+        [300000, 0.225],
+        [99999999, 0.235]
+    ];
+    
+    // Regional tax brackets (added on top)
+    let regionalBrackets = [];
+    
+    if (region === 'madrid') {
+        regionalBrackets = [
+            [12450, 0.095],
+            [20200, 0.12],
+            [35200, 0.15],
+            [60000, 0.185],
+            [300000, 0.225],
+            [99999999, 0.235]
+        ];
+    } else if (region === 'catalonia' || region === 'valencia' || region === 'andalusia') {
+        regionalBrackets = [
+            [12450, 0.12],
+            [20200, 0.14],
+            [35200, 0.185],
+            [60000, 0.214],
+            [300000, 0.255],
+            [99999999, 0.255]
+        ];
+    } else if (region === 'basque') {
+        regionalBrackets = [
+            [12450, 0.09],
+            [20200, 0.11],
+            [35200, 0.145],
+            [60000, 0.18],
+            [300000, 0.215],
+            [99999999, 0.22]
+        ];
+    } else { // other regions (average)
+        regionalBrackets = [
+            [12450, 0.10],
+            [20200, 0.125],
+            [35200, 0.16],
+            [60000, 0.195],
+            [300000, 0.235],
+            [99999999, 0.245]
+        ];
+    }
+    
+    // Calculate state tax
+    let stateTax = 0;
+    let remaining = netIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < stateBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = stateBrackets[i][0];
+        const bracketRate = stateBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        stateTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Calculate regional tax
+    let regionalTax = 0;
+    remaining = netIncome;
+    previousLimit = 0;
+    
+    for (let i = 0; i < regionalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = regionalBrackets[i][0];
+        const bracketRate = regionalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        regionalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Savings income tax (separate from work income)
+    let savingsTax = 0;
+    if (savingsIncome > 0) {
+        if (savingsIncome <= 6000) {
+            savingsTax = savingsIncome * 0.19;
+        } else if (savingsIncome <= 50000) {
+            savingsTax = (6000 * 0.19) + ((savingsIncome - 6000) * 0.21);
+        } else if (savingsIncome <= 200000) {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + ((savingsIncome - 50000) * 0.23);
+        } else if (savingsIncome <= 300000) {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + (150000 * 0.23) + ((savingsIncome - 200000) * 0.27);
+        } else {
+            savingsTax = (6000 * 0.19) + (44000 * 0.21) + (150000 * 0.23) + (100000 * 0.27) + ((savingsIncome - 300000) * 0.30);
+        }
+    }
+    
+    // Social Security
+    let socialSecurity = 0;
+    
+    if (isEmployee) {
+        // Employee: ~6.35% of gross salary
+        socialSecurity = income * 0.0635;
+    } else {
+        // Autónomo
+        if (firstYear) {
+            // Tarifa plana: €87/month for first year
+            socialSecurity = 87 * 12;
+        } else {
+            // Income-based system (simplified)
+            const monthlyIncome = netIncome / 12;
+            
+            if (monthlyIncome <= 670) socialSecurity = 225 * 12;
+            else if (monthlyIncome <= 900) socialSecurity = 260 * 12;
+            else if (monthlyIncome <= 1125) socialSecurity = 275 * 12;
+            else if (monthlyIncome <= 1300) socialSecurity = 291 * 12;
+            else if (monthlyIncome <= 1500) socialSecurity = 294 * 12;
+            else if (monthlyIncome <= 1700) socialSecurity = 294 * 12;
+            else if (monthlyIncome <= 1850) socialSecurity = 310 * 12;
+            else if (monthlyIncome <= 2030) socialSecurity = 315 * 12;
+            else if (monthlyIncome <= 2330) socialSecurity = 320 * 12;
+            else if (monthlyIncome <= 2760) socialSecurity = 330 * 12;
+            else if (monthlyIncome <= 3190) socialSecurity = 350 * 12;
+            else if (monthlyIncome <= 3620) socialSecurity = 370 * 12;
+            else if (monthlyIncome <= 4050) socialSecurity = 388 * 12;
+            else if (monthlyIncome <= 6000) socialSecurity = 405 * 12;
+            else socialSecurity = 530 * 12;
+        }
+    }
+    
+    const totalTax = stateTax + regionalTax + savingsTax + socialSecurity;
+    const totalIncome = income + savingsIncome;
+    const netAfterTax = totalIncome - totalTax;
+    const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
+    
+    // Display results
+    const format = (num) => '€' + Math.round(num).toLocaleString();
+
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(netIncome);
+    
+    if (savingsIncome > 0) {
+        document.getElementById('savingsRow').style.display = 'flex';
+        document.getElementById('savingsIncomeDisplay').textContent = format(savingsIncome);
+        document.getElementById('savingsTaxRow').style.display = 'flex';
+        document.getElementById('savingsTax').textContent = format(savingsTax);
+    } else {
+        document.getElementById('savingsRow').style.display = 'none';
+        document.getElementById('savingsTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('stateTax').textContent = format(stateTax);
+    document.getElementById('regionalTax').textContent = format(regionalTax);
+    
+    document.getElementById('socialLabel').textContent = isEmployee ? 'Employee Social Security' : 'Autónomo Social Security';
+    document.getElementById('socialSecurity').textContent = format(socialSecurity) + (firstYear && !isEmployee ? ' (Tarifa Plana!)' : '');
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('savingsIncome').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+</script>

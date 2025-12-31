@@ -1,0 +1,956 @@
+---
+layout: base.njk
+title: Germany Tax Calculator 2025 | German Income Tax Calculator
+description: Free Germany tax calculator for 2025. Calculate German income tax, solidarity surcharge, church tax, and social contributions for freelancers and employees.
+permalink: /europe/germany/
+---
+
+<style>
+
+        /* Стили навигации удалены. Они должны подтягиваться из MegaNav.js */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            /* Отступ, чтобы контент не наползал на фиксированное меню */
+            padding: 110px 20px 40px; 
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #000000 0%, #DD0000 50%, #FFCE00 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .health-insurance-group {
+            display: none;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .health-insurance-group.show {
+            display: block;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0077BE;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🇩🇪 GERMANY</div>
+    <h1>Germany Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate German income tax, solidarity surcharge, and social contributions</p>
+    
+    <div class="input-group">
+        <label>Filing Status</label>
+        <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Annual Income (Gross) <span class="label-hint">- in EUR</span></label>
+        <input type="number" id="income" placeholder="e.g., 50000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual) <span class="label-hint">- deductible expenses</span></label>
+        <input type="number" id="expenses" placeholder="e.g., 10000" min="0" value="0">
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="isEmployee" onchange="toggleEmployeeMode()">
+        <label for="isEmployee">💼 I'm an employee (not freelancer)</label>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="churchMember">
+        <label for="churchMember">⛪ Member of church (8-9% church tax)</label>
+    </div>
+
+    <div class="input-group">
+        <label>Health Insurance Type</label>
+        <select id="healthInsuranceType" onchange="toggleHealthInsuranceInput()">
+            <option value="public">Public (gesetzlich) - 19.5% of income</option>
+            <option value="private">Private (privat) - enter monthly cost</option>
+            <option value="none">None / Already covered</option>
+        </select>
+    </div>
+
+    <div class="health-insurance-group" id="privateHealthInput">
+        <label>Monthly Private Health Insurance Cost <span class="label-hint">- in EUR</span></label>
+        <input type="number" id="privateHealthCost" placeholder="e.g., 450" min="0" value="450">
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">💰 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Taxable Income</span>
+                <span class="result-value" id="taxableIncome"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇩🇪 German Taxes</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax (Einkommensteuer)</span>
+                <span class="result-value" id="incomeTax"></span>
+            </div>
+            <div class="result-row" id="soliRow">
+                <span class="result-label">Solidarity Surcharge (Soli)</span>
+                <span class="result-value" id="soliTax"></span>
+            </div>
+            <div class="result-row" id="churchTaxRow" style="display: none;">
+                <span class="result-label">Church Tax (Kirchensteuer)</span>
+                <span class="result-value" id="churchTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🏥 Social Contributions</div>
+            <div class="result-row">
+                <span class="result-label">Health Insurance</span>
+                <span class="result-value" id="healthInsurance"></span>
+            </div>
+            <div class="result-row" id="pensionRow" style="display: none;">
+                <span class="result-label">Pension Insurance</span>
+                <span class="result-value" id="pensionInsurance"></span>
+            </div>
+            <div class="result-row" id="unemploymentRow" style="display: none;">
+                <span class="result-label">Unemployment Insurance</span>
+                <span class="result-value" id="unemploymentInsurance"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax + Contributions</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income (After Tax)</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Note:</strong> This calculator estimates German income tax, solidarity surcharge, church tax, and social contributions for 2025. Calculations are simplified. Consult a German Steuerberater (tax advisor) for accurate tax planning.
+    </div>
+    
+    <div class="content-section">
+        <h2>Germany Tax System Guide 2025</h2>
+        
+        <p>
+            Germany has one of the most complex tax systems in Europe with progressive income tax rates, solidarity surcharge, optional church tax, and mandatory social contributions.
+        </p>
+
+        <h3>2025 German Income Tax Brackets</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Taxable Income (Single)</th>
+                    <th>Taxable Income (Married)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0%</td><td>€0 - €12,096</td><td>€0 - €24,192</td></tr>
+                <tr><td>14% - 42%</td><td>€12,097 - €68,480</td><td>€24,193 - €136,960</td></tr>
+                <tr><td>42%</td><td>€68,481 - €277,825</td><td>€136,961 - €555,650</td></tr>
+                <tr><td>45%</td><td>€277,826+</td><td>€555,651+</td></tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>Key Tax Concepts:</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>Grundfreibetrag:</strong> Tax-free allowance of €12,096 (single) or €24,192 (married)</li>
+                <li><strong>Solidarity Surcharge (Soli):</strong> 5.5% on income tax, only if tax exceeds €19,950</li>
+                <li><strong>Church Tax:</strong> 8-9% of income tax (only for church members)</li>
+                <li><strong>Reichensteuer:</strong> Top rate of 45% for incomes above €277,826</li>
+            </ul>
+        </div>
+
+        <h3>Social Contributions in Germany</h3>
+
+        <p><strong>For Employees (mandatory):</strong></p>
+        <ul>
+            <li><strong>Health Insurance:</strong> 7.3% + 1.6% (average supplement) = 8.9% employee share</li>
+            <li><strong>Pension Insurance:</strong> 9.3% employee share</li>
+            <li><strong>Unemployment Insurance:</strong> 1.2% employee share</li>
+            <li><strong>Long-term Care:</strong> ~1.7%</li>
+            <li><strong>Total:</strong> ~21% of gross salary (employer pays another ~21%)</li>
+        </ul>
+
+        <p><strong>For Freelancers/Self-Employed:</strong></p>
+        <ul>
+            <li><strong>Health Insurance:</strong> Voluntary, 19.5% of income (min €230/month, max €950/month)</li>
+            <li><strong>Private Health Insurance:</strong> €300-900/month depending on age and coverage</li>
+            <li><strong>Pension:</strong> Voluntary (recommended for retirement)</li>
+            <li><strong>No unemployment insurance</strong></li>
+        </ul>
+
+        <h3>Tax Deductions for Freelancers</h3>
+
+        <ul>
+            <li><strong>Business Expenses:</strong> Equipment, software, office rent, travel</li>
+            <li><strong>Home Office:</strong> Deduct portion of rent/utilities</li>
+            <li><strong>Health Insurance:</strong> Fully deductible</li>
+            <li><strong>Retirement Contributions:</strong> Up to €26,528 deductible</li>
+            <li><strong>Professional Development:</strong> Courses, conferences, books</li>
+        </ul>
+
+        <h3>Freelancer vs Employee in Germany</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Freelancer</th>
+                    <th>Employee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Income Tax</td>
+                    <td>Same rates</td>
+                    <td>Same rates</td>
+                </tr>
+                <tr>
+                    <td>Social Contributions</td>
+                    <td>~19.5% (voluntary)</td>
+                    <td>~21% (mandatory)</td>
+                </tr>
+                <tr>
+                    <td>Health Insurance</td>
+                    <td>Public or Private choice</td>
+                    <td>Public mandatory (unless high income)</td>
+                </tr>
+                <tr>
+                    <td>VAT (Umsatzsteuer)</td>
+                    <td>19% (unless small business)</td>
+                    <td>Not applicable</td>
+                </tr>
+                <tr>
+                    <td>Business Expenses</td>
+                    <td>Fully deductible</td>
+                    <td>Limited (€1,230/year)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Important Deadlines</h3>
+
+        <ul>
+            <li><strong>Tax Return:</strong> July 31 (without advisor) or Feb 28 next year (with Steuerberater)</li>
+            <li><strong>Advance Tax Payments:</strong> Quarterly (Mar 10, Jun 10, Sep 10, Dec 10)</li>
+            <li><strong>VAT Reporting:</strong> Monthly or quarterly</li>
+        </ul>
+
+        <h3>Pros and Cons of Working in Germany</h3>
+
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>Strong social safety net</li>
+            <li>Excellent public healthcare</li>
+            <li>Good work-life balance</li>
+            <li>Many tax deductions for business expenses</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Very high tax rates (up to 45%)</li>
+            <li>Complex tax system</li>
+            <li>High social contributions (~40% total with employer)</li>
+            <li>Expensive health insurance for freelancers</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> German tax law is extremely complex. This calculator provides estimates only. Always consult with a qualified Steuerberater (German tax advisor) for accurate tax planning and compliance.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Germany Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year with German brackets 🇩🇪</p>
+</footer>
+
+<script src="../MegaNav.js"></script> 
+
+<script>
+function toggleEmployeeMode() {
+    // Just visual feedback, actual calculation happens in calculateTax()
+}
+
+function toggleHealthInsuranceInput() {
+    const type = document.getElementById('healthInsuranceType').value;
+    const privateInput = document.getElementById('privateHealthInput');
+    
+    if (type === 'private') {
+        privateInput.classList.add('show');
+    } else {
+        privateInput.classList.remove('show');
+    }
+}
+
+// ГЛАВНАЯ ФУНКЦИЯ ДЛЯ ТОЧНОГО РАСЧЕТА ПОДОХОДНОГО НАЛОГА (Einkommensteuer)
+function calculateIncomeTax(netIncome, isMarried) {
+    // Net Income (after business expenses) is passed in as 'netIncome'
+    const taxFreeAllowance = isMarried ? 24192 : 12096;
+    const taxableIncome = Math.max(0, netIncome - taxFreeAllowance);
+    
+    let X = taxableIncome;
+    if (isMarried) {
+        // Splitting: Tax is calculated on half the income, then doubled
+        X = taxableIncome / 2;
+    }
+    
+    let tax = 0;
+    
+    // Налоговые зоны 2025 (Оценка, базирующаяся на 2024 + 3% инфляция)
+    const E1 = 12096; // 0%
+    const E2 = 17006; // 14% - 24% (первая прогрессия)
+    const E3 = 68480; // 24% - 42% (вторая прогрессия)
+    const E4 = 277826; // 42% (плоская)
+
+    // Zone 1: 0% (Grundfreibetrag)
+    if (X <= E1) {
+        tax = 0;
+    } 
+    
+    // Zone 2: 14% - 24% (erste Progressionszone)
+    else if (X <= E2) {
+        const Y = (X - E1) / 1000;
+        // Упрощенный полином, приближающий реальную формулу
+        tax = (1008.7 * Y + 1400) * Y + 1300; 
+        tax = tax * 1.03; // Поправка на 2025 год
+    } 
+    
+    // Zone 3: 24% - 42% (zweite Progressionszone)
+    else if (X <= E3) {
+        // Линейная аппроксимация в этой зоне
+        // Налог на E2 (приблизительно)
+        const taxE2_cap = 1008.7 * ((E2 - E1) / 1000) * ((E2 - E1) / 1000) + 1400 * ((E2 - E1) / 1000) + 1300;
+        const baseTax = taxE2_cap * 1.03;
+
+        // Линейная часть 42%
+        tax = baseTax + (X - E2) * 0.42;
+        // Подгон (Linear formula approximation for the whole zone from E1)
+        tax = (0.42 * X - 8816); 
+        tax = tax * 1.01; 
+    } 
+    
+    // Zone 4: 42% Flat (Spitzensteuersatz)
+    else if (X < E4) {
+        // 42% linear calculation
+        tax = 0.42 * X - 9800; // Adjusted constant for 2025
+    } 
+    
+    // Zone 5: 45% (Reichensteuersatz)
+    else {
+        // 45% linear calculation
+        tax = 0.45 * X - 18130; // Adjusted constant for 2025
+    }
+
+    if (isMarried) {
+        // Double the result for married filing jointly
+        tax = tax * 2;
+    }
+    
+    return Math.max(0, tax);
+}
+
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const isEmployee = document.getElementById('isEmployee').checked;
+    const churchMember = document.getElementById('churchMember').checked;
+    const healthType = document.getElementById('healthInsuranceType').value;
+    const privateHealthCost = parseFloat(document.getElementById('privateHealthCost').value) || 450;
+    
+    if (income <= 0) {
+        // Убрали мат. Выводим простое сообщение.
+        alert('Пожалуйста, введите годовой доход.');
+        // Скрываем результаты, если доход не введен
+        document.getElementById('results').classList.remove('show');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // Taxable income (used only for display in the table, the actual calculation is inside the tax function)
+    const taxFreeAllowance = status === 'married' ? 24192 : 12096;
+    const taxableIncome = Math.max(0, netIncome - taxFreeAllowance);
+    
+    // 1. INCOME TAX (Einkommensteuer) - Using the complex function
+    const isMarried = status === 'married';
+    let incomeTax = calculateIncomeTax(netIncome, isMarried);
+
+    // 2. Solidarity Surcharge (Soli: 5.5% of income tax, only if tax > threshold)
+    const soliThreshold = status === 'married' ? 39900 : 19950;
+    let soliTax = 0;
+    if (incomeTax > soliThreshold) {
+        soliTax = incomeTax * 0.055;
+    } 
+    
+    // 3. Church Tax (8.5% average of income tax)
+    let churchTax = 0;
+    if (churchMember) {
+        // We use 8.5% as a general, simplified average (9% or 8% depending on the state).
+        churchTax = incomeTax * 0.085;
+    }
+    
+    // 4. Social Contributions
+    let healthInsurance = 0;
+    let pensionInsurance = 0;
+    let unemploymentInsurance = 0;
+    
+    if (isEmployee) {
+        // Capping Social contributions at the ceiling (Beitragsbemessungsgrenze 2025 geschätst: ~93600 EUR/year)
+        const capIncome = Math.min(income, 93600); 
+        
+        // Health (employee share: 7.3% base + 1.6% average supplement = 8.9%)
+        healthInsurance = capIncome * 0.089;
+        
+        // Pension (employee share: 9.3%)
+        pensionInsurance = capIncome * 0.093;
+        
+        // Unemployment (employee share: 1.2%)
+        unemploymentInsurance = capIncome * 0.012;
+
+    } else {
+        // Freelancer / Self-Employed mode (uses netIncome (Gross - Expenses) for calculation)
+        if (healthType === 'public') {
+            // Full contribution (14.6% base + 4.9% supplement = 19.5% total)
+            const minContribution = 230 * 12; // €2,760
+            const maxContribution = 950 * 12; // €11,400
+            
+            healthInsurance = netIncome * 0.195;
+            healthInsurance = Math.min(Math.max(healthInsurance, minContribution), maxContribution);
+        } else if (healthType === 'private') {
+            healthInsurance = privateHealthCost * 12;
+        }
+        // Pension and Unemployment are generally voluntary/not applicable.
+    }
+    
+    const totalTax = incomeTax + soliTax + churchTax + healthInsurance + pensionInsurance + unemploymentInsurance;
+    const netAfterTax = income - totalTax;
+    const effectiveRate = (totalTax / income * 100).toFixed(1);
+    
+    // Display results
+    const format = (num) => '€' + Math.round(num).toLocaleString('en-US');
+
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(taxableIncome); 
+    document.getElementById('incomeTax').textContent = format(incomeTax);
+    document.getElementById('soliTax').textContent = format(soliTax);
+    
+    if (churchMember) {
+        document.getElementById('churchTaxRow').style.display = 'flex';
+        document.getElementById('churchTax').textContent = format(churchTax);
+    } else {
+        document.getElementById('churchTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('healthInsurance').textContent = format(healthInsurance);
+    
+    if (isEmployee) {
+        document.getElementById('pensionRow').style.display = 'flex';
+        document.getElementById('unemploymentRow').style.display = 'flex';
+        document.getElementById('pensionInsurance').textContent = format(pensionInsurance);
+        document.getElementById('unemploymentInsurance').textContent = format(unemploymentInsurance);
+    } else {
+        document.getElementById('pensionRow').style.display = 'none';
+        document.getElementById('unemploymentRow').style.display = 'none';
+    }
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+// ИСПРАВЛЕННЫЙ БЛОК: убираем авто-расчет при загрузке, оставляем только визуальную логику.
+document.addEventListener('DOMContentLoaded', function() {
+    toggleHealthInsuranceInput();
+    // НЕ ЗАПУСКАЕМ calculateTax()
+});
+</script>
+
+<script>
+
+function toggleEmployeeMode() {
+    // Just visual feedback, actual calculation happens in calculateTax()
+}
+
+function toggleHealthInsuranceInput() {
+    const type = document.getElementById('healthInsuranceType').value;
+    const privateInput = document.getElementById('privateHealthInput');
+    
+    if (type === 'private') {
+        privateInput.classList.add('show');
+    } else {
+        privateInput.classList.remove('show');
+    }
+}
+
+// ГЛАВНАЯ ФУНКЦИЯ ДЛЯ ТОЧНОГО РАСЧЕТА ПОДОХОДНОГО НАЛОГА (Einkommensteuer)
+function calculateIncomeTax(netIncome, isMarried) {
+    // Net Income (after business expenses) is passed in as 'netIncome'
+    const taxFreeAllowance = isMarried ? 24192 : 12096;
+    const taxableIncome = Math.max(0, netIncome - taxFreeAllowance);
+    
+    let X = taxableIncome;
+    if (isMarried) {
+        // Splitting: Tax is calculated on half the income, then doubled
+        X = taxableIncome / 2;
+    }
+    
+    let tax = 0;
+    
+    // Налоговые зоны 2025 (Оценка, базирующаяся на 2024 + 3% инфляция)
+    const E1 = 12096; // 0%
+    const E2 = 17006; // 14% - 24% (первая прогрессия)
+    const E3 = 68480; // 24% - 42% (вторая прогрессия)
+    const E4 = 277826; // 42% (плоская)
+
+    // Zone 1: 0% (Grundfreibetrag)
+    if (X <= E1) {
+        tax = 0;
+    } 
+    
+    // Zone 2: 14% - 24% (erste Progressionszone)
+    else if (X <= E2) {
+        const Y = (X - E1) / 1000;
+        // Упрощенный полином, приближающий реальную формулу
+        tax = (1008.7 * Y + 1400) * Y + 1300; 
+        tax = tax * 1.03; // Поправка на 2025 год
+    } 
+    
+    // Zone 3: 24% - 42% (zweite Progressionszone)
+    else if (X <= E3) {
+        // Линейная аппроксимация в этой зоне
+        // Налог на E2 (приблизительно)
+        const taxE2_cap = 1008.7 * ((E2 - E1) / 1000) * ((E2 - E1) / 1000) + 1400 * ((E2 - E1) / 1000) + 1300;
+        const baseTax = taxE2_cap * 1.03;
+
+        // Линейная часть 42%
+        tax = baseTax + (X - E2) * 0.42;
+        // Подгон (Linear formula approximation for the whole zone from E1)
+        tax = (0.42 * X - 8816); 
+        tax = tax * 1.01; 
+    } 
+    
+    // Zone 4: 42% Flat (Spitzensteuersatz)
+    else if (X < E4) {
+        // 42% linear calculation
+        tax = 0.42 * X - 9800; // Adjusted constant for 2025
+    } 
+    
+    // Zone 5: 45% (Reichensteuersatz)
+    else {
+        // 45% linear calculation
+        tax = 0.45 * X - 18130; // Adjusted constant for 2025
+    }
+
+    if (isMarried) {
+        // Double the result for married filing jointly
+        tax = tax * 2;
+    }
+    
+    return Math.max(0, tax);
+}
+
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const isEmployee = document.getElementById('isEmployee').checked;
+    const churchMember = document.getElementById('churchMember').checked;
+    const healthType = document.getElementById('healthInsuranceType').value;
+    const privateHealthCost = parseFloat(document.getElementById('privateHealthCost').value) || 450;
+    
+    if (income <= 0) {
+        // Убрали мат. Выводим простое сообщение.
+        alert('Пожалуйста, введите годовой доход.');
+        // Скрываем результаты, если доход не введен
+        document.getElementById('results').classList.remove('show');
+        return;
+    }
+    
+    const netIncome = income - expenses;
+    
+    // Taxable income (used only for display in the table, the actual calculation is inside the tax function)
+    const taxFreeAllowance = status === 'married' ? 24192 : 12096;
+    const taxableIncome = Math.max(0, netIncome - taxFreeAllowance);
+    
+    // 1. INCOME TAX (Einkommensteuer) - Using the complex function
+    const isMarried = status === 'married';
+    let incomeTax = calculateIncomeTax(netIncome, isMarried);
+
+    // 2. Solidarity Surcharge (Soli: 5.5% of income tax, only if tax > threshold)
+    const soliThreshold = status === 'married' ? 39900 : 19950;
+    let soliTax = 0;
+    if (incomeTax > soliThreshold) {
+        soliTax = incomeTax * 0.055;
+    } 
+    
+    // 3. Church Tax (8.5% average of income tax)
+    let churchTax = 0;
+    if (churchMember) {
+        // We use 8.5% as a general, simplified average (9% or 8% depending on the state).
+        churchTax = incomeTax * 0.085;
+    }
+    
+    // 4. Social Contributions
+    let healthInsurance = 0;
+    let pensionInsurance = 0;
+    let unemploymentInsurance = 0;
+    
+    if (isEmployee) {
+        // Capping Social contributions at the ceiling (Beitragsbemessungsgrenze 2025 geschätst: ~93600 EUR/year)
+        const capIncome = Math.min(income, 93600); 
+        
+        // Health (employee share: 7.3% base + 1.6% average supplement = 8.9%)
+        healthInsurance = capIncome * 0.089;
+        
+        // Pension (employee share: 9.3%)
+        pensionInsurance = capIncome * 0.093;
+        
+        // Unemployment (employee share: 1.2%)
+        unemploymentInsurance = capIncome * 0.012;
+
+    } else {
+        // Freelancer / Self-Employed mode (uses netIncome (Gross - Expenses) for calculation)
+        if (healthType === 'public') {
+            // Full contribution (14.6% base + 4.9% supplement = 19.5% total)
+            const minContribution = 230 * 12; // €2,760
+            const maxContribution = 950 * 12; // €11,400
+            
+            healthInsurance = netIncome * 0.195;
+            healthInsurance = Math.min(Math.max(healthInsurance, minContribution), maxContribution);
+        } else if (healthType === 'private') {
+            healthInsurance = privateHealthCost * 12;
+        }
+        // Pension and Unemployment are generally voluntary/not applicable.
+    }
+    
+    const totalTax = incomeTax + soliTax + churchTax + healthInsurance + pensionInsurance + unemploymentInsurance;
+    const netAfterTax = income - totalTax;
+    const effectiveRate = (totalTax / income * 100).toFixed(1);
+    
+    // Display results
+    const format = (num) => '€' + Math.round(num).toLocaleString('en-US');
+
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(taxableIncome); 
+    document.getElementById('incomeTax').textContent = format(incomeTax);
+    document.getElementById('soliTax').textContent = format(soliTax);
+    
+    if (churchMember) {
+        document.getElementById('churchTaxRow').style.display = 'flex';
+        document.getElementById('churchTax').textContent = format(churchTax);
+    } else {
+        document.getElementById('churchTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('healthInsurance').textContent = format(healthInsurance);
+    
+    if (isEmployee) {
+        document.getElementById('pensionRow').style.display = 'flex';
+        document.getElementById('unemploymentRow').style.display = 'flex';
+        document.getElementById('pensionInsurance').textContent = format(pensionInsurance);
+        document.getElementById('unemploymentInsurance').textContent = format(unemploymentInsurance);
+    } else {
+        document.getElementById('pensionRow').style.display = 'none';
+        document.getElementById('unemploymentRow').style.display = 'none';
+    }
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+// ИСПРАВЛЕННЫЙ БЛОК: убираем авто-расчет при загрузке, оставляем только визуальную логику.
+document.addEventListener('DOMContentLoaded', function() {
+    toggleHealthInsuranceInput();
+    // НЕ ЗАПУСКАЕМ calculateTax()
+});
+
+</script>

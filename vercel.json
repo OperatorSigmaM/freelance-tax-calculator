@@ -1,0 +1,126 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "redirects": [
+    {
+      "source": "/home.html",
+      "destination": "/home/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/bmi.html",
+      "destination": "/bmi/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator.html",
+      "destination": "/loan-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/salary-hourly.html",
+      "destination": "/salary-hourly/",
+      "permanent": true
+    },
+    {
+      "source": "/tip-calculator.html",
+      "destination": "/tip-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/retirement.html",
+      "destination": "/retirement/",
+      "permanent": true
+    },
+    {
+      "source": "/tax-calculators.html",
+      "destination": "/tax-calculators/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/california.html",
+      "destination": "/us-states/california/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/new-york.html",
+      "destination": "/us-states/new-york/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/texas.html",
+      "destination": "/us-states/texas/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/florida.html",
+      "destination": "/us-states/florida/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/washington.html",
+      "destination": "/us-states/washington/",
+      "permanent": true
+    },
+    {
+      "source": "/us-states/arizona.html",
+      "destination": "/us-states/arizona/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/uk.html",
+      "destination": "/europe/uk/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/germany.html",
+      "destination": "/europe/germany/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/france.html",
+      "destination": "/europe/france/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/netherlands.html",
+      "destination": "/europe/netherlands/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/spain.html",
+      "destination": "/europe/spain/",
+      "permanent": true
+    },
+    {
+      "source": "/europe/italy.html",
+      "destination": "/europe/italy/",
+      "permanent": true
+    },
+    {
+      "source": "/other/canada.html",
+      "destination": "/other/canada/",
+      "permanent": true
+    },
+    {
+      "source": "/other/australia.html",
+      "destination": "/other/australia/",
+      "permanent": true
+    },
+    {
+      "source": "/other/japan.html",
+      "destination": "/other/japan/",
+      "permanent": true
+    },
+    {
+      "source": "/other/singapore.html",
+      "destination": "/other/singapore/",
+      "permanent": true
+    }
+  ]
+}

@@ -1,0 +1,454 @@
+---
+layout: base.njk
+title: Salary to Hourly Calculator 2025 | Convert Annual Salary to Hourly Rate
+description: Convert annual salary to hourly rate and vice versa. Free salary calculator with weekly, monthly, and yearly breakdowns.
+keywords: salary to hourly, hourly to salary, salary calculator, hourly rate calculator, annual salary converter
+permalink: /salary-hourly/
+---
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Весь CSS-код навигации (Mega Menu Styles, .mega-nav, .nav-container, .nav-logo, .nav-menu и media-запросы для мобильного меню) был здесь и УДАЛЕН. */
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-top: 110px;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .result-row:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+        <h1>💵 Salary ↔ Hourly Calculator</h1>
+        <p class="subtitle">Convert between annual salary and hourly rate</p>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('salary')">Salary → Hourly</button>
+            <button class="tab" onclick="switchTab('hourly')">Hourly → Salary</button>
+        </div>
+        
+        <div id="salary-content" class="tab-content active">
+            <div class="input-group">
+                <label for="annualSalary">Annual Salary ($)</label>
+                <input type="number" id="annualSalary" placeholder="e.g., 60000" min="0" step="1000">
+            </div>
+            
+            <div class="input-group">
+                <label for="hoursPerWeek">Hours per Week</label>
+                <input type="number" id="hoursPerWeek" placeholder="e.g., 40" value="40" min="1" max="168">
+            </div>
+            
+            <div class="input-group">
+                <label for="weeksPerYear">Weeks per Year</label>
+                <input type="number" id="weeksPerYear" placeholder="e.g., 52" value="52" min="1" max="52">
+            </div>
+            
+            <button class="btn" onclick="calculateFromSalary()">Calculate Hourly Rate</button>
+        </div>
+        
+        <div id="hourly-content" class="tab-content">
+            <div class="input-group">
+                <label for="hourlyRate">Hourly Rate ($)</label>
+                <input type="number" id="hourlyRate" placeholder="e.g., 28.85" min="0" step="0.01">
+            </div>
+            
+            <div class="input-group">
+                <label for="hoursPerWeek2">Hours per Week</label>
+                <input type="number" id="hoursPerWeek2" placeholder="e.g., 40" value="40" min="1" max="168">
+            </div>
+            
+            <div class="input-group">
+                <label for="weeksPerYear2">Weeks per Year</label>
+                <input type="number" id="weeksPerYear2" placeholder="e.g., 52" value="52" min="1" max="52">
+            </div>
+            
+            <button class="btn" onclick="calculateFromHourly()">Calculate Annual Salary</button>
+        </div>
+        
+        <div class="results" id="results">
+            <div class="result-row">
+                <span class="result-label">Hourly Rate</span>
+                <span class="result-value highlight" id="resultHourly">$0.00</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Weekly Earnings</span>
+                <span class="result-value" id="resultWeekly">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Monthly Earnings</span>
+                <span class="result-value" id="resultMonthly">$0</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Annual Salary</span>
+                <span class="result-value" id="resultAnnual">$0</span>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>Note:</strong> This calculator assumes a standard work schedule. Actual earnings may vary based on overtime, bonuses, taxes, and other factors.
+        </div>
+        
+        <div style="margin-top: 40px; padding: 30px; background: white; border-radius: 12px; line-height: 1.8; color: #333;">
+            <h2 style="color: #667eea; margin-bottom: 20px; font-size: 24px;">Understanding Salary vs. Hourly Pay</h2>
+            
+            <p style="margin-bottom: 15px;">
+                Converting between annual salary and hourly rate helps you compare job offers, negotiate compensation, and understand your true earning potential. Whether you're a freelancer, contractor, or considering a career change, knowing your hourly worth is essential.
+            </p>
+            
+            <h3 style="color: #333; margin-top: 25px; margin-bottom: 15px; font-size: 20px;">Standard Work Calculations</h3>
+            
+            <p style="margin-bottom: 15px;">
+                The standard full-time work schedule in the United States is:
+            </p>
+            
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;"><strong>40 hours per week</strong></li>
+                <li style="margin-bottom: 8px;"><strong>52 weeks per year</strong></li>
+                <li style="margin-bottom: 8px;"><strong>2,080 total hours annually</strong> (40 × 52)</li>
+            </ul>
+            
+            <p style="margin-bottom: 15px;">
+                However, many calculations use <strong>50 weeks</strong> to account for unpaid vacation time (2 weeks), resulting in 2,000 hours per year.
+            </p>
+            
+            <h3 style="color: #333; margin-top: 25px; margin-bottom: 15px; font-size: 20px;">Salary vs. Hourly: Which is Better?</h3>
+            
+            <p style="margin-bottom: 15px;">
+                <strong>Salaried positions typically offer:</strong>
+            </p>
+            
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;">Predictable income</li>
+                <li style="margin-bottom: 8px;">Benefits (health insurance, retirement plans)</li>
+                <li style="margin-bottom: 8px;">Paid time off</li>
+                <li style="margin-bottom: 8px;">Professional development opportunities</li>
+            </ul>
+            
+            <p style="margin-bottom: 15px;">
+                <strong>Hourly positions typically offer:</strong>
+            </p>
+            
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;">Overtime pay eligibility</li>
+                <li style="margin-bottom: 8px;">Flexible scheduling</li>
+                <li style="margin-bottom: 8px;">Clear compensation for extra work</li>
+                <li style="margin-bottom: 8px;">Part-time options</li>
+            </ul>
+            
+            <h3 style="color: #333; margin-top: 25px; margin-bottom: 15px; font-size: 20px;">Freelance and Contract Rates</h3>
+            
+            <p style="margin-bottom: 15px;">
+                When setting freelance rates, remember to account for:
+            </p>
+            
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;">Self-employment taxes (15.3% in the US)</li>
+                <li style="margin-bottom: 8px;">Health insurance costs</li>
+                <li style="margin-bottom: 8px;">Retirement contributions</li>
+                <li style="margin-bottom: 8px;">Unpaid time off and business expenses</li>
+            </ul>
+            
+            <p style="margin-bottom: 15px;">
+                Many freelancers charge <strong>1.5-2x their target salary rate</strong> to cover these additional costs and non-billable time.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FinTools | Free calculators for everyone</p>
+    </footer>
+
+    <script>
+        // Код JS для навигации был здесь и УДАЛЕН.
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            if (tab === 'salary') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('salary-content').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('hourly-content').classList.add('active');
+            }
+            
+            document.getElementById('results').classList.remove('show');
+        }
+        
+        function calculateFromSalary() {
+            const salary = parseFloat(document.getElementById('annualSalary').value) || 0;
+            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
+            const weeksPerYear = parseFloat(document.getElementById('weeksPerYear').value) || 52;
+            
+            if (salary <= 0) {
+                alert('Please enter a valid salary');
+                return;
+            }
+            
+            const totalHours = hoursPerWeek * weeksPerYear;
+            const hourlyRate = salary / totalHours;
+            const weekly = hourlyRate * hoursPerWeek;
+            const monthly = salary / 12;
+            
+            displayResults(hourlyRate, weekly, monthly, salary);
+        }
+        
+        function calculateFromHourly() {
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek2').value) || 40;
+            const weeksPerYear = parseFloat(document.getElementById('weeksPerYear2').value) || 52;
+            
+            if (hourlyRate <= 0) {
+                alert('Please enter a valid hourly rate');
+                return;
+            }
+            
+            const weekly = hourlyRate * hoursPerWeek;
+            const annual = weekly * weeksPerYear;
+            const monthly = annual / 12;
+            
+            displayResults(hourlyRate, weekly, monthly, annual);
+        }
+        
+        function displayResults(hourly, weekly, monthly, annual) {
+            document.getElementById('resultHourly').textContent = '$' + hourly.toFixed(2);
+            document.getElementById('resultWeekly').textContent = '$' + weekly.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('resultMonthly').textContent = '$' + monthly.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('resultAnnual').textContent = '$' + annual.toLocaleString('en-US', {maximumFractionDigits: 0});
+            
+            document.getElementById('results').classList.add('show');
+        }
+    </script>
+    <script src="./MegaNav.js"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KZMTMFZT66');
+
+
+
+        // Код JS для навигации был здесь и УДАЛЕН.
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            if (tab === 'salary') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('salary-content').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('hourly-content').classList.add('active');
+            }
+            
+            document.getElementById('results').classList.remove('show');
+        }
+        
+        function calculateFromSalary() {
+            const salary = parseFloat(document.getElementById('annualSalary').value) || 0;
+            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
+            const weeksPerYear = parseFloat(document.getElementById('weeksPerYear').value) || 52;
+            
+            if (salary <= 0) {
+                alert('Please enter a valid salary');
+                return;
+            }
+            
+            const totalHours = hoursPerWeek * weeksPerYear;
+            const hourlyRate = salary / totalHours;
+            const weekly = hourlyRate * hoursPerWeek;
+            const monthly = salary / 12;
+            
+            displayResults(hourlyRate, weekly, monthly, salary);
+        }
+        
+        function calculateFromHourly() {
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek2').value) || 40;
+            const weeksPerYear = parseFloat(document.getElementById('weeksPerYear2').value) || 52;
+            
+            if (hourlyRate <= 0) {
+                alert('Please enter a valid hourly rate');
+                return;
+            }
+            
+            const weekly = hourlyRate * hoursPerWeek;
+            const annual = weekly * weeksPerYear;
+            const monthly = annual / 12;
+            
+            displayResults(hourlyRate, weekly, monthly, annual);
+        }
+        
+        function displayResults(hourly, weekly, monthly, annual) {
+            document.getElementById('resultHourly').textContent = '$' + hourly.toFixed(2);
+            document.getElementById('resultWeekly').textContent = '$' + weekly.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('resultMonthly').textContent = '$' + monthly.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('resultAnnual').textContent = '$' + annual.toLocaleString('en-US', {maximumFractionDigits: 0});
+            
+            document.getElementById('results').classList.add('show');
+        }
+    
+</script>

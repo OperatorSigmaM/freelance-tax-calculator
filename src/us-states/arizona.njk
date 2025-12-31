@@ -1,0 +1,808 @@
+---
+layout: base.njk
+title: Arizona State Tax Calculator 2025 | AZ Income Tax Calculator
+description: Free Arizona state income tax calculator for 2025. AZ has a flat 2.5% tax rate with capital gains deduction. Calculate your federal + state taxes with updated rates.
+permalink: /us-states/arizona/
+---
+
+<style>
+
+/* СТИЛИ НАВИГАЦИИ УДАЛЕНЫ. Они должны подтягиваться из MegaNav.js */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            /* Отступ, чтобы контент не наползал на фиксированное меню */
+            padding: 110px 20px 40px; 
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #D2691E 0%, #CD5C5C 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .flat-tax-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #C44569 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .flat-tax-banner h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .flat-tax-banner p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .highlight-box {
+            background: #ffe6e6;
+            border-left: 4px solid #FF6B6B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .retiree-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0077BE;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🌵 ARIZONA</div>
+    <h1>Arizona State Tax Calculator 2025</h1>
+    <p class="subtitle">Calculate AZ state + federal taxes with flat 2.5% rate</p>
+    
+    <div class="flat-tax-banner">
+        <h2>🌵 FLAT 2.5% STATE TAX 🌵</h2>
+        <p>Simple flat tax for everyone! Plus 25% deduction on long-term capital gains</p>
+    </div>
+    
+    <div class="input-group">
+        <label>Filing Status</label>
+        <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="head">Head of Household</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Gross Income (Annual)</label>
+        <input type="number" id="income" placeholder="e.g., 75000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual)</label>
+        <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
+    </div>
+
+    <div class="input-group">
+        <label>Long-term Capital Gains <span class="label-hint">- held >1 year (25% deductible!)</span></label>
+        <input type="number" id="ltCapitalGains" placeholder="e.g., 50000" min="0" value="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Number of Dependents</label>
+        <input type="number" id="dependents" placeholder="0" min="0" value="0">
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">📊 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Net Income</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row" id="ltCgRow" style="display: none;">
+                <span class="result-label">Long-term Capital Gains</span>
+                <span class="result-value" id="ltCgDisplay"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🇺🇸 Federal Taxes</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax</span>
+                <span class="result-value" id="federalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Self-Employment Tax</span>
+                <span class="result-value" id="seTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">🌵 Arizona State</div>
+            <div class="result-row">
+                <span class="result-label">State Income Tax (2.5% flat)</span>
+                <span class="result-value" id="stateTax"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax Owed</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <strong>Simple & Fair!</strong> Arizona has a flat 2.5% state income tax for everyone. Long-term capital gains get 25% deducted, making the effective rate just 1.875%!
+    </div>
+    
+    <div class="content-section">
+        <h2>Arizona State Income Tax Guide 2025</h2>
+        
+        <p>
+            <strong>Arizona switched to a flat 2.5% income tax in 2024,</strong> replacing the previous progressive system with multiple brackets. This makes Arizona one of the most tax-friendly states in the nation with a simple, predictable tax rate.
+        </p>
+
+        <div class="highlight-box">
+            <strong>🎯 Arizona Flat Tax Benefits:</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>2.5% flat rate</strong> - same for everyone regardless of income</li>
+                <li><strong>25% deduction</strong> on long-term capital gains (effective rate: 1.875%)</li>
+                <li><strong>Simple calculation</strong> - no complex brackets</li>
+                <li><strong>Tax-friendly</strong> compared to California (13.3%) or New York (10.9%)</li>
+            </ul>
+        </div>
+
+        <div class="retiree-box">
+            <strong>🌴 Great for Retirees:</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>No tax on Social Security</strong> benefits</li>
+                <li><strong>Military retirement pay</strong> fully exempt</li>
+                <li><strong>Low property taxes</strong> (~0.45% - 4th lowest in US)</li>
+                <li><strong>Warm weather</strong> year-round</li>
+            </ul>
+        </div>
+
+        <h3>Arizona Tax History</h3>
+
+        <p>
+            Before 2024, Arizona had a progressive tax system with rates from 2.55% to 4.5%. The state simplified to a flat 2.5% rate, making tax filing easier for residents and businesses.
+        </p>
+        
+        <h3>What Taxes Do You Pay in Arizona?</h3>
+        
+        <p>Arizona residents pay the following taxes:</p>
+        
+        <ul>
+            <li><strong>Federal Income Tax:</strong> Standard federal rates apply (10% - 37%)</li>
+            <li><strong>Federal Self-Employment Tax:</strong> 15.3% on net self-employment income</li>
+            <li><strong>Arizona State Tax:</strong> 2.5% flat rate on taxable income</li>
+            <li><strong>Property Tax:</strong> ~0.45% average (4th lowest in US!)</li>
+            <li><strong>Sales Tax:</strong> 5.6% state + local = 8.38% average</li>
+        </ul>
+
+        <h3>Arizona Capital Gains Treatment</h3>
+
+        <p><strong>Long-term Capital Gains (held > 1 year):</strong></p>
+        <ul>
+            <li>25% of gains are deductible from Arizona taxable income</li>
+            <li>Effective tax rate: 2.5% × 75% = <strong>1.875%</strong></li>
+            <li>Much lower than California (13.3%) or New York (8.82%)</li>
+        </ul>
+
+        <p><strong>Short-term Capital Gains (held ≤ 1 year):</strong></p>
+        <ul>
+            <li>Taxed as ordinary income at 2.5% flat rate</li>
+            <li>No special deduction</li>
+        </ul>
+
+        <h3>Arizona Standard Deduction 2025</h3>
+        
+        <ul>
+            <li><strong>Single:</strong> $14,600</li>
+            <li><strong>Married Filing Jointly:</strong> $29,200</li>
+            <li><strong>Head of Household:</strong> $21,900</li>
+            <li><strong>Dependent Exemption:</strong> $2,500 per dependent</li>
+        </ul>
+
+        <h3>Tax Exemptions in Arizona</h3>
+
+        <ul>
+            <li><strong>Social Security Benefits:</strong> Fully exempt from state tax</li>
+            <li><strong>Military Retirement Pay:</strong> 100% exempt</li>
+            <li><strong>Railroad Retirement:</strong> Fully exempt</li>
+            <li><strong>529 College Savings:</strong> Contributions deductible up to $4,000/year</li>
+        </ul>
+        
+        <h3>2025 Federal Tax Brackets (Applies to AZ Residents)</h3>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>10%</td><td>$0 - $11,925</td><td>$0 - $23,850</td></tr>
+                <tr><td>12%</td><td>$11,926 - $48,475</td><td>$23,851 - $96,950</td></tr>
+                <tr><td>22%</td><td>$48,476 - $103,350</td><td>$96,951 - $206,700</td></tr>
+                <tr><td>24%</td><td>$103,351 - $197,300</td><td>$206,701 - $394,600</td></tr>
+                <tr><td>32%</td><td>$197,301 - $250,525</td><td>$394,601 - $501,050</td></tr>
+                <tr><td>35%</td><td>$250,526 - $626,350</td><td>$501,051 - $751,600</td></tr>
+                <tr><td>37%</td><td>$626,351+</td><td>$751,601+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Federal Standard Deduction 2025</h3>
+        
+        <ul>
+            <li><strong>Single:</strong> $15,750</li>
+            <li><strong>Married Filing Jointly:</strong> $31,500</li>
+            <li><strong>Head of Household:</strong> $23,700</li>
+        </ul>
+        
+        <h3>Pros and Cons of Living in Arizona</h3>
+        
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>Simple flat 2.5% state income tax</li>
+            <li>Very low property taxes (0.45% average)</li>
+            <li>No tax on Social Security or military retirement</li>
+            <li>Low capital gains tax (effective 1.875% on long-term)</li>
+            <li>Affordable cost of living</li>
+            <li>Warm, sunny weather year-round</li>
+            <li>No estate or inheritance tax</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Sales tax averages 8.38%</li>
+            <li>Very hot summers (110°F+)</li>
+            <li>Limited water resources</li>
+            <li>Growing rapidly (increased traffic)</li>
+        </ul>
+
+        <h3>Arizona vs Other States</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Income Tax</th>
+                    <th>Property Tax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Arizona</td><td>2.5% flat</td><td>0.45%</td></tr>
+                <tr><td>California</td><td>1% - 13.3%</td><td>0.72%</td></tr>
+                <tr><td>Texas</td><td>0%</td><td>1.47%</td></tr>
+                <tr><td>Florida</td><td>0%</td><td>0.79%</td></tr>
+                <tr><td>Nevada</td><td>0%</td><td>0.51%</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Who Should Move to Arizona?</h3>
+
+        <ul>
+            <li><strong>Retirees:</strong> No SS tax, low property tax, warm weather</li>
+            <li><strong>Remote Workers:</strong> Low flat tax keeps more income</li>
+            <li><strong>Investors:</strong> Only 1.875% effective rate on long-term gains</li>
+            <li><strong>Small Business Owners:</strong> Simple 2.5% flat tax</li>
+            <li><strong>California Escapees:</strong> Save 10.8% on income taxes!</li>
+        </ul>
+        
+        <p>
+            <strong>Important:</strong> This calculator provides estimates for Arizona state tax combined with federal taxes. Arizona's flat 2.5% rate and capital gains deduction make calculations straightforward. For complete tax planning, consult with an Arizona CPA or tax professional.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Arizona Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025 tax year with flat 2.5% rate 🌵</p>
+</footer>
+
+<script src="../MegaNav.js"></script>
+
+<script>
+function format(number) {
+    // Форматирование в виде $X,XXX (округление до целых)
+    return '$' + Math.round(number).toLocaleString();
+}
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const ltCapitalGains = parseFloat(document.getElementById('ltCapitalGains').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const dependents = parseInt(document.getElementById('dependents').value) || 0;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    // Net Income (Ordinary Income - Expenses)
+    const netIncome = income - expenses;
+    
+    // Federal tax calculation
+    let federalStandardDeduction = 15750;
+    if (status === 'married') federalStandardDeduction = 31500;
+    if (status === 'head') federalStandardDeduction = 23700;
+    
+    // Self-Employment Tax Deduction (Simplified: half of SE Tax)
+    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+    
+    // ФИКС: Включаем капитальные доходы в федеральную налоговую базу
+    const federalTaxableIncome = Math.max(0, netIncome + ltCapitalGains - federalStandardDeduction - seDeduction);
+    
+    let federalBrackets = [];
+    if (status === 'single') {
+        federalBrackets = [
+            [11925, 0.1],
+            [48475, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250525, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    } else if (status === 'married') {
+        federalBrackets = [
+            [23850, 0.1],
+            [96950, 0.12],
+            [206700, 0.22],
+            [394600, 0.24],
+            [501050, 0.32],
+            [751600, 0.35],
+            [99999999, 0.37]
+        ];
+    } else { // Head of Household
+        federalBrackets = [
+            [17000, 0.1],
+            [64850, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250500, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    }
+    
+    let federalTax = 0;
+    let remaining = federalTaxableIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < federalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = federalBrackets[i][0];
+        const bracketRate = federalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        federalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Self-Employment Tax (15.3% on 92.35% of net income)
+    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
+    
+    // Arizona State Tax - Flat 2.5%
+    let azStandardDeduction = 14600;
+    if (status === 'married') azStandardDeduction = 29200;
+    if (status === 'head') azStandardDeduction = 21900;
+    
+    const dependentExemption = dependents * 2500;
+    
+    // Long-term capital gains get 25% deducted for AZ (taxable = 75%)
+    const taxableLtCg = ltCapitalGains * 0.75; 
+    
+    // AZ Taxable Income (Ordinary Net Income + Taxable CG - AZ Standard Deduction - Exemptions)
+    const azTaxableIncome = Math.max(0, netIncome + taxableLtCg - azStandardDeduction - dependentExemption);
+    const azStateTax = azTaxableIncome * 0.025; // Flat 2.5%
+    
+    const totalTax = federalTax + selfEmploymentTax + azStateTax;
+    const totalIncome = income + ltCapitalGains;
+    const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
+    
+    // Display results (using the new format function)
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('netIncome').textContent = format(netIncome);
+    
+    if (ltCapitalGains > 0) {
+        document.getElementById('ltCgRow').style.display = 'flex';
+        document.getElementById('ltCgDisplay').textContent = format(ltCapitalGains);
+    } else {
+        document.getElementById('ltCgRow').style.display = 'none';
+    }
+    
+    document.getElementById('federalTax').textContent = format(federalTax);
+    document.getElementById('seTax').textContent = format(selfEmploymentTax);
+    document.getElementById('stateTax').textContent = format(azStateTax);
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('ltCapitalGains').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+// УДАЛЕНЫ ФУНКЦИИ toggleMobileMenu и прочая хуйня, которая теперь в MegaNav.js
+</script>
+
+<script>
+
+function format(number) {
+    // Форматирование в виде $X,XXX (округление до целых)
+    return '$' + Math.round(number).toLocaleString();
+}
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const ltCapitalGains = parseFloat(document.getElementById('ltCapitalGains').value) || 0;
+    const status = document.getElementById('filingStatus').value;
+    const dependents = parseInt(document.getElementById('dependents').value) || 0;
+    
+    if (income <= 0) {
+        alert('Please enter your income');
+        return;
+    }
+    
+    // Net Income (Ordinary Income - Expenses)
+    const netIncome = income - expenses;
+    
+    // Federal tax calculation
+    let federalStandardDeduction = 15750;
+    if (status === 'married') federalStandardDeduction = 31500;
+    if (status === 'head') federalStandardDeduction = 23700;
+    
+    // Self-Employment Tax Deduction (Simplified: half of SE Tax)
+    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
+    
+    // ФИКС: Включаем капитальные доходы в федеральную налоговую базу
+    const federalTaxableIncome = Math.max(0, netIncome + ltCapitalGains - federalStandardDeduction - seDeduction);
+    
+    let federalBrackets = [];
+    if (status === 'single') {
+        federalBrackets = [
+            [11925, 0.1],
+            [48475, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250525, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    } else if (status === 'married') {
+        federalBrackets = [
+            [23850, 0.1],
+            [96950, 0.12],
+            [206700, 0.22],
+            [394600, 0.24],
+            [501050, 0.32],
+            [751600, 0.35],
+            [99999999, 0.37]
+        ];
+    } else { // Head of Household
+        federalBrackets = [
+            [17000, 0.1],
+            [64850, 0.12],
+            [103350, 0.22],
+            [197300, 0.24],
+            [250500, 0.32],
+            [626350, 0.35],
+            [99999999, 0.37]
+        ];
+    }
+    
+    let federalTax = 0;
+    let remaining = federalTaxableIncome;
+    let previousLimit = 0;
+    
+    for (let i = 0; i < federalBrackets.length; i++) {
+        if (remaining <= 0) break;
+        const bracketLimit = federalBrackets[i][0];
+        const bracketRate = federalBrackets[i][1];
+        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
+        federalTax += taxableInBracket * bracketRate;
+        remaining -= taxableInBracket;
+        previousLimit = bracketLimit;
+    }
+    
+    // Self-Employment Tax (15.3% on 92.35% of net income)
+    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
+    
+    // Arizona State Tax - Flat 2.5%
+    let azStandardDeduction = 14600;
+    if (status === 'married') azStandardDeduction = 29200;
+    if (status === 'head') azStandardDeduction = 21900;
+    
+    const dependentExemption = dependents * 2500;
+    
+    // Long-term capital gains get 25% deducted for AZ (taxable = 75%)
+    const taxableLtCg = ltCapitalGains * 0.75; 
+    
+    // AZ Taxable Income (Ordinary Net Income + Taxable CG - AZ Standard Deduction - Exemptions)
+    const azTaxableIncome = Math.max(0, netIncome + taxableLtCg - azStandardDeduction - dependentExemption);
+    const azStateTax = azTaxableIncome * 0.025; // Flat 2.5%
+    
+    const totalTax = federalTax + selfEmploymentTax + azStateTax;
+    const totalIncome = income + ltCapitalGains;
+    const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
+    
+    // Display results (using the new format function)
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('netIncome').textContent = format(netIncome);
+    
+    if (ltCapitalGains > 0) {
+        document.getElementById('ltCgRow').style.display = 'flex';
+        document.getElementById('ltCgDisplay').textContent = format(ltCapitalGains);
+    } else {
+        document.getElementById('ltCgRow').style.display = 'none';
+    }
+    
+    document.getElementById('federalTax').textContent = format(federalTax);
+    document.getElementById('seTax').textContent = format(selfEmploymentTax);
+    document.getElementById('stateTax').textContent = format(azStateTax);
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+    
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('ltCapitalGains').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+// УДАЛЕНЫ ФУНКЦИИ toggleMobileMenu и прочая хуйня, которая теперь в MegaNav.js
+
+</script>

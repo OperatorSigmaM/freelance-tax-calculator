@@ -1,0 +1,723 @@
+---
+layout: base.njk
+title: UK Tax Calculator 2025/26 | British Income Tax Calculator
+description: Free UK tax calculator for 2025/26 tax year. Calculate British income tax and National Insurance for self-employed and employees. Updated with latest HMRC rates.
+permalink: /europe/uk/
+---
+
+<style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            /* Отступ для фиксированного меню */
+            padding-top: 90px;
+            padding-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            margin: 0 auto;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #012169 0%, #C8102E 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+        
+        h3 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .result-section:last-child {
+            border-bottom: none;
+        }
+        
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .result-label {
+            color: #666;
+        }
+        
+        .result-value {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .total-row .result-value {
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .tax-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tax-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #0077BE;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #004085;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            .tax-table {
+                font-size: 12px;
+            }
+            
+            .tax-table th, .tax-table td {
+                padding: 8px;
+            }
+        }
+    
+</style>
+
+<div class="container">
+    <div class="state-badge">🇬🇧 UNITED KINGDOM</div>
+    <h1>UK Tax Calculator 2025/26</h1>
+    <p class="subtitle">Calculate UK income tax and National Insurance for tax year 2025/26</p>
+    
+    <div class="input-group">
+        <label>Annual Income (Gross) <span class="label-hint">- in GBP (£)</span></label>
+        <input type="number" id="income" placeholder="e.g., 50000" min="0">
+    </div>
+    
+    <div class="input-group">
+        <label>Business Expenses (Annual) <span class="label-hint">- allowable deductions</span></label>
+        <input type="number" id="expenses" placeholder="e.g., 5000" min="0" value="0">
+    </div>
+
+    <div class="input-group">
+        <label>Dividend Income (Annual) <span class="label-hint">- if any</span></label>
+        <input type="number" id="dividends" placeholder="e.g., 10000" min="0" value="0">
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="isEmployee">
+        <label for="isEmployee">💼 I'm an employee (PAYE)</label>
+    </div>
+    
+    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+    
+    <div class="results" id="results">
+        <div class="result-section">
+            <div class="result-section-title">💰 Income</div>
+            <div class="result-row">
+                <span class="result-label">Gross Income</span>
+                <span class="result-value" id="grossIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Taxable Income (before Dividend)</span>
+                <span class="result-value" id="taxableIncome"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-section-title">📉 Deductions</div>
+            <div class="result-row">
+                <span class="result-label">Income Tax</span>
+                <span class="result-value" id="incomeTax"></span>
+            </div>
+            <div class="result-row" id="dividendRow" style="display: none;">
+                <span class="result-label">Dividend Income</span>
+                <span class="result-value" id="dividendAmount"></span>
+            </div>
+            <div class="result-row" id="dividendTaxRow" style="display: none;">
+                <span class="result-label">Dividend Tax</span>
+                <span class="result-value" id="dividendTax"></span>
+            </div>
+            <div class="result-row" id="class2Row" style="display: none;">
+                <span class="result-label">Class 2 NI</span>
+                <span class="result-value" id="class2NI"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label" id="niLabel">Class 4 NI</span>
+                <span class="result-value" id="nationalInsurance"></span>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <div class="result-row total-row">
+                <span class="result-label"><strong>Total Tax + NI</strong></span>
+                <span class="result-value" id="totalTax"></span>
+            </div>
+            <div class="result-row total-row">
+                <span class="result-label">Net Income (After Tax)</span>
+                <span class="result-value" id="netIncome"></span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Effective Rate</span>
+                <span class="result-value" id="effectiveRate"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>UK Income Tax and NI Guide 2025/26</h2>
+        <p>The UK tax year runs from 6 April to 5 April. This calculator is based on the rates for 2025/26.</p>
+        
+        <h3>Income Tax Rates (England, Wales, NI)</h3>
+        <p>The Personal Allowance is £12,570. Income above this is taxed at:</p>
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Band</th>
+                    <th>Tax Rate</th>
+                    <th>Taxable Income</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Personal Allowance</td><td>0%</td><td>£0 - £12,570</td></tr>
+                <tr><td>Basic Rate</td><td>20%</td><td>£12,571 - £50,270</td></tr>
+                <tr><td>Higher Rate</td><td>40%</td><td>£50,271 - £125,140</td></tr>
+                <tr><td>Additional Rate</td><td>45%</td><td>£125,140+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>National Insurance (NI) Rates 2025/26</h3>
+        <p>Rates for self-employed (Class 4 NI + Class 2 NI) and employees (Class 1 NI).</p>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Rate</th>
+                    <th>Income Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0%</td><td>£0 - £12,570</td></tr>
+                <tr><td>8%</td><td>£12,571 - £50,270</td></tr>
+                <tr><td>2%</td><td>Above £50,270</td></tr>
+            </tbody>
+        </table>
+        
+        <h3>Dividend Tax Rates 2025/26</h3>
+        <p>Dividend income is taxed differently from employment or self-employment income:</p>
+        <ul>
+            <li><strong>Dividend Allowance:</strong> First £500 tax-free</li>
+            <li><strong>Basic Rate:</strong> 8.75%</li>
+            <li><strong>Higher Rate:</strong> 33.75%</li>
+            <li><strong>Additional Rate:</strong> 39.35%</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h3>Important Note: Scotland</h3>
+            <p>Scotland has different income tax rates and bands from the rest of the UK (England, Wales, and Northern Ireland). This calculator uses the UK-wide rates and <strong>does not</strong> include the Scottish tax rates.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 UK Tax Calculator | Part of FinTools</p>
+    <p>Updated for 2025/26 tax year with HMRC rates 🇬🇧</p>
+</footer>
+
+<!-- Подключение MegaNav.js для навигационного меню -->
+<script src="../MegaNav.js"></script>
+
+<script>
+function format(number) {
+    return '£' + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const dividends = parseFloat(document.getElementById('dividends').value) || 0;
+    const isEmployee = document.getElementById('isEmployee').checked;
+
+    if (income === 0) {
+        alert('Please enter your annual income');
+        return;
+    }
+
+    const netIncome = Math.max(0, income - expenses);
+    
+    let personalAllowance = 12570;
+    if (netIncome > 100000) {
+        const reduction = (netIncome - 100000) / 2;
+        personalAllowance = Math.max(0, 12570 - reduction);
+    }
+
+    const taxableIncome = Math.max(0, netIncome - personalAllowance);
+
+    let incomeTax = 0;
+    if (taxableIncome > 0) {
+        if (taxableIncome <= 37700) {
+            incomeTax = taxableIncome * 0.20;
+        } else if (taxableIncome <= 112570) {
+            incomeTax = (37700 * 0.20) + ((taxableIncome - 37700) * 0.40);
+        } else {
+            incomeTax = (37700 * 0.20) + (74870 * 0.40) + ((taxableIncome - 112570) * 0.45);
+        }
+    }
+    
+    let nationalInsurance = 0;
+    let class2NI = 0;
+    const niLowerThreshold = 12570;
+    
+    if (isEmployee) {
+        if (netIncome > niLowerThreshold) {
+            const lowerBand = Math.min(netIncome, 50270) - niLowerThreshold;
+            const upperBand = Math.max(0, netIncome - 50270);
+            nationalInsurance = (lowerBand * 0.08) + (upperBand * 0.02);
+        }
+    } else {
+        const class2Threshold = 6725;
+        if (netIncome > class2Threshold) {
+            class2NI = 3.45 * 52;
+        }
+        
+        if (netIncome > niLowerThreshold) {
+            const lowerBand = Math.min(netIncome, 50270) - niLowerThreshold;
+            const upperBand = Math.max(0, netIncome - 50270);
+            nationalInsurance = (lowerBand * 0.08) + (upperBand * 0.02);
+        }
+    }
+
+    let dividendTax = 0;
+    if (dividends > 0) {
+        const dividendAllowance = 500;
+        const taxableDividends = Math.max(0, dividends - dividendAllowance);
+        
+        const higherRateStart = 50270;
+        const additionalRateStart = 125140;
+        
+        const basicRateRemaining = Math.max(0, higherRateStart - netIncome);
+        
+        const basicRateDividends = Math.min(taxableDividends, basicRateRemaining);
+        dividendTax += basicRateDividends * 0.0875;
+        
+        let remainingDividends = taxableDividends - basicRateDividends;
+        
+        if (remainingDividends > 0) {
+            const higherRateBandMax = additionalRateStart - Math.max(netIncome, higherRateStart);
+            const higherRateDividends = Math.min(remainingDividends, higherRateBandMax);
+            dividendTax += higherRateDividends * 0.3375;
+            
+            remainingDividends -= higherRateDividends;
+            
+            if (remainingDividends > 0) {
+                dividendTax += remainingDividends * 0.3935;
+            }
+        }
+    }
+
+    const totalTax = incomeTax + nationalInsurance + class2NI + dividendTax;
+    const netAfterTax = income + dividends - totalTax - expenses;
+    const effectiveRate = totalTax / (income + dividends) * 100;
+    
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(netIncome);
+    
+    if (dividends > 0) {
+        document.getElementById('dividendRow').style.display = 'flex';
+        document.getElementById('dividendTaxRow').style.display = 'flex';
+        document.getElementById('dividendAmount').textContent = format(dividends);
+        document.getElementById('dividendTax').textContent = format(dividendTax);
+    } else {
+        document.getElementById('dividendRow').style.display = 'none';
+        document.getElementById('dividendTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('incomeTax').textContent = format(incomeTax);
+    
+    if (!isEmployee && class2NI > 0) {
+        document.getElementById('class2Row').style.display = 'flex';
+        document.getElementById('class2NI').textContent = format(class2NI);
+    } else {
+        document.getElementById('class2Row').style.display = 'none';
+    }
+    
+    document.getElementById('niLabel').textContent = isEmployee ? 'Class 1 NI' : 'Class 4 NI';
+    document.getElementById('nationalInsurance').textContent = format(nationalInsurance);
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate.toFixed(2) + '%';
+    
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('dividends').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+</script>
+
+<script>
+
+function format(number) {
+    return '£' + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const dividends = parseFloat(document.getElementById('dividends').value) || 0;
+    const isEmployee = document.getElementById('isEmployee').checked;
+
+    if (income === 0) {
+        alert('Please enter your annual income');
+        return;
+    }
+
+    const netIncome = Math.max(0, income - expenses);
+    
+    let personalAllowance = 12570;
+    if (netIncome > 100000) {
+        const reduction = (netIncome - 100000) / 2;
+        personalAllowance = Math.max(0, 12570 - reduction);
+    }
+
+    const taxableIncome = Math.max(0, netIncome - personalAllowance);
+
+    let incomeTax = 0;
+    if (taxableIncome > 0) {
+        if (taxableIncome <= 37700) {
+            incomeTax = taxableIncome * 0.20;
+        } else if (taxableIncome <= 112570) {
+            incomeTax = (37700 * 0.20) + ((taxableIncome - 37700) * 0.40);
+        } else {
+            incomeTax = (37700 * 0.20) + (74870 * 0.40) + ((taxableIncome - 112570) * 0.45);
+        }
+    }
+    
+    let nationalInsurance = 0;
+    let class2NI = 0;
+    const niLowerThreshold = 12570;
+    
+    if (isEmployee) {
+        if (netIncome > niLowerThreshold) {
+            const lowerBand = Math.min(netIncome, 50270) - niLowerThreshold;
+            const upperBand = Math.max(0, netIncome - 50270);
+            nationalInsurance = (lowerBand * 0.08) + (upperBand * 0.02);
+        }
+    } else {
+        const class2Threshold = 6725;
+        if (netIncome > class2Threshold) {
+            class2NI = 3.45 * 52;
+        }
+        
+        if (netIncome > niLowerThreshold) {
+            const lowerBand = Math.min(netIncome, 50270) - niLowerThreshold;
+            const upperBand = Math.max(0, netIncome - 50270);
+            nationalInsurance = (lowerBand * 0.08) + (upperBand * 0.02);
+        }
+    }
+
+    let dividendTax = 0;
+    if (dividends > 0) {
+        const dividendAllowance = 500;
+        const taxableDividends = Math.max(0, dividends - dividendAllowance);
+        
+        const higherRateStart = 50270;
+        const additionalRateStart = 125140;
+        
+        const basicRateRemaining = Math.max(0, higherRateStart - netIncome);
+        
+        const basicRateDividends = Math.min(taxableDividends, basicRateRemaining);
+        dividendTax += basicRateDividends * 0.0875;
+        
+        let remainingDividends = taxableDividends - basicRateDividends;
+        
+        if (remainingDividends > 0) {
+            const higherRateBandMax = additionalRateStart - Math.max(netIncome, higherRateStart);
+            const higherRateDividends = Math.min(remainingDividends, higherRateBandMax);
+            dividendTax += higherRateDividends * 0.3375;
+            
+            remainingDividends -= higherRateDividends;
+            
+            if (remainingDividends > 0) {
+                dividendTax += remainingDividends * 0.3935;
+            }
+        }
+    }
+
+    const totalTax = incomeTax + nationalInsurance + class2NI + dividendTax;
+    const netAfterTax = income + dividends - totalTax - expenses;
+    const effectiveRate = totalTax / (income + dividends) * 100;
+    
+    document.getElementById('grossIncome').textContent = format(income);
+    document.getElementById('taxableIncome').textContent = format(netIncome);
+    
+    if (dividends > 0) {
+        document.getElementById('dividendRow').style.display = 'flex';
+        document.getElementById('dividendTaxRow').style.display = 'flex';
+        document.getElementById('dividendAmount').textContent = format(dividends);
+        document.getElementById('dividendTax').textContent = format(dividendTax);
+    } else {
+        document.getElementById('dividendRow').style.display = 'none';
+        document.getElementById('dividendTaxRow').style.display = 'none';
+    }
+    
+    document.getElementById('incomeTax').textContent = format(incomeTax);
+    
+    if (!isEmployee && class2NI > 0) {
+        document.getElementById('class2Row').style.display = 'flex';
+        document.getElementById('class2NI').textContent = format(class2NI);
+    } else {
+        document.getElementById('class2Row').style.display = 'none';
+    }
+    
+    document.getElementById('niLabel').textContent = isEmployee ? 'Class 1 NI' : 'Class 4 NI';
+    document.getElementById('nationalInsurance').textContent = format(nationalInsurance);
+    
+    document.getElementById('totalTax').textContent = format(totalTax);
+    document.getElementById('netIncome').textContent = format(netAfterTax);
+    document.getElementById('effectiveRate').textContent = effectiveRate.toFixed(2) + '%';
+    
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('income').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('expenses').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+document.getElementById('dividends').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') calculateTax();
+});
+
+</script>
