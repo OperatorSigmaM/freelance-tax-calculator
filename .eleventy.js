@@ -1,4 +1,14 @@
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
+
 module.exports = function(eleventyConfig) {
+  // Авто-генерация сайтмапа
+  eleventyConfig.addPlugin(sitemap, {
+    sitemap: {
+      hostname: "https://freelance-tax-calculator-lime.vercel.app",
+    },
+  });
+
+  // Копируем статику
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
