@@ -1,22 +1,12 @@
 {
   "name": "freelance-tax-calculator",
   "version": "1.0.0",
-  "description": "Free financial calculators built with Eleventy",
-  "main": ".eleventy.js",
+  "description": "Free financial calculators",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy",
-    "clean": "rm -rf _site"
+    "build": "npx @11ty/eleventy"
   },
-  "keywords": [
-    "calculator",
-    "tax",
-    "eleventy",
-    "finance"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^3.0.0"
   }
 }
