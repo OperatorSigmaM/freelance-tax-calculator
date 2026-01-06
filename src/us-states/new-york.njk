@@ -602,9 +602,9 @@ function calculateTax() {
     
     const totalTax = federalTax + selfEmploymentTax + nyStateTax + nycCityTax;
     
-    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.html.
+    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.
     // Если на Gross, то `income`. Если на Net Income, то `netIncome`. 
-    // Поскольку в florida.html и california.html мы использовали income (Gross Income), будем придерживаться этого.
+    // Поскольку в florida и california мы использовали income (Gross Income), будем придерживаться этого.
     const effectiveRate = (totalTax / income * 100).toFixed(1); 
     
     // Display results
@@ -814,9 +814,9 @@ function calculateTax() {
     
     const totalTax = federalTax + selfEmploymentTax + nyStateTax + nycCityTax;
     
-    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.html.
+    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.
     // Если на Gross, то `income`. Если на Net Income, то `netIncome`. 
-    // Поскольку в florida.html и california.html мы использовали income (Gross Income), будем придерживаться этого.
+    // Поскольку в florida и california мы использовали income (Gross Income), будем придерживаться этого.
     const effectiveRate = (totalTax / income * 100).toFixed(1); 
     
     // Display results
