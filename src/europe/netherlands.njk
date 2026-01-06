@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: Netherlands Tax Calculator 2025 | Dutch Income Tax Calculator
-description: Free Netherlands tax calculator for 2025. Calculate Dutch income tax with Box 1, 2, and 3. For freelancers (ZZP) and employees with all deductions.
+title: Netherlands Tax Calculator 2026 | Dutch Income Tax Calculator
+description: Free Netherlands tax calculator for 2026. Calculate Dutch income tax with Box 1, 2, and 3. For freelancers (ZZP) and employees with all deductions.
 permalink: /europe/netherlands/
 ---
 
@@ -282,7 +282,7 @@ permalink: /europe/netherlands/
 
 <div class="container">
     <div class="state-badge">🇳🇱 NETHERLANDS</div>
-    <h1>Netherlands Tax Calculator 2025</h1>
+    <h1>Netherlands Tax Calculator 2026</h1>
     <p class="subtitle">Calculate Dutch income tax with Box 1, 2, and 3 system</p>
     
     <div class="checkbox-group">
@@ -398,17 +398,17 @@ permalink: /europe/netherlands/
     </div>
     
     <div class="info">
-        <strong>Note:</strong> This calculator estimates Netherlands income tax for 2025. It includes crucial **Tax Credits (Heffingskortingen)** which significantly lower the final tax bill. Box 3 is simplified. Consult a Dutch tax advisor (belastingadviseur) for accurate planning.
+        <strong>Note:</strong> This calculator estimates Netherlands income tax for 2026. It includes crucial **Tax Credits (Heffingskortingen)** which significantly lower the final tax bill. Box 3 is simplified. Consult a Dutch tax advisor (belastingadviseur) for accurate planning.
     </div>
     
     <div class="content-section">
-        <h2>Netherlands Tax System Guide 2025</h2>
+        <h2>Netherlands Tax System Guide 2026</h2>
         
         <p>
             The Netherlands uses a unique 3-box tax system where different types of income are taxed separately at different rates.
         </p>
 
-        <h3>Box 1: Income from Work and Home (2025 Rates)</h3>
+        <h3>Box 1: Income from Work and Home (2026 Rates)</h3>
         
         <table class="tax-table">
             <thead>
@@ -432,7 +432,7 @@ permalink: /europe/netherlands/
             <li>Primary home ownership value</li>
         </ul>
 
-        <h3>Box 2: Substantial Interest (2025 Rates)</h3>
+        <h3>Box 2: Substantial Interest (2026 Rates)</h3>
         
         <table class="tax-table">
             <thead>
@@ -454,7 +454,7 @@ permalink: /europe/netherlands/
             <li>Common for BV (Dutch private company) owners</li>
         </ul>
 
-        <h3>Box 3: Savings and Investments (2025)</h3>
+        <h3>Box 3: Savings and Investments (2026)</h3>
 
         <div class="highlight-box">
             <strong>Box 3 Tax Calculation:</strong>
@@ -462,7 +462,7 @@ permalink: /europe/netherlands/
                 <li>**Tax-free allowance:** €57,684 (single) or €115,368 (married)</li>
                 <li>**Tax rate:** 36% on deemed return</li>
                 <li>**Deemed return:** Calculated based on asset allocation (savings vs investments)</li>
-                <li>**2025 rates (simplified):** We use a simplified average rate for this calculator.</li>
+                <li>**2026 rates (simplified):** We use a simplified average rate for this calculator.</li>
             </ul>
         </div>
 
@@ -478,7 +478,7 @@ permalink: /europe/netherlands/
 
         <p><strong>Zelfstandigenaftrek (Self-employed deduction):</strong></p>
         <ul>
-            <li>**Amount:** €2,470 (2025)</li>
+            <li>**Amount:** €2,470 (2026)</li>
             <li>**Requirement:** Work 1,225+ hours as self-employed</li>
             <li>**Reduces taxable income in Box 1**</li>
         </ul>
@@ -622,7 +622,7 @@ function calculateCredits(grossIncome, isEmployee) {
     let labourCredit = 0;  // Arbeidskorting (AK)
     const incomeForCredits = grossIncome;
     
-    // --- 1. Algemene heffingskorting (AHK) 2025 (Simplified) ---
+    // --- 1. Algemene heffingskorting (AHK) 2026 (Simplified) ---
     // Max 3360. Tapers down linearly between €22,000 and €76,000
     const AHK_MAX = 3360;
     const AHK_LOW_THRESHOLD = 22000;
@@ -635,7 +635,7 @@ function calculateCredits(grossIncome, isEmployee) {
         generalCredit = AHK_MAX - ((incomeForCredits - AHK_LOW_THRESHOLD) * reductionRate);
     }
 
-    // --- 2. Arbeidskorting (AK) 2025 (Simplified) ---
+    // --- 2. Arbeidskorting (AK) 2026 (Simplified) ---
     // Applies to both employees and ZZP. Max ~5500.
     if (isEmployee || !isEmployee) { 
         if (incomeForCredits <= 37000) {
@@ -676,7 +676,7 @@ function calculateTax() {
         totalDeductions += mkbExemption;
 
         // Zelfstandigenaftrek (Self-employed deduction)
-        const zelfstandigenaftrek = 2470; // 2025 amount
+        const zelfstandigenaftrek = 2470; // 2026 amount
         box1NetProfit -= zelfstandigenaftrek;
         totalDeductions += zelfstandigenaftrek;
         zzpDeductionAmount = Math.round(totalDeductions); // For display
@@ -711,7 +711,7 @@ function calculateTax() {
     
     // --- Box 3 Tax (Savings & Investments) ---
     let box3Tax = 0;
-    const box3Allowance = 57684; // Single allowance 2025
+    const box3Allowance = 57684; // Single allowance 2026
     
     if (box3Assets > box3Allowance) {
         const taxableAssets = box3Assets - box3Allowance;
@@ -799,7 +799,7 @@ function calculateCredits(grossIncome, isEmployee) {
     let labourCredit = 0;  // Arbeidskorting (AK)
     const incomeForCredits = grossIncome;
     
-    // --- 1. Algemene heffingskorting (AHK) 2025 (Simplified) ---
+    // --- 1. Algemene heffingskorting (AHK) 2026 (Simplified) ---
     // Max 3360. Tapers down linearly between €22,000 and €76,000
     const AHK_MAX = 3360;
     const AHK_LOW_THRESHOLD = 22000;
@@ -812,7 +812,7 @@ function calculateCredits(grossIncome, isEmployee) {
         generalCredit = AHK_MAX - ((incomeForCredits - AHK_LOW_THRESHOLD) * reductionRate);
     }
 
-    // --- 2. Arbeidskorting (AK) 2025 (Simplified) ---
+    // --- 2. Arbeidskorting (AK) 2026 (Simplified) ---
     // Applies to both employees and ZZP. Max ~5500.
     if (isEmployee || !isEmployee) { 
         if (incomeForCredits <= 37000) {
@@ -853,7 +853,7 @@ function calculateTax() {
         totalDeductions += mkbExemption;
 
         // Zelfstandigenaftrek (Self-employed deduction)
-        const zelfstandigenaftrek = 2470; // 2025 amount
+        const zelfstandigenaftrek = 2470; // 2026 amount
         box1NetProfit -= zelfstandigenaftrek;
         totalDeductions += zelfstandigenaftrek;
         zzpDeductionAmount = Math.round(totalDeductions); // For display
@@ -888,7 +888,7 @@ function calculateTax() {
     
     // --- Box 3 Tax (Savings & Investments) ---
     let box3Tax = 0;
-    const box3Allowance = 57684; // Single allowance 2025
+    const box3Allowance = 57684; // Single allowance 2026
     
     if (box3Assets > box3Allowance) {
         const taxableAssets = box3Assets - box3Allowance;
