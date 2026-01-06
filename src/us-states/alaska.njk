@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Washington State Tax Calculator 2026 | WA Income Tax Calculator
-description: Free Washington state tax calculator for 2026. WA has NO income tax but has capital gains tax. Calculate your federal + capital gains taxes with updated rates.
-permalink: /us-states/washington/
+title: Alaska State Tax Calculator 2026 | AK Income Tax Calculator
+description: Free Alaska tax calculator for 2026. Alaska has NO state income tax + NO sales tax + Permanent Fund Dividend! Calculate your federal taxes.
+permalink: /us-states/alaska/
 ---
 
 <style>
@@ -31,7 +31,7 @@ permalink: /us-states/washington/
         
         .state-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+            background: linear-gradient(135deg, #003366 0%, #0055A4 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -95,13 +95,6 @@ permalink: /us-states/washington/
             margin-bottom: 8px;
             color: #333;
             font-weight: 500;
-        }
-
-        .label-hint {
-            font-size: 12px;
-            color: #666;
-            font-weight: 400;
-            margin-left: 5px;
         }
         
         input, select {
@@ -184,6 +177,11 @@ permalink: /us-states/washington/
             font-weight: 700;
             font-size: 20px;
         }
+
+        .pfd-bonus {
+            color: #28a745 !important;
+            font-weight: 700;
+        }
         
         .total-row .result-value {
             color: #667eea;
@@ -247,16 +245,16 @@ permalink: /us-states/washington/
         }
 
         .highlight-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
+            background: #e7f3ff;
+            border-left: 4px solid #0077BE;
             padding: 15px;
             margin: 20px 0;
             border-radius: 4px;
         }
 
-        .warning-box {
-            background: #ffe6e6;
-            border-left: 4px solid #dc3545;
+        .pfd-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
             padding: 15px;
             margin: 20px 0;
             border-radius: 4px;
@@ -272,13 +270,13 @@ permalink: /us-states/washington/
 </style>
 
 <div class="container">
-    <div class="state-badge">🌲 WASHINGTON</div>
-    <h1>Washington State Tax Calculator 2026</h1>
-    <p class="subtitle">Calculate your federal taxes - WA has NO income tax (but has capital gains tax)</p>
+    <div class="state-badge">❄️ ALASKA</div>
+    <h1>Alaska Tax Calculator 2026</h1>
+    <p class="subtitle">Calculate your federal taxes - Alaska has NO income tax + NO sales tax + PFD! 🏔️</p>
     
     <div class="no-tax-banner">
-        <h2>🌲 NO STATE INCOME TAX 🌲</h2>
-        <p>Washington has no income tax on wages, but charges 7-9.9% on capital gains over $278k</p>
+        <h2>❄️ NO INCOME TAX + NO SALES TAX ❄️</h2>
+        <p>Alaska pays YOU! Get Permanent Fund Dividend (~$3,800 in 2026)</p>
     </div>
     
     <div class="input-group">
@@ -299,11 +297,6 @@ permalink: /us-states/washington/
         <label>Business Expenses (Annual)</label>
         <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
     </div>
-
-    <div class="input-group">
-        <label>Capital Gains (Annual) <span class="label-hint">- from stocks, crypto, real estate</span></label>
-        <input type="number" id="capitalGains" placeholder="e.g., 50000" min="0" value="0">
-    </div>
     
     <div class="input-group">
         <label>Number of Dependents</label>
@@ -323,10 +316,6 @@ permalink: /us-states/washington/
                 <span class="result-label">Net Income</span>
                 <span class="result-value" id="netIncome"></span>
             </div>
-            <div class="result-row" id="capitalGainsRow" style="display: none;">
-                <span class="result-label">Capital Gains</span>
-                <span class="result-value" id="capitalGainsDisplay"></span>
-            </div>
         </div>
         
         <div class="result-section">
@@ -342,14 +331,14 @@ permalink: /us-states/washington/
         </div>
         
         <div class="result-section">
-            <div class="result-section-title">🌲 Washington State</div>
+            <div class="result-section-title">❄️ Alaska State</div>
             <div class="result-row">
                 <span class="result-label">State Income Tax</span>
                 <span class="result-value zero-tax">$0 (No Tax!)</span>
             </div>
-            <div class="result-row" id="cgTaxRow" style="display: none;">
-                <span class="result-label">Capital Gains Tax</span>
-                <span class="result-value" id="cgTax"></span>
+            <div class="result-row">
+                <span class="result-label">Permanent Fund Dividend (2026 est.)</span>
+                <span class="result-value pfd-bonus">+$3,800</span>
             </div>
         </div>
         
@@ -366,82 +355,83 @@ permalink: /us-states/washington/
     </div>
     
     <div class="info">
-        <strong>Good News!</strong> Washington does not have a state income tax on wages. However, capital gains over $278,000 are taxed at 7% (or 9.9% for gains over $1 million).
+        <strong>Amazing!</strong> Alaska has NO state income tax AND NO state sales tax. Plus, the state PAYS YOU ~$3,800/year through the Permanent Fund Dividend!
     </div>
     
     <div class="content-section">
-        <h2>Washington State Tax Guide 2026</h2>
+        <h2>Alaska Tax Guide 2026</h2>
         
         <p>
-            <strong>Washington is one of only 9 states in the United States with NO state income tax on wages.</strong> However, in 2022, Washington introduced a capital gains tax on high earners.
+            <strong>Alaska is the ONLY state with no income tax AND no statewide sales tax.</strong> Even better, Alaska actually pays residents an annual dividend from oil revenue through the Permanent Fund Dividend (PFD) program.
         </p>
 
-        <div class="warning-box">
-            <strong>⚠️ Washington Capital Gains Tax (NEW 2022):</strong>
+        <div class="pfd-box">
+            <strong>💰 Alaska Permanent Fund Dividend (PFD):</strong>
             <ul style="margin-top: 10px;">
-                <li><strong>7% tax</strong> on capital gains over $278,000 (2025-2026 threshold)</li>
-                <li><strong>9.9% tax</strong> on capital gains over $1 million (new for 2025+)</li>
-                <li>Applies to: stocks, bonds, business interests, tangible assets</li>
-                <li>Exemptions: real estate, retirement accounts (401k, IRA), certain small business sales</li>
+                <li><strong>2026 Estimated:</strong> ~$3,800 per eligible resident (proposed)</li>
+                <li><strong>2025 Amount:</strong> $1,000 per person</li>
+                <li><strong>2022 Record:</strong> $3,284 (including energy relief)</li>
+                <li><strong>Eligibility:</strong> Must be Alaska resident for full calendar year</li>
+                <li><strong>Source:</strong> Investment earnings from $87 billion Permanent Fund</li>
+                <li><strong>History:</strong> Running since 1982 - over 40 years!</li>
             </ul>
         </div>
 
         <div class="highlight-box">
-            <strong>🎯 9 States with No Income Tax (2026):</strong>
+            <strong>🎯 Alaska's Unique Tax Advantages:</strong>
             <ul style="margin-top: 10px;">
-                <li>Alaska</li>
-                <li>Florida</li>
-                <li>Nevada</li>
-                <li>New Hampshire</li>
-                <li>South Dakota</li>
-                <li>Tennessee</li>
-                <li>Texas</li>
-                <li><strong>Washington</strong></li>
-                <li>Wyoming</li>
+                <li><strong>No state income tax</strong> - Zero tax on wages, investments, retirement</li>
+                <li><strong>No state sales tax</strong> - Only state with NO statewide sales tax!</li>
+                <li><strong>State PAYS YOU</strong> - $3,800+ PFD annually (proposed 2026)</li>
+                <li><strong>No estate or inheritance tax</strong></li>
+                <li><strong>Low property taxes</strong> in most areas</li>
             </ul>
         </div>
         
-        <h3>What Taxes DO You Pay in Washington?</h3>
+        <h3>What Taxes DO You Pay in Alaska?</h3>
         
-        <p>While Washington has no state income tax on wages, residents still pay:</p>
+        <p>While Alaska has no state income or sales tax, residents still pay:</p>
         
         <ul>
             <li><strong>Federal Income Tax:</strong> Standard federal rates apply (10% - 37%)</li>
             <li><strong>Federal Self-Employment Tax:</strong> 15.3% on net self-employment income</li>
-            <li><strong>Capital Gains Tax (WA):</strong> 7% on gains over $278k, 9.9% over $1M</li>
-            <li><strong>Property Tax:</strong> ~0.84% average, capped at 1% annual increase</li>
-            <li><strong>Sales Tax:</strong> 6.5% state + up to 4.1% local = <strong>9.43% average (4th highest in US!)</strong></li>
+            <li><strong>Local Sales Tax:</strong> Some cities charge 1-7% (Anchorage has 0%!)</li>
+            <li><strong>Property Tax:</strong> Varies by borough (~1.0% average)</li>
         </ul>
 
-        <h3>Washington Capital Gains Tax Details</h3>
+        <h3>How Alaska Funds Government</h3>
 
-        <p><strong>What's Taxed:</strong></p>
-        <ul>
-            <li>Stocks and bonds</li>
-            <li>Business interests</li>
-            <li>Tangible personal property</li>
-            <li>Cryptocurrency (likely, consult tax professional)</li>
-        </ul>
-
-        <p><strong>What's Exempt:</strong></p>
-        <ul>
-            <li>Real estate (including vacation homes)</li>
-            <li>Retirement accounts (401k, IRA, Roth IRA)</li>
-            <li>Assets held in qualified retirement plans</li>
-            <li>Certain small business sales (with conditions)</li>
-            <li>Livestock and agricultural property</li>
-        </ul>
-
-        <h3>How Washington Funds Government Without Income Tax</h3>
+        <p>Alaska doesn't need income tax because of massive oil wealth:</p>
 
         <ul>
-            <li><strong>High Sales Tax:</strong> 6.5% state + local (9.43% average - 4th highest in US)</li>
-            <li><strong>Property Taxes:</strong> Average 0.84% of home value</li>
-            <li><strong>Business & Occupation Tax:</strong> Tax on gross receipts for businesses</li>
-            <li><strong>Capital Gains Tax:</strong> New revenue source (started 2022)</li>
+            <li><strong>Oil Revenue:</strong> Taxes on oil production (Alaska has 20% of US oil reserves)</li>
+            <li><strong>Permanent Fund:</strong> $87 billion investment fund from oil royalties</li>
+            <li><strong>Federal Funding:</strong> Alaska receives high per-capita federal spending</li>
+            <li><strong>Local Taxes:</strong> Property taxes fund local services</li>
+            <li><strong>Tourism:</strong> Growing cruise ship and tourism industry</li>
         </ul>
+
+        <h3>Alaska Permanent Fund Dividend History</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>PFD Amount</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>2026</td><td>~$3,800 (proposed)</td><td>Governor's proposal</td></tr>
+                <tr><td>2025</td><td>$1,000</td><td>Smallest in decades</td></tr>
+                <tr><td>2024</td><td>$1,360</td><td>Set by legislature</td></tr>
+                <tr><td>2023</td><td>$1,312</td><td>Budget constraints</td></tr>
+                <tr><td>2022</td><td>$3,284</td><td>Included energy relief</td></tr>
+                <tr><td>2015</td><td>$2,072</td><td>Before budget crisis</td></tr>
+            </tbody>
+        </table>
         
-        <h3>2026 Federal Tax Brackets (Applies to WA Residents)</h3>
+        <h3>2026 Federal Tax Brackets (Applies to AK Residents)</h3>
         
         <table class="tax-table">
             <thead>
@@ -470,42 +460,73 @@ permalink: /us-states/washington/
             <li><strong>Head of Household:</strong> $24,150</li>
         </ul>
         
-        <h3>Pros and Cons of Living in Washington</h3>
+        <h3>Pros and Cons of Living in Alaska</h3>
         
         <p><strong>Pros:</strong></p>
         <ul>
-            <li>No state income tax on wages and salaries</li>
-            <li>No estate or inheritance tax (federal exemption applies)</li>
-            <li>Tech hub (Microsoft, Amazon, Boeing)</li>
-            <li>Beautiful natural scenery</li>
-            <li>No capital gains tax if under $278k/year</li>
+            <li>No state income tax</li>
+            <li>No state sales tax</li>
+            <li>State pays YOU $3,800+ annually (PFD)</li>
+            <li>No estate or inheritance tax</li>
+            <li>Stunning natural beauty</li>
+            <li>Outdoor recreation paradise</li>
+            <li>Unique frontier lifestyle</li>
+            <li>Strong sense of community</li>
         </ul>
 
         <p><strong>Cons:</strong></p>
         <ul>
-            <li>Very high sales tax (9.43% average)</li>
-            <li>Capital gains tax for high earners (7-9.9%)</li>
-            <li>Property taxes fund local services</li>
-            <li>High cost of living in Seattle area</li>
-            <li>Rainy weather</li>
+            <li>Extremely high cost of living (food, gas, utilities)</li>
+            <li>Very long, dark, cold winters</li>
+            <li>Remote - expensive flights to Lower 48</li>
+            <li>Limited job market</li>
+            <li>Higher property taxes in some areas</li>
+            <li>PFD amount varies yearly (political debate)</li>
+            <li>Some local sales taxes (up to 7%)</li>
         </ul>
 
-        <h3>Is Washington Good for Investors?</h3>
+        <h3>Alaska Tax Comparison</h3>
 
-        <p>
-            Washington is still attractive for investors, but less so after the 2022 capital gains tax. Key considerations:
-        </p>
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Income Tax</th>
+                    <th>Sales Tax</th>
+                    <th>Special Benefit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Alaska</strong></td><td>0%</td><td>0% ⭐</td><td>PFD ~$3,800/year</td></tr>
+                <tr><td>Wyoming</td><td>0%</td><td>5.33%</td><td>None</td></tr>
+                <tr><td>Florida</td><td>0%</td><td>7.01%</td><td>None</td></tr>
+                <tr><td>Nevada</td><td>0%</td><td>8.23%</td><td>None</td></tr>
+                <tr><td>Tennessee</td><td>0%</td><td>9.55%</td><td>None</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Who Should Move to Alaska?</h3>
 
         <ul>
-            <li>No tax on first $278k of capital gains annually</li>
-            <li>Real estate gains still exempt</li>
-            <li>Retirement account gains exempt</li>
-            <li>7% state tax + ~20-24% federal = 27-31% total on large gains</li>
-            <li>California still higher overall (13.3% state income tax)</li>
+            <li><strong>Adventure Seekers:</strong> Outdoor lifestyle, fishing, hunting, hiking</li>
+            <li><strong>Oil & Gas Workers:</strong> High-paying jobs in energy sector</li>
+            <li><strong>Remote Workers:</strong> Keep 100% of income + get PFD</li>
+            <li><strong>Military Personnel:</strong> Multiple bases (Elmendorf, Fort Richardson)</li>
+            <li><strong>Retirees:</strong> No tax on Social Security + PFD income</li>
+            <li><strong>Privacy Seekers:</strong> Low population density</li>
+        </ul>
+
+        <h3>PFD Application Deadlines</h3>
+
+        <ul>
+            <li><strong>Application Opens:</strong> January 1st each year</li>
+            <li><strong>Application Deadline:</strong> March 31st (annual)</li>
+            <li><strong>Payment Date:</strong> October (varies by method)</li>
+            <li><strong>Requirement:</strong> Must have lived in AK for full prior calendar year</li>
         </ul>
         
         <p>
-            <strong>Important:</strong> This calculator provides estimates for federal taxes and Washington capital gains tax. For investment planning and capital gains strategies, consult with a Washington CPA or tax professional.
+            <strong>Important:</strong> This calculator provides estimates for federal taxes only, as Alaska has no state income tax. The Permanent Fund Dividend amount varies yearly and is subject to legislative approval. For complete tax planning including PFD benefits and local taxes, consult with an Alaska CPA or tax professional.
         </p>
     </div>
 </div>
@@ -517,7 +538,6 @@ permalink: /us-states/washington/
 function calculateTax() {
     const income = parseFloat(document.getElementById('income').value) || 0;
     const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const capitalGains = parseFloat(document.getElementById('capitalGains').value) || 0;
     const status = document.getElementById('filingStatus').value;
     const dependents = parseInt(document.getElementById('dependents').value) || 0;
     
@@ -528,7 +548,7 @@ function calculateTax() {
     
     const netIncome = income - expenses;
     
-    // Federal tax calculation (2026 updated)
+    // Federal tax calculation (2026 data)
     let federalStandardDeduction = 16100;
     if (status === 'married') federalStandardDeduction = 32200;
     if (status === 'head') federalStandardDeduction = 24150;
@@ -585,49 +605,17 @@ function calculateTax() {
     
     const selfEmploymentTax = netIncome * 0.9235 * 0.153;
     
-    // Washington Capital Gains Tax (2025-2026: $278k threshold)
-    let waCapitalGainsTax = 0;
-    const cgThreshold = 278000;
-    const cgThresholdHigh = 1000000;
+    // Alaska has NO state income tax!
+    const alaskaStateTax = 0;
     
-    if (capitalGains > cgThreshold) {
-        const taxableGains = capitalGains - cgThreshold;
-        
-        if (capitalGains > cgThresholdHigh) {
-            // Split into two brackets
-            const gainsIn7Bracket = cgThresholdHigh - cgThreshold;
-            const gainsIn9_9Bracket = capitalGains - cgThresholdHigh;
-            waCapitalGainsTax = (gainsIn7Bracket * 0.07) + (gainsIn9_9Bracket * 0.099);
-        } else {
-            // All in 7% bracket
-            waCapitalGainsTax = taxableGains * 0.07;
-        }
-    }
-    
-    const totalTax = federalTax + selfEmploymentTax + waCapitalGainsTax;
-    const effectiveRate = (totalTax / (income + capitalGains) * 100).toFixed(1);
+    const totalTax = federalTax + selfEmploymentTax + alaskaStateTax;
+    const effectiveRate = (totalTax / income * 100).toFixed(1);
     
     // Display results
     document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
     document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString();
-    
-    if (capitalGains > 0) {
-        document.getElementById('capitalGainsRow').style.display = 'flex';
-        document.getElementById('capitalGainsDisplay').textContent = '$' + capitalGains.toLocaleString();
-    } else {
-        document.getElementById('capitalGainsRow').style.display = 'none';
-    }
-    
     document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
     document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
-    
-    if (waCapitalGainsTax > 0) {
-        document.getElementById('cgTaxRow').style.display = 'flex';
-        document.getElementById('cgTax').textContent = '$' + Math.round(waCapitalGainsTax).toLocaleString();
-    } else {
-        document.getElementById('cgTaxRow').style.display = 'none';
-    }
-    
     document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
     document.getElementById('effectiveRate').textContent = effectiveRate + '%';
     
@@ -640,10 +628,6 @@ document.getElementById('income').addEventListener('keypress', function(e) {
 });
 
 document.getElementById('expenses').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-document.getElementById('capitalGains').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') calculateTax();
 });
 </script>
