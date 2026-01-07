@@ -13,8 +13,8 @@
       gtag('config', 'G-KZMTMFZT66');
     </script>
     
-    <title>New York State Tax Calculator 2025 | NY Income Tax Calculator | FinTools</title>
-    <meta name="description" content="Free New York state income tax calculator for 2025. Calculate your NY state taxes with updated brackets and rates. Includes federal + state + NYC tax estimates for all filing statuses.">
+    <title>New York State Tax Calculator 2026 | NY Income Tax Calculator | FinTools</title>
+    <meta name="description" content="Free New York tax calculator for 2026. Calculate NY state tax (4-10.9%) + NYC tax + federal taxes. Updated with 2026 rates and brackets.">
     <meta name="keywords" content="calculator, tax calculator, bmi calculator">
     <meta name="robots" content="index, follow">
     
@@ -155,20 +155,17 @@
     <!-- Main Content -->
     
 <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-/* СТИЛИ НАВИГАЦИИ УДАЛЕНЫ (mega-nav, nav-container, nav-menu и т.д.) */
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 110px 20px 40px; /* Сохраняем отступ для фиксированного меню */
+            padding: 110px 20px 40px;
         }
         
         .container {
@@ -183,7 +180,7 @@
         
         .state-badge {
             display: inline-block;
-            background: #003DA5;
+            background: linear-gradient(135deg, #003f87 0%, #c60c30 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -191,7 +188,7 @@
             margin-bottom: 20px;
             font-size: 14px;
         }
-        
+
         h1 {
             color: #333;
             margin-bottom: 10px;
@@ -260,8 +257,6 @@
         .checkbox-group label {
             margin: 0;
             cursor: pointer;
-            font-weight: 600;
-            color: #003DA5;
         }
         
         .btn {
@@ -387,6 +382,14 @@
             color: #856404;
         }
 
+        .highlight-box {
+            background: #ffe6e6;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -394,13 +397,12 @@
             opacity: 0.8;
             font-size: 14px;
         }
-    
 </style>
 
 <div class="container">
     <div class="state-badge">🗽 NEW YORK</div>
-    <h1>New York State Tax Calculator 2025</h1>
-    <p class="subtitle">Calculate NY state + federal taxes for 2025 (with optional NYC tax)</p>
+    <h1>New York Tax Calculator 2026</h1>
+    <p class="subtitle">Calculate NY state + federal taxes with 2026 rates (4% - 10.9%)</p>
     
     <div class="input-group">
         <label>Filing Status</label>
@@ -420,15 +422,15 @@
         <label>Business Expenses (Annual)</label>
         <input type="number" id="expenses" placeholder="e.g., 15000" min="0" value="0">
     </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="nycResident">
+        <label for="nycResident">🏙️ I live in New York City (additional 3.876% tax)</label>
+    </div>
     
     <div class="input-group">
         <label>Number of Dependents</label>
         <input type="number" id="dependents" placeholder="0" min="0" value="0">
-    </div>
-
-    <div class="checkbox-group">
-        <input type="checkbox" id="nycResident">
-        <label for="nycResident">🏙️ I live in New York City (add NYC tax)</label>
     </div>
     
     <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
@@ -483,106 +485,172 @@
     </div>
     
     <div class="info">
-        <strong>Note:</strong> This calculator estimates New York state tax combined with federal taxes for 2025. NYC residents pay additional city tax. Consult a tax professional for accurate calculations.
+        <strong>⚠️ Note:</strong> New York has high state income tax (up to 10.9%). NYC residents pay additional city tax (up to 3.876%). This calculator estimates NY state + federal taxes for 2026.
     </div>
     
     <div class="content-section">
-        <h2>New York State Income Tax Guide 2025</h2>
+        <h2>New York State Tax Guide 2026</h2>
         
         <p>
-            New York has a progressive state income tax system with 9 tax brackets ranging from 4% to 10.9%. Residents of New York City also pay an additional local income tax with 4 brackets ranging from 3.078% to 3.876%.
+            <strong>New York has one of the highest state income tax rates in the United States.</strong> The state uses a progressive tax system with 9 tax brackets, ranging from 4% to 10.9%. New York City residents pay an additional local income tax of up to 3.876%.
         </p>
+
+        <div class="highlight-box">
+            <strong>🔥 New York Tax Rates 2026:</strong>
+            <ul style="margin-top: 10px;">
+                <li><strong>9 tax brackets</strong> - 4% to 10.9%</li>
+                <li><strong>NYC residents</strong> pay additional 3.088% to 3.876%</li>
+                <li><strong>Standard Deduction:</strong> Single $8,000 | Married $16,050</li>
+                <li><strong>Middle-class tax cuts</strong> - 0.1% reduction in lower brackets</li>
+            </ul>
+        </div>
         
-        <h3>2025 New York State Tax Brackets (Single Filers)</h3>
+        <h3>2026 New York State Tax Brackets</h3>
         
         <table class="tax-table">
             <thead>
                 <tr>
                     <th>Tax Rate</th>
-                    <th>Income Range</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>4%</td><td>$0 - $8,500</td></tr>
-                <tr><td>4.5%</td><td>$8,501 - $11,700</td></tr>
-                <tr><td>5.25%</td><td>$11,701 - $13,900</td></tr>
-                <tr><td>5.5%</td><td>$13,901 - $80,650</td></tr>
-                <tr><td>6%</td><td>$80,651 - $215,400</td></tr>
-                <tr><td>6.85%</td><td>$215,401 - $1,077,550</td></tr>
-                <tr><td>9.65%</td><td>$1,077,551 - $5,000,000</td></tr>
-                <tr><td>10.3%</td><td>$5,000,001 - $25,000,000</td></tr>
-                <tr><td>10.9%</td><td>$25,000,001+</td></tr>
+                <tr><td>4.0%</td><td>$0 - $8,500</td><td>$0 - $17,150</td></tr>
+                <tr><td>4.5%</td><td>$8,501 - $11,700</td><td>$17,151 - $23,600</td></tr>
+                <tr><td>5.25%</td><td>$11,701 - $13,900</td><td>$23,601 - $27,900</td></tr>
+                <tr><td>5.5%</td><td>$13,901 - $80,650</td><td>$27,901 - $161,550</td></tr>
+                <tr><td>6.0%</td><td>$80,651 - $215,400</td><td>$161,551 - $323,200</td></tr>
+                <tr><td>6.85%</td><td>$215,401 - $1,077,550</td><td>$323,201 - $2,155,350</td></tr>
+                <tr><td>9.65%</td><td>$1,077,551 - $5,000,000</td><td>$2,155,351 - $5,000,000</td></tr>
+                <tr><td>10.3%</td><td>$5,000,001 - $25,000,000</td><td>$5,000,001 - $25,000,000</td></tr>
+                <tr><td>10.9%</td><td>$25,000,001+</td><td>$25,000,001+</td></tr>
             </tbody>
         </table>
 
-        <h3>2025 NYC Tax Brackets (Single Filers)</h3>
-        
-        <table class="tax-table">
-            <thead>
-                <tr>
-                    <th>Tax Rate</th>
-                    <th>Income Range</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>3.078%</td><td>$0 - $12,000</td></tr>
-                <tr><td>3.762%</td><td>$12,001 - $25,000</td></tr>
-                <tr><td>3.819%</td><td>$25,001 - $50,000</td></tr>
-                <tr><td>3.876%</td><td>$50,001+</td></tr>
-            </tbody>
-        </table>
-        
-        <h3>New York Standard Deduction 2025</h3>
+        <h3>New York Standard Deduction 2026</h3>
         
         <ul>
             <li><strong>Single:</strong> $8,000</li>
             <li><strong>Married Filing Jointly:</strong> $16,050</li>
             <li><strong>Head of Household:</strong> $11,200</li>
         </ul>
+
+        <h3>NYC City Tax (Additional for NYC Residents)</h3>
+
+        <p>If you live in New York City, you pay an additional city income tax:</p>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>3.078%</td><td>$0 - $12,000</td><td>$0 - $21,600</td></tr>
+                <tr><td>3.762%</td><td>$12,001 - $25,000</td><td>$21,601 - $45,000</td></tr>
+                <tr><td>3.819%</td><td>$25,001 - $50,000</td><td>$45,001 - $90,000</td></tr>
+                <tr><td>3.876%</td><td>$50,001+</td><td>$90,001+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2026 Federal Tax Brackets (Applies to NY Residents)</h3>
         
-        <h3>Key Features of New York Taxes</h3>
-        
-        <p>
-            <strong>Progressive Tax System:</strong> New York uses a graduated tax system with 9 brackets where higher income is taxed at higher rates.
-        </p>
-        
-        <p>
-            <strong>NYC Local Tax:</strong> New York City residents pay an additional local income tax on top of state tax, ranging from 3.078% to 3.876%.
-        </p>
-        
-        <p>
-            <strong>Supplemental Tax:</strong> High earners with AGI over $107,650 may be subject to additional tax calculations.
-        </p>
-        
-        <h3>Common New York Tax Deductions</h3>
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single</th>
+                    <th>Married Filing Jointly</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>10%</td><td>$0 - $12,400</td><td>$0 - $24,800</td></tr>
+                <tr><td>12%</td><td>$12,401 - $49,500</td><td>$24,801 - $99,000</td></tr>
+                <tr><td>22%</td><td>$49,501 - $105,400</td><td>$99,001 - $210,800</td></tr>
+                <tr><td>24%</td><td>$105,401 - $201,150</td><td>$210,801 - $402,300</td></tr>
+                <tr><td>32%</td><td>$201,151 - $255,425</td><td>$402,301 - $510,850</td></tr>
+                <tr><td>35%</td><td>$255,426 - $640,600</td><td>$510,851 - $768,700</td></tr>
+                <tr><td>37%</td><td>$640,601+</td><td>$768,701+</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Federal Standard Deduction 2026</h3>
         
         <ul>
-            <li>Standard Deduction: $8,000 for single filers</li>
-            <li>Business Expenses: Same as federal</li>
-            <li>Retirement Contributions: 401(k), IRA</li>
-            <li>NYS College Savings: 529 plan contributions</li>
+            <li><strong>Single:</strong> $16,100</li>
+            <li><strong>Married Filing Jointly:</strong> $32,200</li>
+            <li><strong>Head of Household:</strong> $24,150</li>
+        </ul>
+        
+        <h3>Pros and Cons of Living in New York</h3>
+        
+        <p><strong>Pros:</strong></p>
+        <ul>
+            <li>World-class city (NYC)</li>
+            <li>Excellent job opportunities</li>
+            <li>Cultural diversity and entertainment</li>
+            <li>Public transportation (NYC)</li>
+            <li>Strong economy</li>
+        </ul>
+
+        <p><strong>Cons:</strong></p>
+        <ul>
+            <li>Very high state income tax (up to 10.9%)</li>
+            <li>NYC residents pay additional city tax (up to 3.876%)</li>
+            <li>Very high cost of living</li>
+            <li>High property taxes</li>
+            <li>High sales tax</li>
+        </ul>
+
+        <h3>New York vs Other High-Tax States</h3>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Top State Rate</th>
+                    <th>NYC/City Tax</th>
+                    <th>Combined Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>California</td><td>13.3%</td><td>-</td><td>13.3%</td></tr>
+                <tr><td><strong>New York</strong></td><td>10.9%</td><td>+3.876%</td><td><strong>14.776%</strong></td></tr>
+                <tr><td>Hawaii</td><td>11.0%</td><td>-</td><td>11.0%</td></tr>
+                <tr><td>New Jersey</td><td>10.75%</td><td>-</td><td>10.75%</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Note:</strong> NYC residents have the highest combined state + city income tax in the US!</p>
+
+        <h3>Who Leaves New York for Tax Reasons?</h3>
+
+        <ul>
+            <li><strong>High-income earners:</strong> Save 10.9% by moving to FL, TX, NV</li>
+            <li><strong>Retirees:</strong> No tax on Social Security in many other states</li>
+            <li><strong>Remote workers:</strong> Can work from lower-tax states</li>
+            <li><strong>Business owners:</strong> Lower taxes and less regulation elsewhere</li>
         </ul>
         
         <p>
-            <strong>Important:</strong> This calculator provides estimates for New York state income tax combined with federal taxes. NYC residents should check the NYC tax box. For complete tax planning, consult with a New York-licensed CPA or tax professional.
+            <strong>Important:</strong> This calculator provides estimates for New York state, NYC city, and federal taxes. NY's high combined rates make it one of the most expensive states. For detailed tax planning, consult with a New York CPA or tax professional.
         </p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2025 New York Tax Calculator | Part of FinTools</p>
-    <p>Updated for 2025 tax year with latest NY state & NYC tax brackets</p>
 </footer>
 
-<script src="../MegaNav.js"></script>
-
 <script>
 function calculateTax() {
     const income = parseFloat(document.getElementById('income').value) || 0;
     const expenses = parseFloat(document.getElementById('expenses').value) || 0;
     const status = document.getElementById('filingStatus').value;
     const dependents = parseInt(document.getElementById('dependents').value) || 0;
-    const isNYC = document.getElementById('nycResident').checked;
+    const nycResident = document.getElementById('nycResident').checked;
     
     if (income <= 0) {
         alert('Please enter your income');
@@ -591,10 +659,10 @@ function calculateTax() {
     
     const netIncome = income - expenses;
     
-    // Federal tax calculation
-    let federalStandardDeduction = 15750;
-    if (status === 'married') federalStandardDeduction = 31500;
-    if (status === 'head') federalStandardDeduction = 23700;
+    // Federal tax calculation (2026 updated)
+    let federalStandardDeduction = 16100;
+    if (status === 'married') federalStandardDeduction = 32200;
+    if (status === 'head') federalStandardDeduction = 24150;
     
     const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
     const federalTaxableIncome = Math.max(0, netIncome - federalStandardDeduction - seDeduction);
@@ -602,32 +670,32 @@ function calculateTax() {
     let federalBrackets = [];
     if (status === 'single') {
         federalBrackets = [
-            [11925, 0.1],
-            [48475, 0.12],
-            [103350, 0.22],
-            [197300, 0.24],
-            [250525, 0.32],
-            [626350, 0.35],
+            [12400, 0.1],
+            [49500, 0.12],
+            [105400, 0.22],
+            [201150, 0.24],
+            [255425, 0.32],
+            [640600, 0.35],
             [99999999, 0.37]
         ];
     } else if (status === 'married') {
         federalBrackets = [
-            [23850, 0.1],
-            [96950, 0.12],
-            [206700, 0.22],
-            [394600, 0.24],
-            [501050, 0.32],
-            [751600, 0.35],
+            [24800, 0.1],
+            [99000, 0.12],
+            [210800, 0.22],
+            [402300, 0.24],
+            [510850, 0.32],
+            [768700, 0.35],
             [99999999, 0.37]
         ];
     } else {
         federalBrackets = [
-            [17000, 0.1],
-            [64850, 0.12],
-            [103350, 0.22],
-            [197300, 0.24],
-            [250500, 0.32],
-            [626350, 0.35],
+            [17700, 0.1],
+            [66300, 0.12],
+            [105400, 0.22],
+            [201150, 0.24],
+            [255400, 0.32],
+            [640600, 0.35],
             [99999999, 0.37]
         ];
     }
@@ -648,7 +716,7 @@ function calculateTax() {
     
     const selfEmploymentTax = netIncome * 0.9235 * 0.153;
     
-    // NY State tax calculation
+    // NY state tax (2026)
     let nyStandardDeduction = 8000;
     if (status === 'married') nyStandardDeduction = 16050;
     if (status === 'head') nyStandardDeduction = 11200;
@@ -656,31 +724,7 @@ function calculateTax() {
     const nyTaxableIncome = Math.max(0, netIncome - nyStandardDeduction);
     
     let nyBrackets = [];
-    if (status === 'married') {
-        nyBrackets = [
-            [17150, 0.04],
-            [23600, 0.045],
-            [27900, 0.0525],
-            [161550, 0.055],
-            [323200, 0.06],
-            [2155350, 0.0685],
-            [5000000, 0.0965],
-            [25000000, 0.103],
-            [99999999, 0.109]
-        ];
-    } else if (status === 'head') {
-        nyBrackets = [
-            [12800, 0.04],
-            [17650, 0.045],
-            [20900, 0.0525],
-            [107650, 0.055],
-            [269300, 0.06],
-            [1616450, 0.0685],
-            [5000000, 0.0965],
-            [25000000, 0.103],
-            [99999999, 0.109]
-        ];
-    } else {
+    if (status === 'single') {
         nyBrackets = [
             [8500, 0.04],
             [11700, 0.045],
@@ -691,184 +735,8 @@ function calculateTax() {
             [5000000, 0.0965],
             [25000000, 0.103],
             [99999999, 0.109]
-        ];
-    }
-    
-    let nyStateTax = 0;
-    remaining = nyTaxableIncome;
-    previousLimit = 0;
-    
-    for (let i = 0; i < nyBrackets.length; i++) {
-        if (remaining <= 0) break;
-        const bracketLimit = nyBrackets[i][0];
-        const bracketRate = nyBrackets[i][1];
-        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
-        nyStateTax += taxableInBracket * bracketRate;
-        remaining -= taxableInBracket;
-        previousLimit = bracketLimit;
-    }
-    
-    // NYC tax calculation
-    let nycCityTax = 0;
-    if (isNYC) {
-        let nycBrackets = [];
-        if (status === 'married') {
-            nycBrackets = [
-                [21600, 0.03078],
-                [45000, 0.03762],
-                [90000, 0.03819],
-                [99999999, 0.03876]
-            ];
-        } else if (status === 'head') {
-            nycBrackets = [
-                [14400, 0.03078],
-                [30000, 0.03762],
-                [60000, 0.03819],
-                [99999999, 0.03876]
-            ];
-        } else {
-            nycBrackets = [
-                [12000, 0.03078],
-                [25000, 0.03762],
-                [50000, 0.03819],
-                [99999999, 0.03876]
-            ];
-        }
-        
-        // ФИКС: NYC tax is also based on NY Taxable Income (NY AGI - Deduction), not Gross Income
-        remaining = nyTaxableIncome; 
-        previousLimit = 0;
-        
-        for (let i = 0; i < nycBrackets.length; i++) {
-            if (remaining <= 0) break;
-            const bracketLimit = nycBrackets[i][0];
-            const bracketRate = nycBrackets[i][1];
-            const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
-            nycCityTax += taxableInBracket * bracketRate;
-            remaining -= taxableInBracket;
-            previousLimit = bracketLimit;
-        }
-    }
-    
-    const totalTax = federalTax + selfEmploymentTax + nyStateTax + nycCityTax;
-    
-    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.html.
-    // Если на Gross, то `income`. Если на Net Income, то `netIncome`. 
-    // Поскольку в florida.html и california.html мы использовали income (Gross Income), будем придерживаться этого.
-    const effectiveRate = (totalTax / income * 100).toFixed(1); 
-    
-    // Display results
-    document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
-    document.getElementById('netIncome').textContent = '$' + netIncome.toLocaleString();
-    document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
-    document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
-    document.getElementById('stateTax').textContent = '$' + Math.round(nyStateTax).toLocaleString();
-    document.getElementById('nycTax').textContent = '$' + Math.round(nycCityTax).toLocaleString();
-    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
-    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
-    
-    // Show/hide NYC tax row
-    if (isNYC) {
-        document.getElementById('nycTaxRow').style.display = 'flex';
-    } else {
-        document.getElementById('nycTaxRow').style.display = 'none';
-    }
-    
-    document.getElementById('results').classList.add('show');
-    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-document.getElementById('income').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-document.getElementById('expenses').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-</script>
-
-<script>
-
-function calculateTax() {
-    const income = parseFloat(document.getElementById('income').value) || 0;
-    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const status = document.getElementById('filingStatus').value;
-    const dependents = parseInt(document.getElementById('dependents').value) || 0;
-    const isNYC = document.getElementById('nycResident').checked;
-    
-    if (income <= 0) {
-        alert('Please enter your income');
-        return;
-    }
-    
-    const netIncome = income - expenses;
-    
-    // Federal tax calculation
-    let federalStandardDeduction = 15750;
-    if (status === 'married') federalStandardDeduction = 31500;
-    if (status === 'head') federalStandardDeduction = 23700;
-    
-    const seDeduction = netIncome * 0.9235 * 0.153 * 0.5;
-    const federalTaxableIncome = Math.max(0, netIncome - federalStandardDeduction - seDeduction);
-    
-    let federalBrackets = [];
-    if (status === 'single') {
-        federalBrackets = [
-            [11925, 0.1],
-            [48475, 0.12],
-            [103350, 0.22],
-            [197300, 0.24],
-            [250525, 0.32],
-            [626350, 0.35],
-            [99999999, 0.37]
         ];
     } else if (status === 'married') {
-        federalBrackets = [
-            [23850, 0.1],
-            [96950, 0.12],
-            [206700, 0.22],
-            [394600, 0.24],
-            [501050, 0.32],
-            [751600, 0.35],
-            [99999999, 0.37]
-        ];
-    } else {
-        federalBrackets = [
-            [17000, 0.1],
-            [64850, 0.12],
-            [103350, 0.22],
-            [197300, 0.24],
-            [250500, 0.32],
-            [626350, 0.35],
-            [99999999, 0.37]
-        ];
-    }
-    
-    let federalTax = 0;
-    let remaining = federalTaxableIncome;
-    let previousLimit = 0;
-    
-    for (let i = 0; i < federalBrackets.length; i++) {
-        if (remaining <= 0) break;
-        const bracketLimit = federalBrackets[i][0];
-        const bracketRate = federalBrackets[i][1];
-        const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
-        federalTax += taxableInBracket * bracketRate;
-        remaining -= taxableInBracket;
-        previousLimit = bracketLimit;
-    }
-    
-    const selfEmploymentTax = netIncome * 0.9235 * 0.153;
-    
-    // NY State tax calculation
-    let nyStandardDeduction = 8000;
-    if (status === 'married') nyStandardDeduction = 16050;
-    if (status === 'head') nyStandardDeduction = 11200;
-    
-    const nyTaxableIncome = Math.max(0, netIncome - nyStandardDeduction);
-    
-    let nyBrackets = [];
-    if (status === 'married') {
         nyBrackets = [
             [17150, 0.04],
             [23600, 0.045],
@@ -880,7 +748,7 @@ function calculateTax() {
             [25000000, 0.103],
             [99999999, 0.109]
         ];
-    } else if (status === 'head') {
+    } else {
         nyBrackets = [
             [12800, 0.04],
             [17650, 0.045],
@@ -888,18 +756,6 @@ function calculateTax() {
             [107650, 0.055],
             [269300, 0.06],
             [1616450, 0.0685],
-            [5000000, 0.0965],
-            [25000000, 0.103],
-            [99999999, 0.109]
-        ];
-    } else {
-        nyBrackets = [
-            [8500, 0.04],
-            [11700, 0.045],
-            [13900, 0.0525],
-            [80650, 0.055],
-            [215400, 0.06],
-            [1077550, 0.0685],
             [5000000, 0.0965],
             [25000000, 0.103],
             [99999999, 0.109]
@@ -920,35 +776,27 @@ function calculateTax() {
         previousLimit = bracketLimit;
     }
     
-    // NYC tax calculation
-    let nycCityTax = 0;
-    if (isNYC) {
+    // NYC city tax (simplified)
+    let nycTax = 0;
+    if (nycResident) {
         let nycBrackets = [];
-        if (status === 'married') {
-            nycBrackets = [
-                [21600, 0.03078],
-                [45000, 0.03762],
-                [90000, 0.03819],
-                [99999999, 0.03876]
-            ];
-        } else if (status === 'head') {
-            nycBrackets = [
-                [14400, 0.03078],
-                [30000, 0.03762],
-                [60000, 0.03819],
-                [99999999, 0.03876]
-            ];
-        } else {
+        if (status === 'single') {
             nycBrackets = [
                 [12000, 0.03078],
                 [25000, 0.03762],
                 [50000, 0.03819],
                 [99999999, 0.03876]
             ];
+        } else {
+            nycBrackets = [
+                [21600, 0.03078],
+                [45000, 0.03762],
+                [90000, 0.03819],
+                [99999999, 0.03876]
+            ];
         }
         
-        // ФИКС: NYC tax is also based on NY Taxable Income (NY AGI - Deduction), not Gross Income
-        remaining = nyTaxableIncome; 
+        remaining = nyTaxableIncome;
         previousLimit = 0;
         
         for (let i = 0; i < nycBrackets.length; i++) {
@@ -956,18 +804,14 @@ function calculateTax() {
             const bracketLimit = nycBrackets[i][0];
             const bracketRate = nycBrackets[i][1];
             const taxableInBracket = Math.min(remaining, bracketLimit - previousLimit);
-            nycCityTax += taxableInBracket * bracketRate;
+            nycTax += taxableInBracket * bracketRate;
             remaining -= taxableInBracket;
             previousLimit = bracketLimit;
         }
     }
     
-    const totalTax = federalTax + selfEmploymentTax + nyStateTax + nycCityTax;
-    
-    // ФИКС: Effective rate должна быть рассчитана на Gross Income, как в California.html.
-    // Если на Gross, то `income`. Если на Net Income, то `netIncome`. 
-    // Поскольку в florida.html и california.html мы использовали income (Gross Income), будем придерживаться этого.
-    const effectiveRate = (totalTax / income * 100).toFixed(1); 
+    const totalTax = federalTax + selfEmploymentTax + nyStateTax + nycTax;
+    const effectiveRate = (totalTax / income * 100).toFixed(1);
     
     // Display results
     document.getElementById('grossIncome').textContent = '$' + income.toLocaleString();
@@ -975,16 +819,16 @@ function calculateTax() {
     document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
     document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
     document.getElementById('stateTax').textContent = '$' + Math.round(nyStateTax).toLocaleString();
-    document.getElementById('nycTax').textContent = '$' + Math.round(nycCityTax).toLocaleString();
-    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
-    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
     
-    // Show/hide NYC tax row
-    if (isNYC) {
+    if (nycResident && nycTax > 0) {
         document.getElementById('nycTaxRow').style.display = 'flex';
+        document.getElementById('nycTax').textContent = '$' + Math.round(nycTax).toLocaleString();
     } else {
         document.getElementById('nycTaxRow').style.display = 'none';
     }
+    
+    document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
+    document.getElementById('effectiveRate').textContent = effectiveRate + '%';
     
     document.getElementById('results').classList.add('show');
     document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -997,12 +841,11 @@ document.getElementById('income').addEventListener('keypress', function(e) {
 document.getElementById('expenses').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') calculateTax();
 });
-
 </script>
 
     <!-- Footer -->
     <footer>
-        
+        <p>&copy; 2026 FinTools | Free calculators for everyone</p>
     </footer>
 
     <!-- Navigation Logic -->
