@@ -155,15 +155,13 @@
     <!-- Main Content -->
     
 <style>
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            /* Отступ, чтобы контент не наползал на фиксированное меню */
-            padding: 110px 20px 40px; 
+            padding: 40px 20px;
         }
         
         .container {
@@ -332,14 +330,10 @@
             border-radius: 4px;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: white;
-            opacity: 0.8;
-            font-size: 14px;
+        .highlight-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
         }
-    
 </style>
 
 <div class="container">
@@ -437,17 +431,11 @@
     </div>
     
     <div class="info">
-        <strong>Note:</strong> This calculator estimates Italian income tax for 2026 including IRPEF, regional/municipal taxes, and INPS contributions. Flat tax regime is simplified. Consult a commercialista (Italian accountant) for accurate planning.
+        <strong>Note:</strong> This calculator uses updated 2026 IRPEF rates (23%/33%/43%). Flat tax regime simplified. Consult a commercialista for accurate planning.
     </div>
 
     <div class="content-section">
-        <h2>Italy Tax System Guide 2026</h2>
-        
-        <p>
-            Italy has a progressive income tax system (IRPEF) with additional regional and municipal taxes. A simplified flat tax regime is available for small businesses and freelancers.
-        </p>
-
-        <h3>2026 IRPEF Tax Brackets</h3>
+        <h2>2026 IRPEF Tax Brackets (UPDATED)</h2>
         
         <table class="tax-table">
             <thead>
@@ -458,21 +446,14 @@
             </thead>
             <tbody>
                 <tr><td>23%</td><td>€0 - €28,000</td></tr>
-                <tr><td>35%</td><td>€28,001 - €50,000</td></tr>
+                <tr><td>33%</td><td>€28,001 - €50,000</td></tr>
                 <tr><td>43%</td><td>€50,001+</td></tr>
             </tbody>
         </table>
 
-        <p><strong>Plus additional taxes:</strong></p>
-        <ul>
-            <li><strong>Regional tax:</strong> 0.7% - 3.33% (varies by region)</li>
-            <li><strong>Municipal tax:</strong> 0.1% - 0.9% (varies by municipality)</li>
-            <li><strong>Total max rate:</strong> ~47%</li>
-        </ul>
-
         <div class="highlight-box">
             <strong>🎉 Flat Tax Regime (Regime Forfettario) 2026:</strong>
-            <ul style="margin-top: 10px;">
+            <ul>
                 <li><strong>15% flat rate</strong> - replaces IRPEF!</li>
                 <li><strong>No VAT registration</strong> required</li>
                 <li><strong>No regional/municipal taxes</strong></li>
@@ -480,6 +461,10 @@
                 <li><strong>First 5 years under 35:</strong> 5% rate</li>
             </ul>
         </div>
+
+        <h2>Italy Tax System Guide 2026</h2>
+        
+        <p>Italy has a progressive income tax system (IRPEF) with additional regional and municipal taxes. A simplified flat tax regime is available for small businesses and freelancers.</p>
 
         <h3>Inbound Worker Tax Breaks</h3>
 
@@ -496,7 +481,7 @@
 
         <p><strong>For Employees:</strong> ~9.19% of gross salary</p>
         <p><strong>For Self-Employed (Gestione Separata):</strong> 26.23% on taxable income</p>
-        <p><strong>Flat tax regime:</strong> INPS is calculated on a reduced taxable income (coefficient of profitability).</p>
+        <p><strong>Flat tax regime:</strong> INPS is calculated on a reduced taxable income (coefficient of profitability 67%).</p>
 
         <h3>Pros and Cons</h3>
 
@@ -506,6 +491,7 @@
             <li>Inbound worker breaks (70-90% exemption)</li>
             <li>Many deductions available</li>
             <li>Good quality of life</li>
+            <li>New simplified IRPEF brackets (3 instead of 4)</li>
         </ul>
 
         <p><strong>Cons:</strong></p>
@@ -514,34 +500,28 @@
             <li>Complex bureaucracy</li>
             <li>High INPS for self-employed (26.23%)</li>
             <li>Flat tax has €85k limit</li>
+            <li>Regional variations in additional taxes</li>
         </ul>
 
-        <p>
-            <strong>Important:</strong> Italian tax law is complex. This calculator provides estimates only. Always consult a qualified commercialista for accurate tax planning.
-        </p>
+        <h3>Tips for Freelancers (Partita IVA) in Italy</h3>
+
+        <ul>
+            <li>Start with Regime Forfettario if eligible (revenue under €85k)</li>
+            <li>Consider the inbound worker regime if you're relocating to Italy</li>
+            <li>Track your hours and revenue carefully for regime eligibility</li>
+            <li>Set aside 35-40% of income for taxes and INPS</li>
+            <li>Consult a commercialista for proper setup and compliance</li>
+            <li>Consider moving to Southern Italy for 90% tax exemption (inbound workers)</li>
+        </ul>
+        
+        <p><strong>Important:</strong> Italian tax law is complex. This calculator provides estimates only. Always consult a qualified commercialista for accurate tax planning.</p>
     </div>
 </div>
 
-<footer>
-    
-</footer>
-
-<script src="../MegaNav.js"></script> 
 <script>
-    // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ИЗ MegaNav.js ДЛЯ ВСТАВКИ МЕНЮ
-    if (typeof injectMegaNav === 'function') {
-        injectMegaNav();
-    }
-</script>
-
-
-<script>
-// --- Калькуляторная логика ---
-
 function toggleFlatTax() {
     const flat = document.getElementById('flatTaxRegime').checked;
     document.getElementById('flatTaxBanner').classList.toggle('show', flat);
-    // Added a check to disable the other checkbox since regimes cannot be combined
     if (flat) {
         document.getElementById('inboundWorker').checked = false;
     }
@@ -551,7 +531,6 @@ document.getElementById('flatTaxRegime').addEventListener('change', toggleFlatTa
 
 function toggleInboundWorker() {
     const inbound = document.getElementById('inboundWorker').checked;
-    // Added a check to disable the other checkbox since regimes cannot be combined
     if (inbound) {
         document.getElementById('flatTaxRegime').checked = false;
         document.getElementById('flatTaxBanner').classList.remove('show');
@@ -559,7 +538,6 @@ function toggleInboundWorker() {
 }
 
 document.getElementById('inboundWorker').addEventListener('change', toggleInboundWorker);
-
 
 function calc() {
     const inc = parseFloat(document.getElementById('income').value) || 0;
@@ -573,75 +551,58 @@ function calc() {
     let net = inc - exp;
     let exempt = 0;
     
-    // Inbound Worker Exemption
     if (inbound && !flat) {
-        // Flat tax and Inbound worker cannot be combined, ensured by toggle functions.
         exempt = net * 0.70;
         net = net * 0.30;
     }
     
     let natTax = 0, regTax = 0, munTax = 0;
     
-    // 1. Income Tax (IRPEF or Flat Tax)
     if (flat) {
         if (inc > 85000) { alert('Flat tax max €85,000'); return; }
-        // For Flat Tax (Forfettario), the taxable base is (Gross Income * Coefficient)
         const profitability_coefficient_tax = 0.67; 
         const taxBase = inc * profitability_coefficient_tax;
-
-        natTax = taxBase * 0.15; // 15% flat rate
-        regTax = 0; // No regional tax for flat tax
-        munTax = 0; // No municipal tax for flat tax
+        natTax = taxBase * 0.15;
+        regTax = 0;
+        munTax = 0;
     } else {
-        // Progressive IRPEF tax (using the actual net income, potentially reduced by Inbound Exemption)
+        // UPDATED 2026 IRPEF BRACKETS: 23% / 33% / 43%
         if (net <= 28000) natTax = net * 0.23;
-        else if (net <= 50000) natTax = (28000 * 0.23) + ((net - 28000) * 0.35);
-        else natTax = (28000 * 0.23) + (22000 * 0.35) + ((net - 50000) * 0.43);
+        else if (net <= 50000) natTax = (28000 * 0.23) + ((net - 28000) * 0.33);
+        else natTax = (28000 * 0.23) + (22000 * 0.33) + ((net - 50000) * 0.43);
         
-        // Regional and Municipal Taxes (calculated on the taxable base 'net')
-        regTax = net * 0.0173; // Average 1.73%
-        munTax = net * 0.008; // Average 0.8%
+        regTax = net * 0.0173;
+        munTax = net * 0.008;
     }
     
-    // 2. Social Contributions (INPS) - Gestione Separata Logic
     let inps = 0;
-    const inps_rate_gestione_separata = 0.2623; // Standard Gestione Separata INPS rate for 2026 (approx)
+    const inps_rate_gestione_separata = 0.2623;
     
     if (isEmp) {
-        // Employee share
         inps = inc * 0.0919;
     } else {
-        // Self-Employed (Partita IVA)
         if (flat) {
-            // Flat tax (Forfettario) INPS - applied to a reduced base (67%)
             const profitability_coefficient_inps = 0.67; 
             const inps_taxable_base = inc * profitability_coefficient_inps; 
             inps = inps_taxable_base * inps_rate_gestione_separata;
-
         } else {
-            // Standard (IRPEF) self-employed: Gestione Separata - applied to net income (reduced by Inbound)
             inps = net * inps_rate_gestione_separata;
         }
     }
     
-    // 3. Final Calculation
     const tot = natTax + regTax + munTax + inps;
     const netAfter = inc - tot;
     const eff = (tot / inc * 100).toFixed(1);
     
-    // 4. Display Results
     document.getElementById('r1').textContent = '€' + inc.toLocaleString('en-US');
     
     let displayedTaxableBase;
     if (flat) {
-        // For display: Flat tax base (Gross * Coeff)
         displayedTaxableBase = inc * 0.67;
     } else {
-        // For display: IRPEF base (Net Income - Exemption)
         displayedTaxableBase = net;
     }
     document.getElementById('r3').textContent = '€' + Math.round(displayedTaxableBase).toLocaleString('en-US');
-
     
     if (inbound && !flat && exempt > 0) {
         document.getElementById('exemptRow').style.display = 'flex';
@@ -672,171 +633,8 @@ function calc() {
     document.getElementById('results').classList.add('show');
 }
 
-// Ensure the two mutually exclusive regimes cannot be checked at the same time
-document.getElementById('flatTaxRegime').addEventListener('change', toggleFlatTax);
-document.getElementById('inboundWorker').addEventListener('change', toggleInboundWorker);
 document.getElementById('income').addEventListener('keypress', e => { if (e.key === 'Enter') calc(); });
 document.getElementById('expenses').addEventListener('keypress', e => { if (e.key === 'Enter') calc(); });
-</script>
-
-<script>
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-KZMTMFZT66');
-
-
-
-    // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ИЗ MegaNav.js ДЛЯ ВСТАВКИ МЕНЮ
-    if (typeof injectMegaNav === 'function') {
-        injectMegaNav();
-    }
-
-
-
-// --- Калькуляторная логика ---
-
-function toggleFlatTax() {
-    const flat = document.getElementById('flatTaxRegime').checked;
-    document.getElementById('flatTaxBanner').classList.toggle('show', flat);
-    // Added a check to disable the other checkbox since regimes cannot be combined
-    if (flat) {
-        document.getElementById('inboundWorker').checked = false;
-    }
-}
-
-document.getElementById('flatTaxRegime').addEventListener('change', toggleFlatTax);
-
-function toggleInboundWorker() {
-    const inbound = document.getElementById('inboundWorker').checked;
-    // Added a check to disable the other checkbox since regimes cannot be combined
-    if (inbound) {
-        document.getElementById('flatTaxRegime').checked = false;
-        document.getElementById('flatTaxBanner').classList.remove('show');
-    }
-}
-
-document.getElementById('inboundWorker').addEventListener('change', toggleInboundWorker);
-
-
-function calc() {
-    const inc = parseFloat(document.getElementById('income').value) || 0;
-    const exp = parseFloat(document.getElementById('expenses').value) || 0;
-    const isEmp = document.getElementById('isEmployee').checked;
-    const flat = document.getElementById('flatTaxRegime').checked;
-    const inbound = document.getElementById('inboundWorker').checked;
-    
-    if (inc <= 0) { alert('Please enter income'); return; }
-    
-    let net = inc - exp;
-    let exempt = 0;
-    
-    // Inbound Worker Exemption
-    if (inbound && !flat) {
-        // Flat tax and Inbound worker cannot be combined, ensured by toggle functions.
-        exempt = net * 0.70;
-        net = net * 0.30;
-    }
-    
-    let natTax = 0, regTax = 0, munTax = 0;
-    
-    // 1. Income Tax (IRPEF or Flat Tax)
-    if (flat) {
-        if (inc > 85000) { alert('Flat tax max €85,000'); return; }
-        // For Flat Tax (Forfettario), the taxable base is (Gross Income * Coefficient)
-        const profitability_coefficient_tax = 0.67; 
-        const taxBase = inc * profitability_coefficient_tax;
-
-        natTax = taxBase * 0.15; // 15% flat rate
-        regTax = 0; // No regional tax for flat tax
-        munTax = 0; // No municipal tax for flat tax
-    } else {
-        // Progressive IRPEF tax (using the actual net income, potentially reduced by Inbound Exemption)
-        if (net <= 28000) natTax = net * 0.23;
-        else if (net <= 50000) natTax = (28000 * 0.23) + ((net - 28000) * 0.35);
-        else natTax = (28000 * 0.23) + (22000 * 0.35) + ((net - 50000) * 0.43);
-        
-        // Regional and Municipal Taxes (calculated on the taxable base 'net')
-        regTax = net * 0.0173; // Average 1.73%
-        munTax = net * 0.008; // Average 0.8%
-    }
-    
-    // 2. Social Contributions (INPS) - Gestione Separata Logic
-    let inps = 0;
-    const inps_rate_gestione_separata = 0.2623; // Standard Gestione Separata INPS rate for 2025 (approx)
-    
-    if (isEmp) {
-        // Employee share
-        inps = inc * 0.0919;
-    } else {
-        // Self-Employed (Partita IVA)
-        if (flat) {
-            // Flat tax (Forfettario) INPS - applied to a reduced base (67%)
-            const profitability_coefficient_inps = 0.67; 
-            const inps_taxable_base = inc * profitability_coefficient_inps; 
-            inps = inps_taxable_base * inps_rate_gestione_separata;
-
-        } else {
-            // Standard (IRPEF) self-employed: Gestione Separata - applied to net income (reduced by Inbound)
-            inps = net * inps_rate_gestione_separata;
-        }
-    }
-    
-    // 3. Final Calculation
-    const tot = natTax + regTax + munTax + inps;
-    const netAfter = inc - tot;
-    const eff = (tot / inc * 100).toFixed(1);
-    
-    // 4. Display Results
-    document.getElementById('r1').textContent = '€' + inc.toLocaleString('en-US');
-    
-    let displayedTaxableBase;
-    if (flat) {
-        // For display: Flat tax base (Gross * Coeff)
-        displayedTaxableBase = inc * 0.67;
-    } else {
-        // For display: IRPEF base (Net Income - Exemption)
-        displayedTaxableBase = net;
-    }
-    document.getElementById('r3').textContent = '€' + Math.round(displayedTaxableBase).toLocaleString('en-US');
-
-    
-    if (inbound && !flat && exempt > 0) {
-        document.getElementById('exemptRow').style.display = 'flex';
-        document.getElementById('r2').textContent = '-€' + Math.round(exempt).toLocaleString('en-US');
-    } else {
-        document.getElementById('exemptRow').style.display = 'none';
-    }
-    
-    if (flat) {
-        document.getElementById('taxLabel').textContent = 'Flat Tax (15%)';
-        document.getElementById('regRow').style.display = 'none';
-        document.getElementById('munRow').style.display = 'none';
-    } else {
-        document.getElementById('taxLabel').textContent = 'National Tax (IRPEF)';
-        document.getElementById('regRow').style.display = 'flex';
-        document.getElementById('munRow').style.display = 'flex';
-        document.getElementById('r5').textContent = '€' + Math.round(regTax).toLocaleString('en-US');
-        document.getElementById('r6').textContent = '€' + Math.round(munTax).toLocaleString('en-US');
-    }
-    
-    document.getElementById('r4').textContent = '€' + Math.round(natTax).toLocaleString('en-US');
-    document.getElementById('socialLabel').textContent = isEmp ? 'Employee INPS' : (flat ? 'INPS (Flat Tax)' : 'Self-Employed INPS (26.23%)');
-    document.getElementById('r7').textContent = '€' + Math.round(inps).toLocaleString('en-US');
-    document.getElementById('r8').textContent = '€' + Math.round(tot).toLocaleString('en-US');
-    document.getElementById('r9').textContent = '€' + Math.round(netAfter).toLocaleString('en-US');
-    document.getElementById('r10').textContent = eff + '%';
-    
-    document.getElementById('results').classList.add('show');
-}
-
-// Ensure the two mutually exclusive regimes cannot be checked at the same time
-document.getElementById('flatTaxRegime').addEventListener('change', toggleFlatTax);
-document.getElementById('inboundWorker').addEventListener('change', toggleInboundWorker);
-document.getElementById('income').addEventListener('keypress', e => { if (e.key === 'Enter') calc(); });
-document.getElementById('expenses').addEventListener('keypress', e => { if (e.key === 'Enter') calc(); });
-
 </script>
 
     <!-- Footer -->

@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Illinois State Tax Calculator 2026 | IL Income Tax Calculator
-description: Free Illinois tax calculator for 2026. IL has a flat 4.95% income tax rate. Calculate your federal + state taxes. NO tax on retirement income!
-permalink: /us-states/illinois/
+title: New Jersey State Tax Calculator 2026 | NJ Income Tax Calculator
+description: Free New Jersey tax calculator for 2026. NJ has progressive 1.4-10.75% income tax - HIGHEST in USA! Calculate your federal + state taxes.
+permalink: /us-states/new-jersey/
 ---
 
 <style>
@@ -31,7 +31,7 @@ permalink: /us-states/illinois/
         
         .state-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #003C7D 0%, #E84A27 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #004098 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -40,8 +40,8 @@ permalink: /us-states/illinois/
             font-size: 14px;
         }
 
-        .flat-tax-banner {
-            background: linear-gradient(135deg, #003C7D 0%, #E84A27 100%);
+        .tax-banner {
+            background: linear-gradient(135deg, #FF6B35 0%, #004098 100%);
             color: white;
             padding: 20px;
             border-radius: 12px;
@@ -49,13 +49,13 @@ permalink: /us-states/illinois/
             text-align: center;
         }
 
-        .flat-tax-banner h2 {
+        .tax-banner h2 {
             font-size: 24px;
             margin-bottom: 10px;
             color: white;
         }
 
-        .flat-tax-banner p {
+        .tax-banner p {
             font-size: 16px;
             opacity: 0.95;
         }
@@ -67,7 +67,7 @@ permalink: /us-states/illinois/
         }
 
         h2 {
-            color: #003C7D;
+            color: #FF6B35;
             margin-bottom: 20px;
             margin-top: 40px;
             font-size: 24px;
@@ -107,13 +107,13 @@ permalink: /us-states/illinois/
         
         input:focus, select:focus {
             outline: none;
-            border-color: #003C7D;
+            border-color: #FF6B35;
         }
         
         .btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #003C7D 0%, #E84A27 100%);
+            background: linear-gradient(135deg, #FF6B35 0%, #004098 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -152,7 +152,7 @@ permalink: /us-states/illinois/
         .result-section-title {
             font-size: 14px;
             font-weight: 700;
-            color: #003C7D;
+            color: #FF6B35;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
@@ -173,7 +173,7 @@ permalink: /us-states/illinois/
         }
         
         .total-row .result-value {
-            color: #003C7D;
+            color: #FF6B35;
             font-size: 24px;
         }
 
@@ -207,7 +207,7 @@ permalink: /us-states/illinois/
         }
 
         .tax-table th {
-            background: #003C7D;
+            background: #FF6B35;
             color: white;
             padding: 12px;
             text-align: left;
@@ -226,11 +226,11 @@ permalink: /us-states/illinois/
         .info {
             margin-top: 20px;
             padding: 15px;
-            background: #d4edda;
-            border-left: 4px solid #4CAF50;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
             border-radius: 4px;
             font-size: 14px;
-            color: #155724;
+            color: #856404;
         }
 
         .highlight-box {
@@ -242,11 +242,12 @@ permalink: /us-states/illinois/
         }
 
         .warning-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
             padding: 15px;
             margin: 20px 0;
             border-radius: 4px;
+            color: #721c24;
         }
 
         footer {
@@ -259,13 +260,13 @@ permalink: /us-states/illinois/
 </style>
 
 <div class="container">
-    <div class="state-badge">🌾 ILLINOIS</div>
-    <h1>Illinois Tax Calculator 2026</h1>
-    <p class="subtitle">Calculate IL state + federal taxes with flat 4.95% rate</p>
+    <div class="state-badge">🏖️ NEW JERSEY</div>
+    <h1>New Jersey Tax Calculator 2026</h1>
+    <p class="subtitle">Calculate NJ state + federal taxes with progressive 1.4-10.75% rates</p>
     
-    <div class="flat-tax-banner">
-        <h2>🌾 FLAT 4.95% STATE TAX 🌾</h2>
-        <p>NO tax on retirement income! Social Security, 401(k), IRA, pensions 100% exempt!</p>
+    <div class="tax-banner">
+        <h2>⚠️ PROGRESSIVE 1.4% - 10.75% ⚠️</h2>
+        <p>HIGHEST state income tax in USA! But no local tax + property tax deduction!</p>
     </div>
     
     <div class="input-group">
@@ -320,9 +321,9 @@ permalink: /us-states/illinois/
         </div>
         
         <div class="result-section">
-            <div class="result-section-title">🌾 Illinois State</div>
+            <div class="result-section-title">🏖️ New Jersey State</div>
             <div class="result-row">
-                <span class="result-label">State Income Tax (4.95% flat)</span>
+                <span class="result-label">State Income Tax (progressive)</span>
                 <span class="result-value" id="stateTax"></span>
             </div>
         </div>
@@ -340,66 +341,100 @@ permalink: /us-states/illinois/
     </div>
     
     <div class="info">
-        <strong>Retirement Paradise!</strong> Illinois has a flat 4.95% income tax BUT 100% exempts ALL retirement income - Social Security, 401(k), IRA, and pensions are TAX FREE!
+        <strong>Trade-off Alert!</strong> NJ has the HIGHEST state income tax (10.75% top rate) AND highest property taxes in USA. But: no local income tax, property tax deduction up to $10,000, and NYC proximity!
     </div>
     
     <div class="content-section">
-        <h2>Illinois State Tax Guide 2026</h2>
+        <h2>New Jersey State Tax Guide 2026</h2>
         
         <p>
-            <strong>Illinois has a simple flat income tax rate of 4.95% for all taxpayers.</strong> The Prairie State is exceptionally attractive for retirees because it completely exempts ALL retirement income from state taxation - including Social Security, 401(k) withdrawals, IRA distributions, and pension income.
+            <strong>New Jersey has a progressive income tax system with rates ranging from 1.4% to 10.75% - the HIGHEST top rate in the United States.</strong> The Garden State also has the nation's highest property taxes. However, NJ offers several offsetting benefits: no local income taxes, a generous property tax deduction, proximity to NYC, and excellent public services.
         </p>
 
-        <div class="highlight-box">
-            <strong>🎯 Illinois Tax Benefits:</strong>
+        <div class="warning-box">
+            <strong>⚠️ New Jersey Has HIGHEST Taxes in Nation:</strong>
             <ul style="margin-top: 10px;">
-                <li><strong>4.95% flat rate</strong> - simple, no brackets to calculate</li>
-                <li><strong>100% exempt retirement income</strong> - 401(k), IRA, pensions TAX FREE</li>
-                <li><strong>No tax on Social Security</strong> - keep every dollar</li>
-                <li><strong>Property tax relief</strong> - credits available for homeowners</li>
-                <li><strong>Expanded EITC</strong> - 20% of federal credit for 2026</li>
+                <li><strong>State income tax:</strong> Up to 10.75% (highest in USA)</li>
+                <li><strong>Property tax:</strong> ~1.89% effective rate (highest in USA)</li>
+                <li><strong>Median property tax:</strong> $9,358/year</li>
+                <li><strong>Sales tax:</strong> 6.625%</li>
+                <li><strong>Total tax burden:</strong> One of highest in country</li>
             </ul>
         </div>
 
-        <div class="warning-box">
-            <strong>⚠️ High Property & Sales Taxes:</strong>
+        <div class="highlight-box">
+            <strong>🎯 New Jersey Tax Benefits:</strong>
             <ul style="margin-top: 10px;">
-                <li><strong>Property taxes:</strong> Among highest in nation (~1.92% median rate)</li>
-                <li><strong>State sales tax:</strong> 6.25% base rate</li>
-                <li><strong>Chicago total sales tax:</strong> Can exceed 10% with local additions</li>
-                <li><strong>Estate tax:</strong> $4 million exemption (lower than federal)</li>
+                <li><strong>NO local income tax</strong> (unlike NYC neighbors)</li>
+                <li><strong>Property tax deduction:</strong> Up to $10,000 (or 18% of rent)</li>
+                <li><strong>Social Security:</strong> NOT taxed by NJ</li>
+                <li><strong>NYC proximity:</strong> Live in NJ, work in NYC (lower housing costs)</li>
+                <li><strong>No sales tax:</strong> Groceries, clothing, prescriptions exempt</li>
+                <li><strong>Strong public services:</strong> Schools, infrastructure, transit</li>
             </ul>
         </div>
+
+        <h3>New Jersey Tax Brackets 2026</h3>
+
+        <p>NJ uses progressive brackets - only income within each bracket is taxed at that rate:</p>
+
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Tax Rate</th>
+                    <th>Single / MFJ Income Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1.40%</td><td>$0 - $20,000</td></tr>
+                <tr><td>1.75%</td><td>$20,001 - $35,000</td></tr>
+                <tr><td>2.45%</td><td>$35,001 - $40,000</td></tr>
+                <tr><td>3.50%</td><td>$40,001 - $75,000</td></tr>
+                <tr><td>5.525%</td><td>$75,001 - $500,000</td></tr>
+                <tr><td>6.37%</td><td>$500,001 - $1,000,000</td></tr>
+                <tr><td><strong>10.75%</strong></td><td><strong>$1,000,001+</strong> (HIGHEST in USA!)</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Note:</strong> Unlike most states, NJ uses the SAME brackets for Single and Married Filing Jointly.</p>
         
-        <h3>What Taxes Do You Pay in Illinois?</h3>
+        <h3>What Taxes Do You Pay in New Jersey?</h3>
         
-        <p>Illinois residents pay the following taxes:</p>
+        <p>New Jersey residents pay the following taxes:</p>
         
         <ul>
             <li><strong>Federal Income Tax:</strong> Standard federal rates apply (10% - 37%)</li>
             <li><strong>Federal Self-Employment Tax:</strong> 15.3% on net self-employment income</li>
-            <li><strong>IL State Tax:</strong> 4.95% flat rate on taxable income</li>
-            <li><strong>Property Tax:</strong> ~1.92% median (highest in nation)</li>
-            <li><strong>Sales Tax:</strong> 6.25% state + local (up to 10.25% total)</li>
-            <li><strong>Estate Tax:</strong> Estates over $4 million</li>
+            <li><strong>NJ State Tax:</strong> 1.4% - 10.75% progressive (HIGHEST in USA)</li>
+            <li><strong>NO Local Income Tax:</strong> Unlike NYC (3.876% city tax)</li>
+            <li><strong>Property Tax:</strong> ~1.89% effective (HIGHEST in USA, median $9,358/year)</li>
+            <li><strong>Sales Tax:</strong> 6.625% (groceries/clothing exempt)</li>
         </ul>
 
-        <h3>Illinois Retirement Income Exemptions</h3>
+        <h3>NJ Personal Exemptions 2026</h3>
 
-        <p>Illinois is one of the BEST states for retirees - 100% tax-free retirement income:</p>
+        <p>New Jersey provides exemptions that reduce your taxable income:</p>
 
         <ul>
-            <li><strong>401(k) distributions:</strong> Completely exempt from IL tax</li>
-            <li><strong>Traditional IRA withdrawals:</strong> 100% tax free</li>
-            <li><strong>Roth IRA conversions:</strong> Tax free</li>
-            <li><strong>Public & private pensions:</strong> Fully exempt</li>
-            <li><strong>Social Security benefits:</strong> No state tax whatsoever</li>
-            <li><strong>Annuities:</strong> Retirement annuities exempt</li>
+            <li><strong>Personal exemption:</strong> $1,000 per filer ($2,000 married filing jointly)</li>
+            <li><strong>Dependent exemption:</strong> $1,500 per qualifying dependent</li>
+            <li><strong>Age 65+ exemption:</strong> Additional $1,000 if 65 or older</li>
+            <li><strong>Blind/disabled exemption:</strong> Additional $1,000</li>
+            <li><strong>NO standard deduction:</strong> NJ doesn't have one (itemize only)</li>
         </ul>
 
-        <p><strong>Important:</strong> Early withdrawals before 59½ may still have federal penalties, but Illinois won't tax them!</p>
+        <h3>NJ Property Tax Relief</h3>
+
+        <p>To offset the nation's highest property taxes, NJ offers generous deductions:</p>
+
+        <ul>
+            <li><strong>Homeowners:</strong> Deduct 100% of property tax paid, up to $10,000</li>
+            <li><strong>Renters:</strong> Deduct 18% of annual rent (for property taxes paid by landlord)</li>
+            <li><strong>Requirement:</strong> Rental unit must have own kitchen & bathroom</li>
+            <li><strong>Property Tax Credit:</strong> Additional credits available for low-income residents</li>
+        </ul>
         
-        <h3>2026 Federal Tax Brackets (Applies to IL Residents)</h3>
+        <h3>2026 Federal Tax Brackets (Applies to NJ Residents)</h3>
         
         <table class="tax-table">
             <thead>
@@ -419,96 +454,83 @@ permalink: /us-states/illinois/
                 <tr><td>37%</td><td>$640,601+</td><td>$768,701+</td></tr>
             </tbody>
         </table>
-
-        <h3>Federal Standard Deduction 2026</h3>
         
-        <ul>
-            <li><strong>Single:</strong> $16,100</li>
-            <li><strong>Married Filing Jointly:</strong> $32,200</li>
-            <li><strong>Head of Household:</strong> $24,150</li>
-        </ul>
-
-        <h3>Illinois Personal Exemption 2026</h3>
-        
-        <p>For Illinois state tax purposes:</p>
-        <ul>
-            <li><strong>Personal exemption:</strong> $2,925 per person (increased from $2,850 in 2025)</li>
-            <li><strong>Additional allowances:</strong> $1,000 per qualifying dependent</li>
-            <li><strong>Age 65+ exemption:</strong> Additional allowance if 65 or older</li>
-        </ul>
-        
-        <h3>Pros and Cons of Living in Illinois</h3>
+        <h3>Pros and Cons of Living in New Jersey</h3>
         
         <p><strong>Pros:</strong></p>
         <ul>
-            <li>Simple flat 4.95% income tax</li>
-            <li>100% exempt ALL retirement income (401k, IRA, pensions, Social Security)</li>
-            <li>Chicago offers world-class culture, food, and entertainment</li>
-            <li>Central US location with good transportation</li>
-            <li>Strong economy with diverse job market</li>
-            <li>Expanded EITC (20% of federal credit)</li>
+            <li>NO local income tax (unlike NYC 3.876%)</li>
+            <li>Property tax deduction up to $10,000</li>
+            <li>No sales tax on groceries, clothing, prescriptions</li>
+            <li>Close to NYC - lower housing costs, same job market</li>
+            <li>Excellent public schools and universities</li>
+            <li>Strong public transit (NJ Transit, PATH)</li>
+            <li>Beach towns + suburbs + cities</li>
+            <li>Social Security not taxed</li>
         </ul>
 
         <p><strong>Cons:</strong></p>
         <ul>
-            <li>Highest property taxes in the nation (~1.92% median)</li>
-            <li>High combined sales taxes (up to 10.25%)</li>
-            <li>Estate tax with $4M exemption (lower than federal)</li>
-            <li>Cold winters with harsh weather</li>
-            <li>State has financial challenges and pension debt</li>
+            <li>HIGHEST state income tax in USA (10.75% top rate)</li>
+            <li>HIGHEST property taxes in USA (~$9,358 median)</li>
+            <li>High cost of living overall</li>
+            <li>Dense population, traffic congestion</li>
+            <li>Expensive auto insurance</li>
+            <li>High housing costs (especially near NYC)</li>
         </ul>
 
-        <h3>Illinois vs Other Flat Tax States</h3>
+        <h3>NJ vs Neighboring States (2026)</h3>
 
         <table class="tax-table">
             <thead>
                 <tr>
-                    <th>State</th>
-                    <th>Flat Tax Rate</th>
-                    <th>Retirement Tax</th>
+                    <th>Location</th>
+                    <th>Income Tax</th>
+                    <th>Property Tax</th>
+                    <th>NYC Commute</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Arizona</td><td>2.5%</td><td>2.5% (taxed)</td></tr>
-                <tr><td>Pennsylvania</td><td>3.07%</td><td>0% (exempt)</td></tr>
-                <tr><td>Colorado</td><td>4.40%</td><td>Partially exempt</td></tr>
-                <tr><td><strong>Illinois</strong></td><td>4.95%</td><td>0% (100% exempt)</td></tr>
-                <tr><td>Massachusetts</td><td>5.0%</td><td>5.0% (taxed)</td></tr>
+                <tr><td><strong>New Jersey</strong></td><td>1.4-10.75%</td><td>~1.89% (highest)</td><td>Easy</td></tr>
+                <tr><td>NYC (Manhattan)</td><td>4-10.9% state + 3.876% city</td><td>~0.88%</td><td>-</td></tr>
+                <tr><td>Pennsylvania</td><td>3.07% flat</td><td>~1.26%</td><td>Medium</td></tr>
+                <tr><td>Connecticut</td><td>3-6.99%</td><td>~2.14%</td><td>Medium</td></tr>
             </tbody>
         </table>
 
-        <h3>Illinois Tax Credits 2026</h3>
+        <h3>Who Should Move to New Jersey?</h3>
 
         <ul>
-            <li><strong>Illinois Earned Income Credit:</strong> 20% of federal EITC (up from 18%)</li>
-            <li><strong>Property Tax Credit:</strong> 5% of property tax paid (income limits apply)</li>
-            <li><strong>Education Expense Credit:</strong> Up to $850 per household (indexed for inflation)</li>
-            <li><strong>Child Tax Credit:</strong> Available to EITC-qualifying families with dependents under 12</li>
+            <li><strong>NYC workers:</strong> Live in NJ suburbs, commute to NYC (lower housing costs)</li>
+            <li><strong>High-income earners:</strong> If you can afford property tax, excellent schools/services</li>
+            <li><strong>Families:</strong> Top public schools, safe suburbs</li>
+            <li><strong>Retirees:</strong> No Social Security tax (but high property tax)</li>
+            <li><strong>Pharmaceutical workers:</strong> Major pharma hub (Merck, J&J, Pfizer)</li>
+            <li><strong>Finance professionals:</strong> Wall Street commute from NJ suburbs</li>
         </ul>
 
-        <h3>Who Should Move to Illinois?</h3>
+        <h3>Major NJ Cities & Regions</h3>
 
         <ul>
-            <li><strong>Retirees:</strong> 100% tax-free retirement income is HUGE savings</li>
-            <li><strong>Chicago lovers:</strong> World-class city with culture, sports, dining</li>
-            <li><strong>Midwest professionals:</strong> Strong job market, especially in Chicago</li>
-            <li><strong>Remote workers:</strong> Lower income tax than coastal states</li>
-            <li><strong>Healthcare workers:</strong> Major hospital systems (Rush, Northwestern, UChicago)</li>
+            <li><strong>North Jersey (NYC suburbs):</strong> Jersey City, Hoboken, Newark - easy NYC commute</li>
+            <li><strong>Central NJ:</strong> New Brunswick, Princeton - balanced location</li>
+            <li><strong>South Jersey:</strong> Cherry Hill, Camden - Philly access, lower costs</li>
+            <li><strong>Shore towns:</strong> Asbury Park, Long Branch - beach living</li>
         </ul>
 
-        <h3>Property Tax Relief Programs</h3>
+        <h3>NJ Millionaire's Tax (2026)</h3>
 
-        <p>Illinois offers several programs to help offset high property taxes:</p>
+        <p>New Jersey's 10.75% top bracket kicks in at $1 million of income:</p>
 
         <ul>
-            <li><strong>General Homestead Exemption:</strong> Reduces assessed value</li>
-            <li><strong>Senior Citizen Homestead Exemption:</strong> $5,000 off EAV ($8,000 in Cook County)</li>
-            <li><strong>Senior Citizens Assessment Freeze:</strong> Freezes assessed value (income limits apply)</li>
-            <li><strong>Property Tax Credit:</strong> 5% of property taxes paid on state return</li>
+            <li><strong>$500k-$1M income:</strong> 6.37% top rate</li>
+            <li><strong>$1M+ income:</strong> 10.75% top rate (HIGHEST in USA)</li>
+            <li><strong>Impact:</strong> Each dollar over $1M taxed at 10.75% state + 37% federal = 47.75% combined!</li>
+            <li><strong>Exodus concern:</strong> Some high earners move to FL (0%) or TX (0%)</li>
         </ul>
         
         <p>
-            <strong>Important:</strong> This calculator estimates Illinois state + federal taxes. Local income taxes do NOT apply in Illinois (unlike Pennsylvania or Ohio). However, property and sales taxes are among the highest in the nation. For complete tax planning, consult with an Illinois CPA.
+            <strong>Important:</strong> This calculator estimates New Jersey state + federal taxes using 2026 progressive rates (1.4-10.75%). The 10.75% rate is the HIGHEST state income tax in America. NJ has NO local income taxes (unlike NYC). Property tax deduction up to $10,000 available. Property taxes are the highest in the nation (~$9,358 median). For complete tax planning, consult with a New Jersey CPA.
         </p>
     </div>
 </div>
@@ -587,13 +609,41 @@ function calculateTax() {
     
     const selfEmploymentTax = netIncome * 0.9235 * 0.153;
     
-    // Illinois State Tax - Flat 4.95%
-    // Personal exemption: $2,925 per person + $1,000 per dependent
-    const ilExemption = 2925 + (dependents * 1000);
-    const ilTaxableIncome = Math.max(0, netIncome - ilExemption);
-    const ilStateTax = ilTaxableIncome * 0.0495;
+    // New Jersey State Tax 2026 - PROGRESSIVE 1.4% - 10.75%
+    // Personal exemption: $1,000 Single or per person in MFJ ($2,000 total MFJ)
+    // Dependent exemption: $1,500 per dependent
+    let njPersonalExemption = 1000;
+    if (status === 'married') njPersonalExemption = 2000;
     
-    const totalTax = federalTax + selfEmploymentTax + ilStateTax;
+    const njDependentExemption = dependents * 1500;
+    const njTaxableIncome = Math.max(0, netIncome - njPersonalExemption - njDependentExemption);
+    
+    // NJ brackets (same for Single and MFJ)
+    const njBrackets = [
+        [20000, 0.014],
+        [35000, 0.0175],
+        [40000, 0.0245],
+        [75000, 0.035],
+        [500000, 0.05525],
+        [1000000, 0.0637],
+        [99999999, 0.1075]
+    ];
+    
+    let njStateTax = 0;
+    let njRemaining = njTaxableIncome;
+    let njPreviousLimit = 0;
+    
+    for (let i = 0; i < njBrackets.length; i++) {
+        if (njRemaining <= 0) break;
+        const bracketLimit = njBrackets[i][0];
+        const bracketRate = njBrackets[i][1];
+        const taxableInBracket = Math.min(njRemaining, bracketLimit - njPreviousLimit);
+        njStateTax += taxableInBracket * bracketRate;
+        njRemaining -= taxableInBracket;
+        njPreviousLimit = bracketLimit;
+    }
+    
+    const totalTax = federalTax + selfEmploymentTax + njStateTax;
     const effectiveRate = (totalTax / income * 100).toFixed(1);
     
     // Display results
@@ -601,7 +651,7 @@ function calculateTax() {
     document.getElementById('netIncome').textContent = '$' + Math.round(netIncome).toLocaleString();
     document.getElementById('federalTax').textContent = '$' + Math.round(federalTax).toLocaleString();
     document.getElementById('seTax').textContent = '$' + Math.round(selfEmploymentTax).toLocaleString();
-    document.getElementById('stateTax').textContent = '$' + Math.round(ilStateTax).toLocaleString();
+    document.getElementById('stateTax').textContent = '$' + Math.round(njStateTax).toLocaleString();
     document.getElementById('totalTax').textContent = '$' + Math.round(totalTax).toLocaleString();
     document.getElementById('effectiveRate').textContent = effectiveRate + '%';
     

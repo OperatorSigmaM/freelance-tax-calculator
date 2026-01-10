@@ -15,7 +15,7 @@
     
     <title>Netherlands Tax Calculator 2026 | Dutch Income Tax Calculator | FinTools</title>
     <meta name="description" content="Free Netherlands tax calculator for 2026. Calculate Dutch income tax with Box 1, 2, and 3. For freelancers (ZZP) and employees with all deductions.">
-    <meta name="keywords" content="calculator, tax calculator, bmi calculator">
+    <meta name="keywords" content="netherlands tax calculator, dutch income tax, box 1 2 3 tax, ZZP tax calculator, netherlands tax 2026">
     <meta name="robots" content="index, follow">
     
     <link rel="stylesheet" href="/css/style.css">
@@ -155,20 +155,17 @@
     <!-- Main Content -->
     
 <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        /* Важные стили для позиционирования контента под фиксированным меню */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            /* Отступ, чтобы контент не наползал на фиксированное меню */
-            padding: 110px 20px 40px;
+            padding: 40px 20px;
         }
         
         .container {
@@ -183,7 +180,6 @@
         
         .state-badge {
             display: inline-block;
-            /* Цвета флага Нидерландов */
             background: linear-gradient(135deg, #C8102E 0%, #FFFFFF 50%, #003DA5 100%);
             color: #003DA5;
             padding: 8px 16px;
@@ -355,28 +351,6 @@
             font-size: 24px;
         }
 
-        .content-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            line-height: 1.8;
-            color: #333;
-        }
-        
-        .content-section p {
-            margin-bottom: 15px;
-        }
-        
-        .content-section ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .content-section li {
-            margin-bottom: 8px;
-        }
-
         .tax-table {
             width: 100%;
             border-collapse: collapse;
@@ -419,145 +393,157 @@
             border-radius: 4px;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: white;
-            opacity: 0.8;
-            font-size: 14px;
+        .highlight-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
         }
-    
-</style>
 
-<div class="container">
-    <div class="state-badge">🇳🇱 NETHERLANDS</div>
-    <h1>Netherlands Tax Calculator 2026</h1>
-    <p class="subtitle">Calculate Dutch income tax with Box 1, 2, and 3 system</p>
-    
-    <div class="checkbox-group">
-        <input type="checkbox" id="isEmployee">
-        <label for="isEmployee">💼 I'm an employee (not ZZP/freelancer)</label>
-    </div>
+        .content-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="state-badge">🇳🇱 NETHERLANDS</div>
+        <h1>Netherlands Tax Calculator 2026</h1>
+        <p class="subtitle">Calculate Dutch income tax with Box 1, 2, and 3 system (Updated 2026 rates)</p>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="isEmployee">
+            <label for="isEmployee">💼 I'm an employee (not ZZP/freelancer)</label>
+        </div>
 
-    <div class="box-section">
-        <div class="box-title">📦 Box 1: Income from Work & Home</div>
-        
-        <div class="input-group">
-            <label>Annual Income (Gross) <span class="label-hint">- salary or business profit in EUR</span></label>
-            <input type="number" id="income" placeholder="e.g., 50000" min="0">
-        </div>
-        
-        <div class="input-group">
-            <label>Business Expenses <span class="label-hint">- deductible costs</span></label>
-            <input type="number" id="expenses" placeholder="e.g., 5000" min="0" value="0">
-        </div>
-    </div>
-
-    <div class="box-section">
-        <div class="box-title">📦 Box 2: Substantial Interest Income</div>
-        
-        <div class="input-group">
-            <label>Dividends from Substantial Interest <span class="label-hint">- >5% company shares</span></label>
-            <input type="number" id="box2Income" placeholder="e.g., 20000" min="0" value="0">
-        </div>
-    </div>
-
-    <div class="box-section">
-        <div class="box-title">📦 Box 3: Savings & Investments</div>
-        
-        <div class="input-group">
-            <label>Total Assets Value <span class="label-hint">- savings, investments, property (excl. primary home)</span></label>
-            <input type="number" id="box3Assets" placeholder="e.g., 100000" min="0" value="0">
-        </div>
-    </div>
-    
-    <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
-    
-    <div class="results" id="results">
-        <div class="result-section">
-            <div class="result-section-title">💰 Income Summary</div>
-            <div class="result-row">
-                <span class="result-label">Box 1 Gross Income</span>
-                <span class="result-value" id="box1Income"></span>
+        <div class="box-section">
+            <div class="box-title">📦 Box 1: Income from Work & Home</div>
+            
+            <div class="input-group">
+                <label>Annual Income (Gross) <span class="label-hint">- salary or business profit in EUR</span></label>
+                <input type="number" id="income" placeholder="e.g., 50000" min="0">
             </div>
-            <div class="result-row" id="allowanceRow" style="display: none;">
-                <span class="result-label">ZZP Deductions (Zelfstandigenaftrek + MKB)</span>
-                <span class="result-value" id="zzpAllowance"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Box 1 Taxable Income</span>
-                <span class="result-value" id="box1TaxableBase"></span>
-            </div>
-        </div>
-        
-        <div class="result-section">
-            <div class="result-section-title">🇳🇱 Box 1 Tax (Work Income)</div>
-            <div class="result-row">
-                <span class="result-label">Gross Box 1 Tax</span>
-                <span class="result-value" id="grossBox1Tax"></span>
-            </div>
-            <div class="result-row" id="creditsRow">
-                <span class="result-label">Tax Credits (Heffingskortingen)</span>
-                <span class="result-value" id="totalCredits"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Net Box 1 Tax</span>
-                <span class="result-value" id="box1Tax"></span>
-            </div>
-        </div>
-        
-        <div class="result-section" id="box2Section" style="display: none;">
-            <div class="result-section-title">🏢 Box 2 Tax (Substantial Interest)</div>
-            <div class="result-row">
-                <span class="result-label">Box 2 Income</span>
-                <span class="result-value" id="box2IncomeDisplay"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Box 2 Tax</span>
-                <span class="result-value" id="box2Tax"></span>
+            
+            <div class="input-group">
+                <label>Business Expenses <span class="label-hint">- deductible costs</span></label>
+                <input type="number" id="expenses" placeholder="e.g., 5000" min="0" value="0">
             </div>
         </div>
 
-        <div class="result-section" id="box3Section" style="display: none;">
-            <div class="result-section-title">💎 Box 3 Tax (Wealth)</div>
-            <div class="result-row">
-                <span class="result-label">Taxable Assets (Above €57,684)</span>
-                <span class="result-value" id="box3AssetsDisplay"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Box 3 Tax (36% on Deemed Return)</span>
-                <span class="result-value" id="box3Tax"></span>
+        <div class="box-section">
+            <div class="box-title">📦 Box 2: Substantial Interest Income</div>
+            
+            <div class="input-group">
+                <label>Dividends from Substantial Interest <span class="label-hint">- >5% company shares</span></label>
+                <input type="number" id="box2Income" placeholder="e.g., 20000" min="0" value="0">
             </div>
         </div>
-        
-        <div class="result-section">
-            <div class="result-row total-row">
-                <span class="result-label"><strong>Total Tax Liability</strong></span>
-                <span class="result-value" id="totalTax"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Net Income (After Tax)</span>
-                <span class="result-value" id="netIncome"></span>
-            </div>
-            <div class="result-row">
-                <span class="result-label">Effective Rate</span>
-                <span class="result-value" id="effectiveRate"></span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="info">
-        <strong>Note:</strong> This calculator estimates Netherlands income tax for 2026. It includes crucial **Tax Credits (Heffingskortingen)** which significantly lower the final tax bill. Box 3 is simplified. Consult a Dutch tax advisor (belastingadviseur) for accurate planning.
-    </div>
-    
-    <div class="content-section">
-        <h2>Netherlands Tax System Guide 2026</h2>
-        
-        <p>
-            The Netherlands uses a unique 3-box tax system where different types of income are taxed separately at different rates.
-        </p>
 
-        <h3>Box 1: Income from Work and Home (2026 Rates)</h3>
+        <div class="box-section">
+            <div class="box-title">📦 Box 3: Savings & Investments</div>
+            
+            <div class="input-group">
+                <label>Total Assets Value <span class="label-hint">- savings, investments, property (excl. primary home)</span></label>
+                <input type="number" id="box3Assets" placeholder="e.g., 100000" min="0" value="0">
+            </div>
+        </div>
+        
+        <button class="btn" onclick="calculateTax()">Calculate Taxes</button>
+        
+        <div class="results" id="results">
+            <div class="result-section">
+                <div class="result-section-title">💰 Income Summary</div>
+                <div class="result-row">
+                    <span class="result-label">Box 1 Gross Income</span>
+                    <span class="result-value" id="box1Income"></span>
+                </div>
+                <div class="result-row" id="allowanceRow" style="display: none;">
+                    <span class="result-label">ZZP Deductions (Zelfstandigenaftrek + MKB)</span>
+                    <span class="result-value" id="zzpAllowance"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Box 1 Taxable Income</span>
+                    <span class="result-value" id="box1TaxableBase"></span>
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <div class="result-section-title">🇳🇱 Box 1 Tax (Work Income)</div>
+                <div class="result-row">
+                    <span class="result-label">Gross Box 1 Tax</span>
+                    <span class="result-value" id="grossBox1Tax"></span>
+                </div>
+                <div class="result-row" id="creditsRow">
+                    <span class="result-label">Tax Credits (Heffingskortingen)</span>
+                    <span class="result-value" id="totalCredits"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Net Box 1 Tax</span>
+                    <span class="result-value" id="box1Tax"></span>
+                </div>
+            </div>
+            
+            <div class="result-section" id="box2Section" style="display: none;">
+                <div class="result-section-title">🏢 Box 2 Tax (Substantial Interest)</div>
+                <div class="result-row">
+                    <span class="result-label">Box 2 Income</span>
+                    <span class="result-value" id="box2IncomeDisplay"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Box 2 Tax</span>
+                    <span class="result-value" id="box2Tax"></span>
+                </div>
+            </div>
+
+            <div class="result-section" id="box3Section" style="display: none;">
+                <div class="result-section-title">💎 Box 3 Tax (Wealth)</div>
+                <div class="result-row">
+                    <span class="result-label">Taxable Assets (Above €59,357)</span>
+                    <span class="result-value" id="box3AssetsDisplay"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Box 3 Tax (36% on Deemed Return)</span>
+                    <span class="result-value" id="box3Tax"></span>
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <div class="result-row total-row">
+                    <span class="result-label"><strong>Total Tax Liability</strong></span>
+                    <span class="result-value" id="totalTax"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Net Income (After Tax)</span>
+                    <span class="result-value" id="netIncome"></span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Effective Rate</span>
+                    <span class="result-value" id="effectiveRate"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>Updated for 2026:</strong> Box 1 rates: 35.75% / 37.56% / 49.50%. Zelfstandigenaftrek reduced to €1,200. Box 3 allowance: €59,357.
+        </div>
+
+        <h2>Box 1: Income from Work and Home (2026 Rates - UPDATED)</h2>
         
         <table class="tax-table">
             <thead>
@@ -567,19 +553,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>35.82%</td><td>€0 - €38,441</td></tr>
-                <tr><td>37.48%</td><td>€38,442 - €76,817</td></tr>
-                <tr><td>49.50%</td><td>€76,818+</td></tr>
+                <tr><td>35.75%</td><td>€0 - €38,883</td></tr>
+                <tr><td>37.56%</td><td>€38,884 - €78,426</td></tr>
+                <tr><td>49.50%</td><td>€78,427+</td></tr>
             </tbody>
         </table>
 
-        <p><strong>Box 1 includes:</strong></p>
-        <ul>
-            <li>Salary and wages</li>
-            <li>Business profit (ZZP/freelancer)</li>
-            <li>Benefits and pensions</li>
-            <li>Primary home ownership value</li>
-        </ul>
+        <h2>ZZP (Freelancer) Deductions - 2026 UPDATED</h2>
+
+        <div class="highlight-box">
+            <strong>Zelfstandigenaftrek (Self-employed deduction):</strong>
+            <ul>
+                <li><strong>Amount: €1,200</strong> (reduced from €2,470 in 2025)</li>
+                <li><strong>Requirement:</strong> Work 1,225+ hours as self-employed</li>
+                <li><strong>Reduces taxable income in Box 1</strong></li>
+            </ul>
+            
+            <strong>MKB-winstvrijstelling (SME profit exemption):</strong>
+            <ul>
+                <li>13.31% of profit is tax-free</li>
+                <li>Automatically applied to business profits</li>
+            </ul>
+        </div>
+
+        <h2>Box 3: Savings and Investments (2026 - UPDATED)</h2>
+        
+        <table class="tax-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>2026 Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Tax-free allowance (single)</td><td>€59,357</td></tr>
+                <tr><td>Tax-free allowance (married)</td><td>€118,714</td></tr>
+                <tr><td>Tax rate on deemed return</td><td>36%</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Netherlands Tax System Overview</h3>
+        
+        <p>The Netherlands uses a unique 3-box tax system where different types of income are taxed separately at different rates. This system separates work income (Box 1), substantial interest/dividends (Box 2), and wealth/savings (Box 3).</p>
 
         <h3>Box 2: Substantial Interest (2026 Rates)</h3>
         
@@ -601,41 +616,6 @@
             <li>Dividends from companies where you own >5% shares</li>
             <li>Capital gains from selling >5% shareholdings</li>
             <li>Common for BV (Dutch private company) owners</li>
-        </ul>
-
-        <h3>Box 3: Savings and Investments (2026)</h3>
-
-        <div class="highlight-box">
-            <strong>Box 3 Tax Calculation:</strong>
-            <ul style="margin-top: 10px;">
-                <li>**Tax-free allowance:** €57,684 (single) or €115,368 (married)</li>
-                <li>**Tax rate:** 36% on deemed return</li>
-                <li>**Deemed return:** Calculated based on asset allocation (savings vs investments)</li>
-                <li>**2026 rates (simplified):** We use a simplified average rate for this calculator.</li>
-            </ul>
-        </div>
-
-        <p><strong>Box 3 includes:</strong></p>
-        <ul>
-            <li>Savings accounts</li>
-            <li>Investment portfolios (stocks, bonds)</li>
-            <li>Second homes and rental properties</li>
-            <li>Cryptocurrency holdings</li>
-        </ul>
-
-        <h3>ZZP (Freelancer) Deductions</h3>
-
-        <p><strong>Zelfstandigenaftrek (Self-employed deduction):</strong></p>
-        <ul>
-            <li>**Amount:** €2,470 (2026)</li>
-            <li>**Requirement:** Work 1,225+ hours as self-employed</li>
-            <li>**Reduces taxable income in Box 1**</li>
-        </ul>
-
-        <p><strong>MKB-winstvrijstelling (SME profit exemption):</strong></p>
-        <ul>
-            <li>13.31% of profit is tax-free</li>
-            <li>Automatically applied to business profits</li>
         </ul>
 
         <h3>Tax Comparison: Netherlands vs Other Countries</h3>
@@ -674,7 +654,7 @@
                 </tr>
                 <tr>
                     <td>Deductions</td>
-                    <td>€2,470 + 13.31% exemption</td>
+                    <td>€1,200 + 13.31% exemption</td>
                     <td>Limited</td>
                 </tr>
                 <tr>
@@ -698,31 +678,32 @@
         <h3>Important Dutch Tax Deadlines</h3>
 
         <ul>
-            <li>**Income Tax Return:** May 1st (following year)</li>
-            <li>**VAT Returns:** Monthly or quarterly</li>
-            <li>**Provisional Assessment:** March (for advance payments)</li>
-            <li>**Box 3 Reference Date:** January 1st (asset valuation)</li>
+            <li><strong>Income Tax Return:</strong> May 1st (following year)</li>
+            <li><strong>VAT Returns:</strong> Monthly or quarterly</li>
+            <li><strong>Provisional Assessment:</strong> March (for advance payments)</li>
+            <li><strong>Box 3 Reference Date:</strong> January 1st (asset valuation)</li>
         </ul>
 
         <h3>Common Dutch Tax Deductions</h3>
 
         <ul>
-            <li>**30% Ruling:** For expats (if eligible) - 30% of salary tax-free</li>
-            <li>**Mortgage Interest:** Deductible in Box 1</li>
-            <li>**Healthcare Costs:** Excess over certain threshold</li>
-            <li>**Education Costs:** Study expenses</li>
-            <li>**Charitable Donations:** Gifts to ANBI charities</li>
+            <li><strong>30% Ruling:</strong> For expats (if eligible) - 30% of salary tax-free</li>
+            <li><strong>Mortgage Interest:</strong> Deductible in Box 1</li>
+            <li><strong>Healthcare Costs:</strong> Excess over certain threshold</li>
+            <li><strong>Education Costs:</strong> Study expenses</li>
+            <li><strong>Charitable Donations:</strong> Gifts to ANBI charities</li>
         </ul>
 
         <h3>Pros and Cons of Dutch Tax System</h3>
 
         <p><strong>Pros:</strong></p>
         <ul>
-            <li>Generous ZZP deductions (€2,470 + 13.31%)</li>
+            <li>Generous ZZP deductions (€1,200 + 13.31%)</li>
             <li>Clear 3-box system (different income types separated)</li>
             <li>No local/municipal income taxes</li>
             <li>30% ruling for expats is very generous</li>
             <li>Strong social security system</li>
+            <li>Tax credits significantly reduce actual tax paid</li>
         </ul>
 
         <p><strong>Cons:</strong></p>
@@ -731,7 +712,7 @@
             <li>Wealth tax on savings/investments (Box 3)</li>
             <li>Complex 3-box system</li>
             <li>High VAT (21%)</li>
-            <li>Low tax-free allowance in Box 3 (€57,684)</li>
+            <li>Zelfstandigenaftrek reduced significantly in 2026 (from €2,470 to €1,200)</li>
             <li>Mandatory health insurance (~€140/month minimum)</li>
         </ul>
 
@@ -745,34 +726,18 @@
             <li>Deduct all allowable business expenses</li>
             <li>Set aside 40-50% of income for taxes</li>
             <li>Use Tessa or other tax software for quarterly estimates</li>
+            <li>Note: Zelfstandigenaftrek is only €1,200 in 2026 (significantly reduced!)</li>
         </ul>
         
-        <p>
-            **Important:** Dutch tax law is complex, especially the Box 3 system. This calculator provides estimates only. Always consult with a registered Dutch belastingadviseur (tax advisor) for accurate tax planning and compliance with Belastingdienst requirements.
-        </p>
+        <p><strong>Important:</strong> Dutch tax law is complex, especially the Box 3 system. This calculator provides estimates only. Always consult with a registered Dutch belastingadviseur (tax advisor) for accurate tax planning and compliance with Belastingdienst requirements.</p>
     </div>
-</div>
 
-<footer>
-    
-</footer>
-
-<script src="../MegaNav.js"></script> 
-<script>
-    // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ИЗ MegaNav.js ДЛЯ ВСТАВКИ МЕНЮ
-    if (typeof injectMegaNav === 'function') {
-        injectMegaNav();
-    }
-</script>
-
-<script>
+    <script>
 function calculateCredits(grossIncome, isEmployee) {
-    let generalCredit = 0; // Algemene heffingskorting (AHK)
-    let labourCredit = 0;  // Arbeidskorting (AK)
+    let generalCredit = 0;
+    let labourCredit = 0;
     const incomeForCredits = grossIncome;
     
-    // --- 1. Algemene heffingskorting (AHK) 2026 (Simplified) ---
-    // Max 3360. Tapers down linearly between €22,000 and €76,000
     const AHK_MAX = 3360;
     const AHK_LOW_THRESHOLD = 22000;
     const AHK_HIGH_THRESHOLD = 76000;
@@ -780,26 +745,20 @@ function calculateCredits(grossIncome, isEmployee) {
     if (incomeForCredits <= AHK_LOW_THRESHOLD) {
         generalCredit = AHK_MAX;
     } else if (incomeForCredits < AHK_HIGH_THRESHOLD) {
-        const reductionRate = AHK_MAX / (AHK_HIGH_THRESHOLD - AHK_LOW_THRESHOLD); // approx 0.062 per euro
+        const reductionRate = AHK_MAX / (AHK_HIGH_THRESHOLD - AHK_LOW_THRESHOLD);
         generalCredit = AHK_MAX - ((incomeForCredits - AHK_LOW_THRESHOLD) * reductionRate);
     }
-
-    // --- 2. Arbeidskorting (AK) 2026 (Simplified) ---
-    // Applies to both employees and ZZP. Max ~5500.
-    if (isEmployee || !isEmployee) { 
-        if (incomeForCredits <= 37000) {
-            labourCredit = incomeForCredits * 0.1; // Very simplified base logic
-        } else if (incomeForCredits <= 76000) {
-            labourCredit = 3700; // Simplified flat max for this bracket
-        } else {
-            // Tapers down from max 3700 for high incomes
-            labourCredit = 3700 - ((incomeForCredits - 76000) * 0.04); 
-        }
+    
+    if (incomeForCredits <= 37000) {
+        labourCredit = incomeForCredits * 0.1;
+    } else if (incomeForCredits <= 76000) {
+        labourCredit = 3700;
+    } else {
+        labourCredit = 3700 - ((incomeForCredits - 76000) * 0.04);
     }
 
     return Math.max(0, generalCredit) + Math.max(0, labourCredit);
 }
-
 
 function calculateTax() {
     const income = parseFloat(document.getElementById('income').value) || 0;
@@ -813,42 +772,39 @@ function calculateTax() {
         return;
     }
     
-    // --- Box 1 Income Calculation (ZZP Deductions) ---
     let box1NetProfit = income - expenses;
     let zzpDeductionAmount = 0;
     let totalDeductions = 0;
 
     if (!isEmployee) {
-        // MKB-winstvrijstelling (13.31% profit exemption)
         const mkbExemption = box1NetProfit * 0.1331;
         box1NetProfit -= mkbExemption;
         totalDeductions += mkbExemption;
 
-        // Zelfstandigenaftrek (Self-employed deduction)
-        const zelfstandigenaftrek = 2470; // 2026 amount
+        // UPDATED: Zelfstandigenaftrek reduced to €1,200 for 2026
+        const zelfstandigenaftrek = 1200;
         box1NetProfit -= zelfstandigenaftrek;
         totalDeductions += zelfstandigenaftrek;
-        zzpDeductionAmount = Math.round(totalDeductions); // For display
+        zzpDeductionAmount = Math.round(totalDeductions);
     }
     
     const box1TaxableIncome = Math.max(0, box1NetProfit);
     
-    // --- Box 1 Gross Tax calculation ---
     let grossBox1Tax = 0;
     
-    if (box1TaxableIncome <= 38441) {
-        grossBox1Tax = box1TaxableIncome * 0.3582;
-    } else if (box1TaxableIncome <= 76817) {
-        grossBox1Tax = (38441 * 0.3582) + ((box1TaxableIncome - 38441) * 0.3748);
+    // UPDATED 2026 BOX 1 RATES: 35.75% / 37.56% / 49.50%
+    // UPDATED 2026 BRACKETS: €38,883 and €78,426
+    if (box1TaxableIncome <= 38883) {
+        grossBox1Tax = box1TaxableIncome * 0.3575;
+    } else if (box1TaxableIncome <= 78426) {
+        grossBox1Tax = (38883 * 0.3575) + ((box1TaxableIncome - 38883) * 0.3756);
     } else {
-        grossBox1Tax = (38441 * 0.3582) + (38376 * 0.3748) + ((box1TaxableIncome - 76817) * 0.4950);
+        grossBox1Tax = (38883 * 0.3575) + (39543 * 0.3756) + ((box1TaxableIncome - 78426) * 0.4950);
     }
 
-    // --- Apply Tax Credits (Heffingskortingen) ---
     const totalCredits = Math.round(calculateCredits(income, isEmployee));
     let netBox1Tax = Math.max(0, grossBox1Tax - totalCredits);
 
-    // --- Box 2 Tax (Substantial Interest) ---
     let box2Tax = 0;
     if (box2Income > 0) {
         if (box2Income <= 67804) {
@@ -858,24 +814,21 @@ function calculateTax() {
         }
     }
     
-    // --- Box 3 Tax (Savings & Investments) ---
     let box3Tax = 0;
-    const box3Allowance = 57684; // Single allowance 2026
+    // UPDATED: Box 3 allowance €59,357 for 2026
+    const box3Allowance = 59357;
     
     if (box3Assets > box3Allowance) {
         const taxableAssets = box3Assets - box3Allowance;
-        // Simplified: using a fixed deemed return of 3%
         const deemedReturn = taxableAssets * 0.03;
-        box3Tax = deemedReturn * 0.36; // 36% tax on deemed return
+        box3Tax = deemedReturn * 0.36;
     }
     
-    // --- Final Calculation ---
     const totalTax = netBox1Tax + box2Tax + box3Tax;
     const totalIncome = income + box2Income;
     const netAfterTax = totalIncome - totalTax;
     const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
     
-    // --- Display Results ---
     document.getElementById('box1Income').textContent = '€' + income.toLocaleString();
     document.getElementById('box1TaxableBase').textContent = '€' + Math.round(box1TaxableIncome).toLocaleString();
     
@@ -886,12 +839,10 @@ function calculateTax() {
         document.getElementById('allowanceRow').style.display = 'none';
     }
     
-    // Box 1 Tax results
     document.getElementById('grossBox1Tax').textContent = '€' + Math.round(grossBox1Tax).toLocaleString();
     document.getElementById('totalCredits').textContent = '-€' + totalCredits.toLocaleString();
     document.getElementById('box1Tax').textContent = '€' + Math.round(netBox1Tax).toLocaleString();
     
-    // Box 2 results
     if (box2Income > 0) {
         document.getElementById('box2IncomeDisplay').textContent = '€' + box2Income.toLocaleString();
         document.getElementById('box2Section').style.display = 'block';
@@ -900,7 +851,6 @@ function calculateTax() {
         document.getElementById('box2Section').style.display = 'none';
     }
     
-    // Box 3 results
     if (box3Assets > box3Allowance) {
         document.getElementById('box3AssetsDisplay').textContent = '€' + Math.round(box3Assets - box3Allowance).toLocaleString();
         document.getElementById('box3Section').style.display = 'block';
@@ -909,7 +859,6 @@ function calculateTax() {
         document.getElementById('box3Section').style.display = 'none';
     }
     
-    // Total results
     document.getElementById('totalTax').textContent = '€' + Math.round(totalTax).toLocaleString();
     document.getElementById('netIncome').textContent = '€' + Math.round(netAfterTax).toLocaleString();
     document.getElementById('effectiveRate').textContent = (totalIncome > 0 ? effectiveRate : 0) + '%';
@@ -932,185 +881,7 @@ document.getElementById('box2Income').addEventListener('keypress', function(e) {
 document.getElementById('box3Assets').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') calculateTax();
 });
-</script>
-
-<script>
-
-    // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ИЗ MegaNav.js ДЛЯ ВСТАВКИ МЕНЮ
-    if (typeof injectMegaNav === 'function') {
-        injectMegaNav();
-    }
-
-
-
-function calculateCredits(grossIncome, isEmployee) {
-    let generalCredit = 0; // Algemene heffingskorting (AHK)
-    let labourCredit = 0;  // Arbeidskorting (AK)
-    const incomeForCredits = grossIncome;
-    
-    // --- 1. Algemene heffingskorting (AHK) 2026 (Simplified) ---
-    // Max 3360. Tapers down linearly between €22,000 and €76,000
-    const AHK_MAX = 3360;
-    const AHK_LOW_THRESHOLD = 22000;
-    const AHK_HIGH_THRESHOLD = 76000;
-    
-    if (incomeForCredits <= AHK_LOW_THRESHOLD) {
-        generalCredit = AHK_MAX;
-    } else if (incomeForCredits < AHK_HIGH_THRESHOLD) {
-        const reductionRate = AHK_MAX / (AHK_HIGH_THRESHOLD - AHK_LOW_THRESHOLD); // approx 0.062 per euro
-        generalCredit = AHK_MAX - ((incomeForCredits - AHK_LOW_THRESHOLD) * reductionRate);
-    }
-
-    // --- 2. Arbeidskorting (AK) 2026 (Simplified) ---
-    // Applies to both employees and ZZP. Max ~5500.
-    if (isEmployee || !isEmployee) { 
-        if (incomeForCredits <= 37000) {
-            labourCredit = incomeForCredits * 0.1; // Very simplified base logic
-        } else if (incomeForCredits <= 76000) {
-            labourCredit = 3700; // Simplified flat max for this bracket
-        } else {
-            // Tapers down from max 3700 for high incomes
-            labourCredit = 3700 - ((incomeForCredits - 76000) * 0.04); 
-        }
-    }
-
-    return Math.max(0, generalCredit) + Math.max(0, labourCredit);
-}
-
-
-function calculateTax() {
-    const income = parseFloat(document.getElementById('income').value) || 0;
-    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const box2Income = parseFloat(document.getElementById('box2Income').value) || 0;
-    const box3Assets = parseFloat(document.getElementById('box3Assets').value) || 0;
-    const isEmployee = document.getElementById('isEmployee').checked;
-    
-    if (income <= 0 && box2Income <= 0 && box3Assets <= 0) {
-        alert('Please enter at least one income or asset value.');
-        return;
-    }
-    
-    // --- Box 1 Income Calculation (ZZP Deductions) ---
-    let box1NetProfit = income - expenses;
-    let zzpDeductionAmount = 0;
-    let totalDeductions = 0;
-
-    if (!isEmployee) {
-        // MKB-winstvrijstelling (13.31% profit exemption)
-        const mkbExemption = box1NetProfit * 0.1331;
-        box1NetProfit -= mkbExemption;
-        totalDeductions += mkbExemption;
-
-        // Zelfstandigenaftrek (Self-employed deduction)
-        const zelfstandigenaftrek = 2470; // 2026 amount
-        box1NetProfit -= zelfstandigenaftrek;
-        totalDeductions += zelfstandigenaftrek;
-        zzpDeductionAmount = Math.round(totalDeductions); // For display
-    }
-    
-    const box1TaxableIncome = Math.max(0, box1NetProfit);
-    
-    // --- Box 1 Gross Tax calculation ---
-    let grossBox1Tax = 0;
-    
-    if (box1TaxableIncome <= 38441) {
-        grossBox1Tax = box1TaxableIncome * 0.3582;
-    } else if (box1TaxableIncome <= 76817) {
-        grossBox1Tax = (38441 * 0.3582) + ((box1TaxableIncome - 38441) * 0.3748);
-    } else {
-        grossBox1Tax = (38441 * 0.3582) + (38376 * 0.3748) + ((box1TaxableIncome - 76817) * 0.4950);
-    }
-
-    // --- Apply Tax Credits (Heffingskortingen) ---
-    const totalCredits = Math.round(calculateCredits(income, isEmployee));
-    let netBox1Tax = Math.max(0, grossBox1Tax - totalCredits);
-
-    // --- Box 2 Tax (Substantial Interest) ---
-    let box2Tax = 0;
-    if (box2Income > 0) {
-        if (box2Income <= 67804) {
-            box2Tax = box2Income * 0.245;
-        } else {
-            box2Tax = (67804 * 0.245) + ((box2Income - 67804) * 0.31);
-        }
-    }
-    
-    // --- Box 3 Tax (Savings & Investments) ---
-    let box3Tax = 0;
-    const box3Allowance = 57684; // Single allowance 2026
-    
-    if (box3Assets > box3Allowance) {
-        const taxableAssets = box3Assets - box3Allowance;
-        // Simplified: using a fixed deemed return of 3%
-        const deemedReturn = taxableAssets * 0.03;
-        box3Tax = deemedReturn * 0.36; // 36% tax on deemed return
-    }
-    
-    // --- Final Calculation ---
-    const totalTax = netBox1Tax + box2Tax + box3Tax;
-    const totalIncome = income + box2Income;
-    const netAfterTax = totalIncome - totalTax;
-    const effectiveRate = (totalTax / totalIncome * 100).toFixed(1);
-    
-    // --- Display Results ---
-    document.getElementById('box1Income').textContent = '€' + income.toLocaleString();
-    document.getElementById('box1TaxableBase').textContent = '€' + Math.round(box1TaxableIncome).toLocaleString();
-    
-    if (!isEmployee && zzpDeductionAmount > 0) {
-        document.getElementById('allowanceRow').style.display = 'flex';
-        document.getElementById('zzpAllowance').textContent = '-€' + zzpDeductionAmount.toLocaleString();
-    } else {
-        document.getElementById('allowanceRow').style.display = 'none';
-    }
-    
-    // Box 1 Tax results
-    document.getElementById('grossBox1Tax').textContent = '€' + Math.round(grossBox1Tax).toLocaleString();
-    document.getElementById('totalCredits').textContent = '-€' + totalCredits.toLocaleString();
-    document.getElementById('box1Tax').textContent = '€' + Math.round(netBox1Tax).toLocaleString();
-    
-    // Box 2 results
-    if (box2Income > 0) {
-        document.getElementById('box2IncomeDisplay').textContent = '€' + box2Income.toLocaleString();
-        document.getElementById('box2Section').style.display = 'block';
-        document.getElementById('box2Tax').textContent = '€' + Math.round(box2Tax).toLocaleString();
-    } else {
-        document.getElementById('box2Section').style.display = 'none';
-    }
-    
-    // Box 3 results
-    if (box3Assets > box3Allowance) {
-        document.getElementById('box3AssetsDisplay').textContent = '€' + Math.round(box3Assets - box3Allowance).toLocaleString();
-        document.getElementById('box3Section').style.display = 'block';
-        document.getElementById('box3Tax').textContent = '€' + Math.round(box3Tax).toLocaleString();
-    } else {
-        document.getElementById('box3Section').style.display = 'none';
-    }
-    
-    // Total results
-    document.getElementById('totalTax').textContent = '€' + Math.round(totalTax).toLocaleString();
-    document.getElementById('netIncome').textContent = '€' + Math.round(netAfterTax).toLocaleString();
-    document.getElementById('effectiveRate').textContent = (totalIncome > 0 ? effectiveRate : 0) + '%';
-    
-    document.getElementById('results').classList.add('show');
-}
-
-document.getElementById('income').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-document.getElementById('expenses').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-document.getElementById('box2Income').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-document.getElementById('box3Assets').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') calculateTax();
-});
-
-</script>
+    </script>
 
     <!-- Footer -->
     <footer>
